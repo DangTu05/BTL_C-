@@ -72,6 +72,7 @@
     <Compile Include="src\Controllers\Admin\EmployeeController.cs" />
     <Compile Include="src\Controllers\Admin\HomeController.cs" />
     <Compile Include="src\Controllers\Admin\ProductController.cs" />
+    <Compile Include="src\Controllers\Admin\RevenueController.cs" />
     <Compile Include="src\Controllers\Admin\SeasonController.cs" />
     <Compile Include="src\Controllers\Admin\SupplierController.cs" />
     <Compile Include="src\Controllers\AppController.cs" />
@@ -86,6 +87,7 @@
     <Compile Include="src\DAO\MaterialDAO.cs" />
     <Compile Include="src\DAO\ProductDAO.cs" />
     <Compile Include="src\DAO\PurchaseInvoiceDAO.cs" />
+    <Compile Include="src\DAO\RevenueDAO.cs" />
     <Compile Include="src\DAO\SalesInvoiceDAO.cs" />
     <Compile Include="src\DAO\SeasonDAO.cs" />
     <Compile Include="src\DAO\SizeDAO.cs" />
@@ -102,6 +104,7 @@
     <Compile Include="src\Models\MaterialModel.cs" />
     <Compile Include="src\Models\ProductModel.cs" />
     <Compile Include="src\Models\PurchaseInvoiceModel.cs" />
+    <Compile Include="src\Models\RevenueModel.cs" />
     <Compile Include="src\Models\SalesInvoiceModel.cs" />
     <Compile Include="src\Models\SeasonModel.cs" />
     <Compile Include="src\Models\SizeModel.cs" />
@@ -170,6 +173,12 @@
     <Compile Include="src\Views\Admin\ProductControl.Designer.cs">
       <DependentUpon>ProductControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="src\Views\Admin\RevenueControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="src\Views\Admin\RevenueControl.Designer.cs">
+      <DependentUpon>RevenueControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="src\Views\Admin\SidebarControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -224,6 +233,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="src\Views\Admin\ProductControl.resx">
       <DependentUpon>ProductControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\Views\Admin\RevenueControl.resx">
+      <DependentUpon>RevenueControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\Views\Admin\SidebarControl.resx">
       <DependentUpon>SidebarControl.cs</DependentUpon>

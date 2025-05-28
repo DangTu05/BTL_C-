@@ -17,13 +17,14 @@ namespace BTL_C_.src.Controllers.Admin
     }
     private void setupEventListeners()
     {
-      viewHome.getSidebar().setTaiKhoanListener(initViewWithControllerAccount);
-      viewHome.getSidebar().setSanPhamListener(initViewWithControllerProduct);
-      viewHome.getSidebar().setNhaCungCapListener(initViewWithControllerSupplier);
-      viewHome.getSidebar().setTrangChuListener(initViewWithControllerDashBoard);
-      viewHome.getSidebar().setNhanVienListener(initViewWithControllerEmployee);
-      viewHome.getSidebar().setKhachHangListener(initViewWithControllerCustomer);
-      viewHome.getSidebar().setDangXuatListener(logout);
+      viewHome.getSidebar().SetTaiKhoanListener(initViewWithControllerAccount);
+      viewHome.getSidebar().SetSanPhamListener(initViewWithControllerProduct);
+      viewHome.getSidebar().SetNhaCungCapListener(initViewWithControllerSupplier);
+      viewHome.getSidebar().SetTrangChuListener(initViewWithControllerDashBoard);
+      viewHome.getSidebar().SetNhanVienListener(initViewWithControllerEmployee);
+      viewHome.getSidebar().SetKhachHangListener(initViewWithControllerCustomer);
+      viewHome.getSidebar().SetDoanhThuListener(initViewWithControllerRevenue);
+      viewHome.getSidebar().SetDangXuatListener(logout);
 
     }
     private void initViewWithControllerAccount(object sender, EventArgs e)
@@ -62,6 +63,12 @@ namespace BTL_C_.src.Controllers.Admin
       CustomerControl customerControl = new CustomerControl();
       new CustomerController(customerControl);
       viewHome.loadControl(customerControl);
+    }
+    private void initViewWithControllerRevenue(object sender, EventArgs e)
+    {
+      RevenueControl revenueControl = new RevenueControl();
+      new RevenueController(revenueControl);
+      viewHome.loadControl(revenueControl);
     }
     private void logout(object sender, EventArgs e)
     {

@@ -66,7 +66,7 @@ namespace BTL_C_.src.Views.Admin
             this.dgvKhachHang.ReadOnly = true;
             this.dgvKhachHang.RowHeadersWidth = 51;
             this.dgvKhachHang.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvKhachHang.Size = new System.Drawing.Size(845, 172);
+            this.dgvKhachHang.Size = new System.Drawing.Size(845, 160);
             this.dgvKhachHang.TabIndex = 0;
             // 
             // txtMaKH

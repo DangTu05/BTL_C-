@@ -17,7 +17,8 @@ namespace BTL_C_.src.Controllers.Admin
         MessageUtil.ShowWarning($"Vui lòng chọn {EntityName} muốn xóa!");
         return;
       }
-
+      if (!MessageUtil.Confirm("Bạn có chắc chắn xóa?"))
+        return;
       try
       {
         if (!DeleteById(id))

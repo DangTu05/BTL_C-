@@ -30,8 +30,8 @@ namespace BTL_C_.src.Controllers.Admin
     {
       viewAccounts = accountControl;
       accountDao = new AccountDAO();
-      loadDataToGridView();
-      setupEventListener();
+      LoadDataToGridView();
+      SetupEventListener();
     }
     private void insertAccount(object sender, EventArgs e)
     {
@@ -84,7 +84,7 @@ namespace BTL_C_.src.Controllers.Admin
         ErrorUtil.handle(ex, "Đã xảy ra lỗi khi thêm tài khoản!!!");
       }
     }
-    private void loadDataToGridView()
+    private void LoadDataToGridView()
     {
       // Giả sử bạn đã có DataTable chứa dữ liệu tài khoản
       DataTable allAccounts = accountDao.getAllRecord();
@@ -96,15 +96,15 @@ namespace BTL_C_.src.Controllers.Admin
       viewAccounts.loadDataToGridView(dv);
 
     }
-    private void setupEventListener()
+    private void SetupEventListener()
     {
       viewAccounts.setAccountCellClickListener(OnAccountCellClick);
-      viewAccounts.setLamMoiListener(reset);
-      viewAccounts.setLuuListener(updateAccount);
+      viewAccounts.setLamMoiListener(Reset);
+      viewAccounts.setLuuListener(UpdateAccount);
       viewAccounts.setXoaListener(Delete);
-      viewAccounts.setTrangThaiListener(changeStatus);
-      viewAccounts.setTimListener(findAccountBySearch);
-      viewAccounts.setTaoListener(redirectFrmCreateAccount);
+      viewAccounts.setTrangThaiListener(ChangeStatus);
+      viewAccounts.setTimListener(FindAccountBySearch);
+      viewAccounts.setTaoListener(RedirectFrmCreateAccount);
     }
     private void OnAccountCellClick(object sender, DataGridViewCellEventArgs e)
     {
@@ -121,13 +121,13 @@ namespace BTL_C_.src.Controllers.Admin
         viewAccounts.setFormData(matk, email, tendangnhap, vaitro, status, manv);
       }
     }
-    private void reset(object sender, EventArgs e)
+    private void Reset(object sender, EventArgs e)
     {
       viewAccounts.resetForm();
-      loadDataToGridView();
+      LoadDataToGridView();
     }
 
-    private void updateAccount(object sender, EventArgs e)
+    private void UpdateAccount(object sender, EventArgs e)
     {
       try
       {
@@ -147,14 +147,14 @@ namespace BTL_C_.src.Controllers.Admin
           return;
         }
         MessageUtil.ShowInfo("Cập nhật thành công!");
-        loadDataToGridView();
+        LoadDataToGridView();
       }
       catch (Exception ex)
       {
         ErrorUtil.handle(ex, "Đã xảy ra lỗi khi cập nhật!!!");
       }
     }
-    private void changeStatus(object sender, EventArgs e)
+    private void ChangeStatus(object sender, EventArgs e)
     {
       if (string.IsNullOrWhiteSpace(viewAccounts.getMatk()))
       {
@@ -172,14 +172,14 @@ namespace BTL_C_.src.Controllers.Admin
           return;
         }
 
-        loadDataToGridView();
+        LoadDataToGridView();
       }
       catch (Exception ex)
       {
         ErrorUtil.handle(ex, "Đã xảy ra lỗi khi thay đổi trạng thái!!!");
       }
     }
-    private void findAccountBySearch(object sender, EventArgs e)
+    private void FindAccountBySearch(object sender, EventArgs e)
     {
 
       try
@@ -199,7 +199,7 @@ namespace BTL_C_.src.Controllers.Admin
         ErrorUtil.handle(ex, "Đã xảy ra lỗi!!!");
       }
     }
-    private void redirectFrmCreateAccount(object sender, EventArgs e)
+    private void RedirectFrmCreateAccount(object sender, EventArgs e)
     {
       AppController.startFrmCreateAccount(viewAccounts.getForm());
     }
@@ -208,6 +208,6 @@ namespace BTL_C_.src.Controllers.Admin
 
     protected override bool DeleteById(string id) => accountDao.delete(id);
 
-    protected override void ResetView(object sender, EventArgs e) => reset(sender, e);
+    protected override void ResetView(object sender, EventArgs e) => Reset(sender, e);
   }
 }
