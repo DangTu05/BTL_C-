@@ -73,5 +73,62 @@ namespace BTL_C_.src.DAO
         }
       }
     }
+    public List<EmployeeSalesModel> FindBestPerformingEmployee(int month, int year)
+    {
+      List<EmployeeSalesModel> employeeSales = new List<EmployeeSalesModel>();
+      using (SqlConnection conn = ConfigDB.GetConnection())
+      {
+
+
+        try
+        {
+          conn.Open();
+          // Lấy ngày bắt đầu và kết thúc của tháng/năm được chọn
+          DateTime startDate = new DateTime(year, month, 1);
+          DateTime endDate = startDate.AddMonths(1).AddDays(-1); // Ngày cuối cùng của tháng
+
+          string query = @"
+                        SELECT
+                            nv.manv,
+                            nv.tennv,
+                            SUM(hdb.tongtien) AS TongDoanhSo
+                        FROM
+                            tblHoaDonBan hdb
+                        JOIN
+                            tblNhanVien nv ON hdb.manv = nv.manv
+                        WHERE
+                            hdb.ngayban >= @StartDate AND hdb.ngayban <= @EndDate
+                        GROUP BY
+                            nv.manv, nv.tennv
+                        ORDER BY
+                            TongDoanhSo DESC;"; // Sắp xếp giảm dần để lấy người có doanh số cao nhất
+
+          using (SqlCommand cmd = new SqlCommand(query, conn))
+          {
+            cmd.Parameters.AddWithValue("@StartDate", startDate);
+            cmd.Parameters.AddWithValue("@EndDate", endDate);
+
+            using (SqlDataReader reader = cmd.ExecuteReader())
+            {
+              while (reader.Read())
+              {
+                employeeSales.Add(new EmployeeSalesModel
+                {
+                  Ma_NV = reader["manv"] != DBNull.Value ? reader["manv"].ToString() : string.Empty,
+                  Ten_NV = reader["tennv"] != DBNull.Value ? reader["tennv"].ToString() : string.Empty,
+                  TongDoanhSo = reader["TongDoanhSo"] != DBNull.Value ? Convert.ToDecimal(reader["TongDoanhSo"]) : 0
+                });
+              }
+            }
+          }
+
+          return employeeSales;
+        }
+        catch (Exception ex)
+        {
+          throw new Exception("Đã xảy ra lỗi khi truy vấn trong DAO!!!", ex);
+        }
+      }
+    }
   }
 }

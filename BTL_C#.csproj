@@ -127,6 +127,7 @@
     <Compile Include="src\Models\CustomerModel.cs" />
     <Compile Include="src\Models\DemographicModel.cs" />
     <Compile Include="src\Models\EmployeeModel.cs" />
+    <Compile Include="src\Models\EmployeeSalesModel.cs" />
     <Compile Include="src\Models\MadeInModel.cs" />
     <Compile Include="src\Models\MaterialModel.cs" />
     <Compile Include="src\Models\ProductModel.cs" />

@@ -1,5 +1,4 @@
 ﻿using ClosedXML.Excel;
-using Microsoft.Office.Interop.Excel; // Ensure this namespace is included
 using System;
 using System.Collections.Generic;
 using System.Drawing;
@@ -12,51 +11,6 @@ namespace BTL_C_.src.Utils
 {
   internal class ExcelUtil
   {
-    /*public static void ReleaseExcelObjects(object excelApp, object excelWorkbook)
-    {
-      if (excelWorkbook != null)
-      {
-        try
-        {
-          var workbook = (Workbook)excelWorkbook; // Explicitly cast to Workbook
-          workbook.Close(false, Type.Missing, Type.Missing);
-          System.Runtime.InteropServices.Marshal.ReleaseComObject(workbook);
-        }
-        catch { }
-      }
-
-      if (excelApp != null)
-      {
-        try
-        {
-          var app = (Application)excelApp; // Explicitly cast to Application
-          app.Quit();
-          System.Runtime.InteropServices.Marshal.ReleaseComObject(app);
-          excelApp = null;
-        }
-        catch { }
-      }
-
-      GC.Collect();
-      GC.WaitForPendingFinalizers();
-    }
-    //Tạo ứng dụng Excel
-    public static Microsoft.Office.Interop.Excel.Application CreateApp(bool visible = true)
-    {
-      var app = new Microsoft.Office.Interop.Excel.Application();
-      app.Visible = visible;
-      return app;
-    }
-    //Tạo workbook mới
-    public static Microsoft.Office.Interop.Excel.Workbook CreateWorkbook(Microsoft.Office.Interop.Excel.Application app)
-    {
-      return app.Workbooks.Add(Type.Missing);
-    }
-    //Lấy worksheet đang active
-    public static Microsoft.Office.Interop.Excel.Worksheet GetActiveSheet(Microsoft.Office.Interop.Excel.Workbook wb)
-    {
-      return (Microsoft.Office.Interop.Excel.Worksheet)wb.ActiveSheet;
-    }*/
     public static void Export(DataGridView dgv, string sheetName)
     {
       if (dgv.Rows.Count == 0)
