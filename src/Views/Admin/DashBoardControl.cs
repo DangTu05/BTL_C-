@@ -8,7 +8,7 @@ namespace BTL_C_.src.Views.Admin
     {
       InitializeComponent();
     }
-    public void loadFormData(int slsp, int slncc, int slkh, int slnv, int slcl, int sll, int slcv, int slhdn, int slhdb)
+    public void loadFormData(int slsp, int slncc, int slkh, int slnv, int slcl, int sll, int slcv, int slhdn, int slhdb, string tenkhnb)
     {
       lblSLSP.Text = slsp.ToString();
       lblSLNCC.Text = slncc.ToString();
@@ -19,6 +19,7 @@ namespace BTL_C_.src.Views.Admin
       lblSLCV.Text = slcv.ToString();
       lblSLHDN.Text = slhdn.ToString();
       lblSLHDB.Text = slhdb.ToString();
+      lblKhachHangNoiBat.Text = tenkhnb.ToString();
     }
 
   }

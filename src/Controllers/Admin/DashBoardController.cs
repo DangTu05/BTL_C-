@@ -40,7 +40,8 @@ namespace BTL_C_.src.Controllers.Admin
       int slcv = taskDao.getCount();
       int slhdn = purchaseInvoiceDao.getCount();
       int slhdb = salesInvoiceDao.getCount();
-      viewDashBoardControl.loadFormData(slsp, slncc, slkh, slnv, slcl, sll, slcv, slhdn, slhdb);
+      string tenkhnb = customerDao.getVIPCustomer().tenkh;
+      viewDashBoardControl.loadFormData(slsp, slncc, slkh, slnv, slcl, sll, slcv, slhdn, slhdb, tenkhnb);
     }
   }
 }
