@@ -24,6 +24,7 @@ namespace BTL_C_.src.Controllers.Admin
       viewHome.getSidebar().SetNhanVienListener(initViewWithControllerEmployee);
       viewHome.getSidebar().SetKhachHangListener(initViewWithControllerCustomer);
       viewHome.getSidebar().SetDoanhThuListener(initViewWithControllerRevenue);
+      viewHome.getSidebar().SetBaoCaoListener(initViewWithControllerReport);
       viewHome.getSidebar().SetDangXuatListener(logout);
 
     }
@@ -69,6 +70,13 @@ namespace BTL_C_.src.Controllers.Admin
       RevenueControl revenueControl = new RevenueControl();
       new RevenueController(revenueControl);
       viewHome.loadControl(revenueControl);
+    }
+    private void initViewWithControllerReport(object sender, EventArgs e)
+    {
+      ReportControl reportControl = new ReportControl();
+      new ReportController(reportControl);
+      viewHome.loadControl(reportControl);
+
     }
     private void logout(object sender, EventArgs e)
     {

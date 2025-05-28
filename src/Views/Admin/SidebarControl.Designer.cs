@@ -41,6 +41,7 @@ namespace BTL_C_.src.Views.Admin
       this.btnNhanVien = new System.Windows.Forms.Button();
       this.btnKhachHang = new System.Windows.Forms.Button();
       this.btnDoanhThu = new System.Windows.Forms.Button();
+      this.btnBaoCao = new System.Windows.Forms.Button();
       this.SuspendLayout();
       // 
       // btnTrangChu
@@ -124,11 +125,21 @@ namespace BTL_C_.src.Views.Admin
       this.btnDoanhThu.Text = "Doanh Thu";
       this.btnDoanhThu.UseVisualStyleBackColor = true;
       // 
+      // btnBaoCao
+      // 
+      this.btnBaoCao.Location = new System.Drawing.Point(0, 373);
+      this.btnBaoCao.Name = "btnBaoCao";
+      this.btnBaoCao.Size = new System.Drawing.Size(243, 51);
+      this.btnBaoCao.TabIndex = 9;
+      this.btnBaoCao.Text = "Báo Cáo";
+      this.btnBaoCao.UseVisualStyleBackColor = true;
+      // 
       // SidebarControl
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.BackColor = System.Drawing.Color.GreenYellow;
+      this.Controls.Add(this.btnBaoCao);
       this.Controls.Add(this.btnDoanhThu);
       this.Controls.Add(this.btnKhachHang);
       this.Controls.Add(this.btnNhanVien);
@@ -156,5 +167,6 @@ namespace BTL_C_.src.Views.Admin
     private Button btnNhanVien;
     private Button btnKhachHang;
     private Button btnDoanhThu;
+    private Button btnBaoCao;
   }
 }
