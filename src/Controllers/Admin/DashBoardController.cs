@@ -1,5 +1,6 @@
 ﻿using BTL_C_.src.DAO;
 using BTL_C_.src.Views.Admin;
+using System;
 
 namespace BTL_C_.src.Controllers.Admin
 {
@@ -15,7 +16,8 @@ namespace BTL_C_.src.Controllers.Admin
     private TaskDAO taskDao;
     private SalesInvoiceDAO salesInvoiceDao;
     private PurchaseInvoiceDAO purchaseInvoiceDao;
-    public DashBoardController(DashBoardControl viewDashBoardControl)
+    private HomeController homeController;
+    public DashBoardController(DashBoardControl viewDashBoardControl, HomeController homeController)
     {
       this.viewDashBoardControl = viewDashBoardControl;
       productDao = new ProductDAO();
@@ -27,7 +29,9 @@ namespace BTL_C_.src.Controllers.Admin
       taskDao = new TaskDAO();
       salesInvoiceDao = new SalesInvoiceDAO();
       purchaseInvoiceDao = new PurchaseInvoiceDAO();
+      this.homeController = homeController;
       loadFormData();
+      SetUpEventListeners();
     }
     private void loadFormData()
     {
@@ -42,6 +46,10 @@ namespace BTL_C_.src.Controllers.Admin
       int slhdb = salesInvoiceDao.getCount();
       string tenkhnb = customerDao.getVIPCustomer().tenkh;
       viewDashBoardControl.loadFormData(slsp, slncc, slkh, slnv, slcl, sll, slcv, slhdn, slhdb, tenkhnb);
+    }
+    private void SetUpEventListeners()
+    {
+      viewDashBoardControl.SetSanPhamNoiBatListener(homeController.initViewWithControllerBestSellingProduct);
     }
   }
 }

@@ -66,10 +66,46 @@ namespace BTL_C_.src.Views.Admin
     {
       dvgSaleReport.DataSource = list;
     }
+    public bool OpenDialogBox(out int month, out int year)
+    {
+      month = DateTime.Now.Month;
+      year = DateTime.Now.Year;
+
+      using (Form inputForm = new Form())
+      {
+        ComboBox cbThang = new ComboBox() { Location = new Point(100, 17), Width = 150 };
+        for (int i = 1; i <= 12; i++) cbThang.Items.Add(i);
+        cbThang.SelectedIndex = DateTime.Now.Month - 1;
+
+        TextBox txtNam = new TextBox() { Location = new Point(100, 47), Width = 150, Text = DateTime.Now.Year.ToString() };
+
+        Button btnOK = new Button() { Text = "OK", DialogResult = DialogResult.OK };
+        Button btnCancel = new Button() { Text = "Hủy", DialogResult = DialogResult.Cancel };
+
+        inputForm.Controls.Add(cbThang);
+        inputForm.Controls.Add(txtNam);
+        inputForm.Controls.Add(btnOK);
+        inputForm.Controls.Add(btnCancel);
+
+        inputForm.AcceptButton = btnOK;
+        inputForm.CancelButton = btnCancel;
+
+        if (inputForm.ShowDialog() == DialogResult.OK)
+        {
+          month = (int)cbThang.SelectedItem;
+          year = int.TryParse(txtNam.Text, out int y) ? y : DateTime.Now.Year;
+          return true;
+        }
+        return false;
+      }
+    }
+
     public void SetTimKiemListener(EventHandler handler) => btnTimKiem.Click += handler;
     public void SetXuatExxcelListener(EventHandler handler) => btnXuatExcel.Click += handler;
+    public void SetKhenThuongListener(EventHandler handler) => btnKhenThuong.Click += handler;
     public DateTime GetNgayBatDau() => dateNgayBatDau.Value;
     public DateTime GetNgayKetThuc() => dateNgayKetThuc.Value;
     public DataGridView GetDataGridView() => dvgSaleReport;
+    public void SetKetQuaNVXuatSac(string ketqua) => lblKetQuaNVXuatSac.Text = ketqua;
   }
 }

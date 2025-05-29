@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using System;
+using System.Windows.Forms;
 
 namespace BTL_C_.src.Views.Admin
 {
@@ -8,6 +9,7 @@ namespace BTL_C_.src.Views.Admin
     {
       InitializeComponent();
     }
+    public void SetSanPhamNoiBatListener(EventHandler handler) => pnlSanPhamNoiBat.Click += handler;
     public void loadFormData(int slsp, int slncc, int slkh, int slnv, int slcl, int sll, int slcv, int slhdn, int slhdb, string tenkhnb)
     {
       lblSLSP.Text = slsp.ToString();

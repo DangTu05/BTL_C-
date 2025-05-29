@@ -13,7 +13,12 @@ namespace BTL_C_.src.Controllers.Admin
       setupEventListeners();
       DashBoardControl viewDashBoardControl = new DashBoardControl();
       viewHome.loadControl(viewDashBoardControl);
-      new DashBoardController(viewDashBoardControl);
+      new DashBoardController(viewDashBoardControl, this);
+
+    }
+    public HomeController()
+    {
+
     }
     private void setupEventListeners()
     {
@@ -49,7 +54,7 @@ namespace BTL_C_.src.Controllers.Admin
     private void initViewWithControllerDashBoard(object sender, EventArgs e)
     {
       DashBoardControl dashBoardControl = new DashBoardControl();
-      new DashBoardController(dashBoardControl);
+      new DashBoardController(dashBoardControl,this);
       viewHome.loadControl(dashBoardControl);
 
     }
@@ -77,6 +82,12 @@ namespace BTL_C_.src.Controllers.Admin
       new ReportController(reportControl);
       viewHome.loadControl(reportControl);
 
+    }
+    public void initViewWithControllerBestSellingProduct(object sender, EventArgs e)
+    {
+      BestSellingProductControl bestSellingProductControl = new BestSellingProductControl();
+      new BestSellingProductController(bestSellingProductControl);
+      viewHome.loadControl(bestSellingProductControl);
     }
     private void logout(object sender, EventArgs e)
     {

@@ -1,6 +1,8 @@
-﻿using BTL_C_.src.Models;
+﻿using BTL_C_.Configs;
+using BTL_C_.src.Models;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 
 namespace BTL_C_.src.DAO
@@ -53,6 +55,47 @@ namespace BTL_C_.src.DAO
             {"@maco", product.maco }
         };
       return ExecuteNonQuery(sql, parameters);
+    }
+    public DataTable GetSanPhamBanChay(DateTime ngayBatDau, DateTime ngayKetThuc)
+    {
+      DataTable dt = new DataTable();
+
+      using (SqlConnection conn = ConfigDB.GetConnection())
+      {
+        try
+        {
+          conn.Open(); string query = @"
+                        SELECT 
+                            sp.maquanao,
+                            sp.tenquanao,
+                            SUM(ct.soluong) AS SoLuongBan,
+                            sp.dongiaban,
+                            SUM(ct.thanhtien) AS TongTien
+                        FROM 
+                            tblChiTietHoaDonBan ct
+                        JOIN 
+                            tblSanPham sp ON ct.maquanao = sp.maquanao
+                        JOIN 
+                            tblHoaDonBan hdb ON ct.sohdb = hdb.sohdb
+                        WHERE 
+                            hdb.ngayban BETWEEN @NgayBatDau AND @NgayKetThuc
+                        GROUP BY 
+                            sp.maquanao, sp.tenquanao, sp.dongiaban
+                        ORDER BY 
+                            SoLuongBan DESC";
+
+          SqlCommand command = new SqlCommand(query, conn);
+          command.Parameters.AddWithValue("@NgayBatDau", ngayBatDau);
+          command.Parameters.AddWithValue("@NgayKetThuc", ngayKetThuc);
+          SqlDataAdapter adapter = new SqlDataAdapter(command);
+          adapter.Fill(dt);
+          return dt;
+        }
+        catch (Exception ex)
+        {
+          throw new Exception("Đã xảy ra lỗi khi truy vấn trong DAO!!!", ex);
+        }
+      }
     }
     protected override string getColumns() => " maquanao, tenquanao, tl.tentl, m.tenmau, nsx.tennsx, dt.tendt, mua.tenmua, cl.tencl, co.tenco, sltonkho, anh, dongianhap, dongiaban, trangthai ";
 

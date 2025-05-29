@@ -56,11 +56,11 @@
             this.lblSLCV = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.panel10 = new System.Windows.Forms.Panel();
-            this.label10 = new System.Windows.Forms.Label();
-            this.panel11 = new System.Windows.Forms.Panel();
-            this.label11 = new System.Windows.Forms.Label();
-            this.lblSanPhamNoiBat = new System.Windows.Forms.Label();
             this.lblKhachHangNoiBat = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.pnlSanPhamNoiBat = new System.Windows.Forms.Panel();
+            this.lblSanPhamNoiBat = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -71,7 +71,7 @@
             this.panel8.SuspendLayout();
             this.panel9.SuspendLayout();
             this.panel10.SuspendLayout();
-            this.panel11.SuspendLayout();
+            this.pnlSanPhamNoiBat.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -336,6 +336,14 @@
             this.panel10.Size = new System.Drawing.Size(229, 130);
             this.panel10.TabIndex = 9;
             // 
+            // lblKhachHangNoiBat
+            // 
+            this.lblKhachHangNoiBat.AutoSize = true;
+            this.lblKhachHangNoiBat.Location = new System.Drawing.Point(53, 78);
+            this.lblKhachHangNoiBat.Name = "lblKhachHangNoiBat";
+            this.lblKhachHangNoiBat.Size = new System.Drawing.Size(0, 16);
+            this.lblKhachHangNoiBat.TabIndex = 1;
+            // 
             // label10
             // 
             this.label10.AutoSize = true;
@@ -345,15 +353,24 @@
             this.label10.TabIndex = 0;
             this.label10.Text = "Khách hàng nổi bật";
             // 
-            // panel11
+            // pnlSanPhamNoiBat
             // 
-            this.panel11.BackColor = System.Drawing.Color.LawnGreen;
-            this.panel11.Controls.Add(this.lblSanPhamNoiBat);
-            this.panel11.Controls.Add(this.label11);
-            this.panel11.Location = new System.Drawing.Point(614, 347);
-            this.panel11.Name = "panel11";
-            this.panel11.Size = new System.Drawing.Size(233, 130);
-            this.panel11.TabIndex = 10;
+            this.pnlSanPhamNoiBat.BackColor = System.Drawing.Color.LawnGreen;
+            this.pnlSanPhamNoiBat.Controls.Add(this.lblSanPhamNoiBat);
+            this.pnlSanPhamNoiBat.Controls.Add(this.label11);
+            this.pnlSanPhamNoiBat.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pnlSanPhamNoiBat.Location = new System.Drawing.Point(614, 347);
+            this.pnlSanPhamNoiBat.Name = "pnlSanPhamNoiBat";
+            this.pnlSanPhamNoiBat.Size = new System.Drawing.Size(233, 130);
+            this.pnlSanPhamNoiBat.TabIndex = 10;
+            // 
+            // lblSanPhamNoiBat
+            // 
+            this.lblSanPhamNoiBat.AutoSize = true;
+            this.lblSanPhamNoiBat.Location = new System.Drawing.Point(93, 96);
+            this.lblSanPhamNoiBat.Name = "lblSanPhamNoiBat";
+            this.lblSanPhamNoiBat.Size = new System.Drawing.Size(0, 16);
+            this.lblSanPhamNoiBat.TabIndex = 1;
             // 
             // label11
             // 
@@ -364,27 +381,11 @@
             this.label11.TabIndex = 0;
             this.label11.Text = "Sản phẩm nổi bật";
             // 
-            // lblSanPhamNoiBat
-            // 
-            this.lblSanPhamNoiBat.AutoSize = true;
-            this.lblSanPhamNoiBat.Location = new System.Drawing.Point(93, 96);
-            this.lblSanPhamNoiBat.Name = "lblSanPhamNoiBat";
-            this.lblSanPhamNoiBat.Size = new System.Drawing.Size(0, 16);
-            this.lblSanPhamNoiBat.TabIndex = 1;
-            // 
-            // lblKhachHangNoiBat
-            // 
-            this.lblKhachHangNoiBat.AutoSize = true;
-            this.lblKhachHangNoiBat.Location = new System.Drawing.Point(53, 78);
-            this.lblKhachHangNoiBat.Name = "lblKhachHangNoiBat";
-            this.lblKhachHangNoiBat.Size = new System.Drawing.Size(0, 16);
-            this.lblKhachHangNoiBat.TabIndex = 1;
-            // 
             // DashBoardControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.panel11);
+            this.Controls.Add(this.pnlSanPhamNoiBat);
             this.Controls.Add(this.panel10);
             this.Controls.Add(this.panel9);
             this.Controls.Add(this.panel8);
@@ -417,8 +418,8 @@
             this.panel9.PerformLayout();
             this.panel10.ResumeLayout(false);
             this.panel10.PerformLayout();
-            this.panel11.ResumeLayout(false);
-            this.panel11.PerformLayout();
+            this.pnlSanPhamNoiBat.ResumeLayout(false);
+            this.pnlSanPhamNoiBat.PerformLayout();
             this.ResumeLayout(false);
 
     }
@@ -445,7 +446,7 @@
     private System.Windows.Forms.Label label9;
     private System.Windows.Forms.Panel panel10;
     private System.Windows.Forms.Label label10;
-    private System.Windows.Forms.Panel panel11;
+    private System.Windows.Forms.Panel pnlSanPhamNoiBat;
     private System.Windows.Forms.Label label11;
     private System.Windows.Forms.Label lblSLKH;
     private System.Windows.Forms.Label lblSLNV;
