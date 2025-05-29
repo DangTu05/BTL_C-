@@ -41,5 +41,6 @@ namespace BTL_C_.src.Controllers.Admin
     protected abstract bool DeleteById(string id);
     protected abstract void ResetView(object sender, EventArgs e);
     protected abstract string EntityName { get; }
+
   }
 }

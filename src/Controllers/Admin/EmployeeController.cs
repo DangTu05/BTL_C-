@@ -16,6 +16,8 @@ namespace BTL_C_.src.Controllers.Admin
   {
     private EmployeeDAO employeeDao;
     private EmployeeControl viewEmployeeControl;
+
+
     public EmployeeController(EmployeeControl viewEmployeeControl)
     {
       this.viewEmployeeControl = viewEmployeeControl;
@@ -116,5 +118,6 @@ namespace BTL_C_.src.Controllers.Admin
       viewEmployeeControl.ResetForm();
       LoadFormDataToGridView();
     }
+
   }
 }

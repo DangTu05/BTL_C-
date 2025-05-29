@@ -204,9 +204,9 @@ namespace BTL_C_.src.Controllers.Admin
       AppController.startFrmCreateAccount(viewAccounts.getForm());
     }
 
-    protected override string GetId() => viewAccounts.getMatk();
+    protected override string GetId() => viewAccounts.getMaNV();
 
-    protected override bool DeleteById(string id) => accountDao.delete(id);
+    protected override bool DeleteById(string id) => accountDao.DeleteAccountAndEmployee(id);
 
     protected override void ResetView(object sender, EventArgs e) => Reset(sender, e);
   }
