@@ -1,5 +1,7 @@
 ﻿using BTL_C_.src.Controllers.Admin;
+using BTL_C_.src.Controllers.Client;
 using BTL_C_.src.Views.Admin;
+using BTL_C_.src.Views.Client;
 using System;
 using System.Windows.Forms;
 
@@ -18,7 +20,8 @@ namespace BTL_C_
       //FrmCreateAccount view = new FrmCreateAccount();
       //new AccountController(view);
       //FrmLogin view = new FrmLogin();
-      Home view = new Home();
+      //Home view = new Home();
+      FrmInventoryAuditReport view = new FrmInventoryAuditReport();
       //InvoiceDetailControl view = new InvoiceDetailControl();
       //FrmSeason view = new FrmSeason();
       //new LoginController(view);
@@ -27,7 +30,8 @@ namespace BTL_C_
       view.Load += (s, e) =>
       {
         //new ProductController(view);
-        new HomeController(view);
+        //new HomeController(view);
+        new InventoryAuditReportController(view);
         //new InvoiceDetailController(view);
         //new SeasonController(view);
       };

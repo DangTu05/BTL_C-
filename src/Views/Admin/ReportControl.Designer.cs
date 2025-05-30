@@ -42,6 +42,7 @@ namespace BTL_C_.src.Views.Admin
       this.dateNgayKetThuc = new System.Windows.Forms.DateTimePicker();
       this.panel1 = new System.Windows.Forms.Panel();
       this.label1 = new System.Windows.Forms.Label();
+      this.btnTonKho = new System.Windows.Forms.Button();
       ((System.ComponentModel.ISupportInitialize)(this.dvgSaleReport)).BeginInit();
       this.panel1.SuspendLayout();
       this.SuspendLayout();
@@ -103,7 +104,7 @@ namespace BTL_C_.src.Views.Admin
       // btnKhenThuong
       // 
       this.btnKhenThuong.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-      this.btnKhenThuong.Location = new System.Drawing.Point(367, 20);
+      this.btnKhenThuong.Location = new System.Drawing.Point(458, 20);
       this.btnKhenThuong.Name = "btnKhenThuong";
       this.btnKhenThuong.Size = new System.Drawing.Size(194, 30);
       this.btnKhenThuong.TabIndex = 8;
@@ -137,6 +138,7 @@ namespace BTL_C_.src.Views.Admin
       // 
       // panel1
       // 
+      this.panel1.Controls.Add(this.btnTonKho);
       this.panel1.Controls.Add(this.btnTimKiem);
       this.panel1.Controls.Add(this.btnKhenThuong);
       this.panel1.Controls.Add(this.btnXuatExcel);
@@ -155,6 +157,16 @@ namespace BTL_C_.src.Views.Admin
       this.label1.Size = new System.Drawing.Size(130, 36);
       this.label1.TabIndex = 13;
       this.label1.Text = "Báo Cáo";
+      // 
+      // btnTonKho
+      // 
+      this.btnTonKho.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+      this.btnTonKho.Location = new System.Drawing.Point(274, 20);
+      this.btnTonKho.Name = "btnTonKho";
+      this.btnTonKho.Size = new System.Drawing.Size(144, 30);
+      this.btnTonKho.TabIndex = 9;
+      this.btnTonKho.Text = "Tồn Kho";
+      this.btnTonKho.UseVisualStyleBackColor = true;
       // 
       // ReportControl
       // 
@@ -191,5 +203,6 @@ namespace BTL_C_.src.Views.Admin
     private DateTimePicker dateNgayKetThuc;
     private Panel panel1;
     private Label label1;
+    private Button btnTonKho;
   }
 }

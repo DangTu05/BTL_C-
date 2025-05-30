@@ -104,6 +104,7 @@
     <Compile Include="src\Controllers\Admin\SeasonController.cs" />
     <Compile Include="src\Controllers\Admin\SupplierController.cs" />
     <Compile Include="src\Controllers\AppController.cs" />
+    <Compile Include="src\Controllers\Client\InventoryAuditReportController.cs" />
     <Compile Include="src\Controllers\LoginController.cs" />
     <Compile Include="src\DAO\AccountDAO.cs" />
     <Compile Include="src\DAO\BaseDAO.cs" />
@@ -111,6 +112,7 @@
     <Compile Include="src\DAO\ColorDAO.cs" />
     <Compile Include="src\DAO\CustomerDAO.cs" />
     <Compile Include="src\DAO\EmployeeDAO.cs" />
+    <Compile Include="src\DAO\InventoryAuditReportDAO.cs" />
     <Compile Include="src\DAO\InvoiceDetailDAO.cs" />
     <Compile Include="src\DAO\MadeInDAO.cs" />
     <Compile Include="src\DAO\MaterialDAO.cs" />
@@ -131,6 +133,7 @@
     <Compile Include="src\Models\DemographicModel.cs" />
     <Compile Include="src\Models\EmployeeModel.cs" />
     <Compile Include="src\Models\EmployeeSalesModel.cs" />
+    <Compile Include="src\Models\InventoryItemModel.cs" />
     <Compile Include="src\Models\InvoiceDetailModel.cs" />
     <Compile Include="src\Models\MadeInModel.cs" />
     <Compile Include="src\Models\MaterialModel.cs" />
@@ -237,17 +240,17 @@
     <Compile Include="src\Views\Admin\SidebarControl.Designer.cs">
       <DependentUpon>SidebarControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="src\Views\Admin\StockControl.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="src\Views\Admin\StockControl.Designer.cs">
-      <DependentUpon>StockControl.cs</DependentUpon>
-    </Compile>
     <Compile Include="src\Views\Admin\SupplierControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="src\Views\Admin\SupplierControl.Designer.cs">
       <DependentUpon>SupplierControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\Views\Client\FrmInventoryAuditReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\Views\Client\FrmInventoryAuditReport.Designer.cs">
+      <DependentUpon>FrmInventoryAuditReport.cs</DependentUpon>
     </Compile>
     <Compile Include="src\Views\FrmLogin.cs">
       <SubType>Form</SubType>
@@ -307,11 +310,11 @@
     <EmbeddedResource Include="src\Views\Admin\SidebarControl.resx">
       <DependentUpon>SidebarControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\Views\Admin\StockControl.resx">
-      <DependentUpon>StockControl.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="src\Views\Admin\SupplierControl.resx">
       <DependentUpon>SupplierControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\Views\Client\FrmInventoryAuditReport.resx">
+      <DependentUpon>FrmInventoryAuditReport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\Views\FrmLogin.resx">
       <DependentUpon>FrmLogin.cs</DependentUpon>
@@ -333,7 +336,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
-    <Folder Include="src\Controllers\Client\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
