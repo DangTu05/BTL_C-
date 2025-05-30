@@ -97,6 +97,7 @@
     <Compile Include="src\Controllers\Admin\DashBoardController.cs" />
     <Compile Include="src\Controllers\Admin\EmployeeController.cs" />
     <Compile Include="src\Controllers\Admin\HomeController.cs" />
+    <Compile Include="src\Controllers\Admin\InvoiceDetailController.cs" />
     <Compile Include="src\Controllers\Admin\ProductController.cs" />
     <Compile Include="src\Controllers\Admin\ReportController.cs" />
     <Compile Include="src\Controllers\Admin\RevenueController.cs" />
@@ -110,6 +111,7 @@
     <Compile Include="src\DAO\ColorDAO.cs" />
     <Compile Include="src\DAO\CustomerDAO.cs" />
     <Compile Include="src\DAO\EmployeeDAO.cs" />
+    <Compile Include="src\DAO\InvoiceDetailDAO.cs" />
     <Compile Include="src\DAO\MadeInDAO.cs" />
     <Compile Include="src\DAO\MaterialDAO.cs" />
     <Compile Include="src\DAO\ProductDAO.cs" />
@@ -129,6 +131,7 @@
     <Compile Include="src\Models\DemographicModel.cs" />
     <Compile Include="src\Models\EmployeeModel.cs" />
     <Compile Include="src\Models\EmployeeSalesModel.cs" />
+    <Compile Include="src\Models\InvoiceDetailModel.cs" />
     <Compile Include="src\Models\MadeInModel.cs" />
     <Compile Include="src\Models\MaterialModel.cs" />
     <Compile Include="src\Models\ProductModel.cs" />
@@ -203,6 +206,12 @@
     </Compile>
     <Compile Include="src\Views\Admin\Home.Designer.cs">
       <DependentUpon>Home.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\Views\Admin\InvoiceDetailControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="src\Views\Admin\InvoiceDetailControl.Designer.cs">
+      <DependentUpon>InvoiceDetailControl.cs</DependentUpon>
     </Compile>
     <Compile Include="src\Views\Admin\ProductControl.cs">
       <SubType>UserControl</SubType>
@@ -282,6 +291,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="src\Views\Admin\Home.resx">
       <DependentUpon>Home.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\Views\Admin\InvoiceDetailControl.resx">
+      <DependentUpon>InvoiceDetailControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\Views\Admin\ProductControl.resx">
       <DependentUpon>ProductControl.cs</DependentUpon>

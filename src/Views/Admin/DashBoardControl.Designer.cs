@@ -49,7 +49,7 @@
             this.panel7 = new System.Windows.Forms.Panel();
             this.lblSLHDN = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.panel8 = new System.Windows.Forms.Panel();
+            this.pnlHoaDonBan = new System.Windows.Forms.Panel();
             this.lblSLHDB = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.panel9 = new System.Windows.Forms.Panel();
@@ -68,7 +68,7 @@
             this.panel5.SuspendLayout();
             this.panel6.SuspendLayout();
             this.panel7.SuspendLayout();
-            this.panel8.SuspendLayout();
+            this.pnlHoaDonBan.SuspendLayout();
             this.panel9.SuspendLayout();
             this.panel10.SuspendLayout();
             this.pnlSanPhamNoiBat.SuspendLayout();
@@ -270,15 +270,16 @@
             this.label7.TabIndex = 0;
             this.label7.Text = "Số hóa đơn nhập";
             // 
-            // panel8
+            // pnlHoaDonBan
             // 
-            this.panel8.BackColor = System.Drawing.Color.LawnGreen;
-            this.panel8.Controls.Add(this.lblSLHDB);
-            this.panel8.Controls.Add(this.label8);
-            this.panel8.Location = new System.Drawing.Point(741, 186);
-            this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(169, 132);
-            this.panel8.TabIndex = 7;
+            this.pnlHoaDonBan.BackColor = System.Drawing.Color.LawnGreen;
+            this.pnlHoaDonBan.Controls.Add(this.lblSLHDB);
+            this.pnlHoaDonBan.Controls.Add(this.label8);
+            this.pnlHoaDonBan.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pnlHoaDonBan.Location = new System.Drawing.Point(741, 186);
+            this.pnlHoaDonBan.Name = "pnlHoaDonBan";
+            this.pnlHoaDonBan.Size = new System.Drawing.Size(169, 132);
+            this.pnlHoaDonBan.TabIndex = 7;
             // 
             // lblSLHDB
             // 
@@ -388,7 +389,7 @@
             this.Controls.Add(this.pnlSanPhamNoiBat);
             this.Controls.Add(this.panel10);
             this.Controls.Add(this.panel9);
-            this.Controls.Add(this.panel8);
+            this.Controls.Add(this.pnlHoaDonBan);
             this.Controls.Add(this.panel7);
             this.Controls.Add(this.panel6);
             this.Controls.Add(this.panel5);
@@ -412,8 +413,8 @@
             this.panel6.PerformLayout();
             this.panel7.ResumeLayout(false);
             this.panel7.PerformLayout();
-            this.panel8.ResumeLayout(false);
-            this.panel8.PerformLayout();
+            this.pnlHoaDonBan.ResumeLayout(false);
+            this.pnlHoaDonBan.PerformLayout();
             this.panel9.ResumeLayout(false);
             this.panel9.PerformLayout();
             this.panel10.ResumeLayout(false);
@@ -440,7 +441,7 @@
     private System.Windows.Forms.Label label6;
     private System.Windows.Forms.Panel panel7;
     private System.Windows.Forms.Label label7;
-    private System.Windows.Forms.Panel panel8;
+    private System.Windows.Forms.Panel pnlHoaDonBan;
     private System.Windows.Forms.Label label8;
     private System.Windows.Forms.Panel panel9;
     private System.Windows.Forms.Label label9;

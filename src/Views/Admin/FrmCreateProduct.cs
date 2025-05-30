@@ -68,7 +68,7 @@ namespace BTL_C_.src.Views.Admin
     }
     public string GetMaNoiSanXuat()
     {
-      return cmbNoiSanXuat.SelectedValue.ToString();
+      return cmbNoiSanXuat.SelectedValue?.ToString() ?? string.Empty;
     }
     public string GetTrangThai()
     {

@@ -17,7 +17,7 @@ namespace BTL_C_.src.DAO
     {
       throw new NotImplementedException();
     }
-    protected override string GetAlias() => " hdb";
+    protected override string GetAlias() => " hdb ";
     protected override string GetTableName() => " tblHoaDonBan hdb left join tblKhachHang kh On hdb.makh=kh.makh left join tblNhanVien nv On hdb.manv=nv.manv ";
 
     protected override SalesInvoiceModel MapReaderToObject(SqlDataReader reader)

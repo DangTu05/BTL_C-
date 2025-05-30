@@ -54,7 +54,7 @@ namespace BTL_C_.src.Controllers.Admin
     private void initViewWithControllerDashBoard(object sender, EventArgs e)
     {
       DashBoardControl dashBoardControl = new DashBoardControl();
-      new DashBoardController(dashBoardControl,this);
+      new DashBoardController(dashBoardControl, this);
       viewHome.loadControl(dashBoardControl);
 
     }
@@ -88,6 +88,12 @@ namespace BTL_C_.src.Controllers.Admin
       BestSellingProductControl bestSellingProductControl = new BestSellingProductControl();
       new BestSellingProductController(bestSellingProductControl);
       viewHome.loadControl(bestSellingProductControl);
+    }
+    public void initViewWithControllerInvoiceDetail(object sender, EventArgs e)
+    {
+      InvoiceDetailControl invoiceDetailControl = new InvoiceDetailControl();
+      new InvoiceDetailController(invoiceDetailControl);
+      viewHome.loadControl(invoiceDetailControl);
     }
     private void logout(object sender, EventArgs e)
     {

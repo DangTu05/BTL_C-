@@ -19,6 +19,7 @@ namespace BTL_C_
       //new AccountController(view);
       //FrmLogin view = new FrmLogin();
       Home view = new Home();
+      //InvoiceDetailControl view = new InvoiceDetailControl();
       //FrmSeason view = new FrmSeason();
       //new LoginController(view);
 
@@ -27,6 +28,7 @@ namespace BTL_C_
       {
         //new ProductController(view);
         new HomeController(view);
+        //new InvoiceDetailController(view);
         //new SeasonController(view);
       };
       Application.Run(view);

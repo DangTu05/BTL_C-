@@ -50,6 +50,7 @@ namespace BTL_C_.src.Controllers.Admin
     private void SetUpEventListeners()
     {
       viewDashBoardControl.SetSanPhamNoiBatListener(homeController.initViewWithControllerBestSellingProduct);
+      viewDashBoardControl.SetHoaDonBanListener(homeController.initViewWithControllerInvoiceDetail);
     }
   }
 }
