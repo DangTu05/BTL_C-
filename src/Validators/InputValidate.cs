@@ -1,4 +1,5 @@
 ﻿using BTL_C_.src.Utils;
+using System;
 using System.Linq;
 
 namespace BTL_C_.src.Validators
@@ -43,6 +44,22 @@ namespace BTL_C_.src.Validators
     public static bool inputSeasonValidate(string tenmua)
     {
       return CheckEmptyFields(tenmua);
+    }
+    public static bool inputColorValidate(string tenmau)
+    {
+      return CheckEmptyFields(tenmau);
+    }
+    public static bool inputMaterialValidate(string tencl)
+    {
+      return CheckEmptyFields(tencl);
+    }
+    public static bool InputObjectValidate(string tendt)
+    {
+      return CheckEmptyFields(tendt);
+    }
+    public static bool InputSizeValidate(string tenco)
+    {
+      return CheckEmptyFields(tenco);
     }
   }
 }

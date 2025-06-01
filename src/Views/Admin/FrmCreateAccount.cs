@@ -28,9 +28,9 @@ namespace BTL_C_.src.Views.Admin
     }
     //public void setTaoListener(EventHandler handler) => btnTao.Click += handler;
     public void setTaoListener(EventHandler handler) => btnTao.Click += handler;
-
-
-
-
+    public Form GetForm()
+    {
+      return this;
+    }
   }
 }

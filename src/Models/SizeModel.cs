@@ -4,5 +4,10 @@
   {
     public string maco { get; set; }
     public string tenco { get; set; }
+    public SizeModel(string maco, string tenco)
+    {
+      this.maco = maco;
+      this.tenco = tenco;
+    }
   }
 }

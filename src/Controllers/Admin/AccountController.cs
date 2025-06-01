@@ -78,6 +78,7 @@ namespace BTL_C_.src.Controllers.Admin
           return;
         }
         MessageUtil.ShowInfo("Đã tạo thành công!");
+        AppController.startDashBoard(viewFrmCreateAccount.GetForm());
       }
       catch (Exception ex) // Renamed the variable to 'ex' to avoid conflict with the parameter 'e'  
       {

@@ -93,15 +93,20 @@
     <Compile Include="src\Controllers\Admin\AccountController.cs" />
     <Compile Include="src\Controllers\Admin\BaseController.cs" />
     <Compile Include="src\Controllers\Admin\BestSellingProductController.cs" />
+    <Compile Include="src\Controllers\Admin\ColorController.cs" />
+    <Compile Include="src\Controllers\Admin\CreateController.cs" />
     <Compile Include="src\Controllers\Admin\CustomerController.cs" />
     <Compile Include="src\Controllers\Admin\DashBoardController.cs" />
+    <Compile Include="src\Controllers\Admin\DemographicController.cs" />
     <Compile Include="src\Controllers\Admin\EmployeeController.cs" />
     <Compile Include="src\Controllers\Admin\HomeController.cs" />
     <Compile Include="src\Controllers\Admin\InvoiceDetailController.cs" />
+    <Compile Include="src\Controllers\Admin\MaterialController.cs" />
     <Compile Include="src\Controllers\Admin\ProductController.cs" />
     <Compile Include="src\Controllers\Admin\ReportController.cs" />
     <Compile Include="src\Controllers\Admin\RevenueController.cs" />
     <Compile Include="src\Controllers\Admin\SeasonController.cs" />
+    <Compile Include="src\Controllers\Admin\SizeController.cs" />
     <Compile Include="src\Controllers\Admin\SupplierController.cs" />
     <Compile Include="src\Controllers\AppController.cs" />
     <Compile Include="src\Controllers\Client\InventoryAuditReportController.cs" />
@@ -168,6 +173,12 @@
     <Compile Include="src\Views\Admin\BestSellingProductControl.Designer.cs">
       <DependentUpon>BestSellingProductControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="src\Views\Admin\CreateControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="src\Views\Admin\CreateControl.Designer.cs">
+      <DependentUpon>CreateControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="src\Views\Admin\CustomerControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -186,6 +197,12 @@
     <Compile Include="src\Views\Admin\EmployeeControl.Designer.cs">
       <DependentUpon>EmployeeControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="src\Views\Admin\FrmColor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\Views\Admin\FrmColor.Designer.cs">
+      <DependentUpon>FrmColor.cs</DependentUpon>
+    </Compile>
     <Compile Include="src\Views\Admin\FrmCreateAccount.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -198,11 +215,29 @@
     <Compile Include="src\Views\Admin\FrmCreateProduct.Designer.cs">
       <DependentUpon>FrmCreateProduct.cs</DependentUpon>
     </Compile>
+    <Compile Include="src\Views\Admin\FrmDemographic.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\Views\Admin\FrmDemographic.Designer.cs">
+      <DependentUpon>FrmDemographic.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\Views\Admin\FrmMaterial.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\Views\Admin\FrmMaterial.Designer.cs">
+      <DependentUpon>FrmMaterial.cs</DependentUpon>
+    </Compile>
     <Compile Include="src\Views\Admin\FrmSeason.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="src\Views\Admin\FrmSeason.Designer.cs">
       <DependentUpon>FrmSeason.cs</DependentUpon>
+    </Compile>
+    <Compile Include="src\Views\Admin\FrmSize.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\Views\Admin\FrmSize.Designer.cs">
+      <DependentUpon>FrmSize.cs</DependentUpon>
     </Compile>
     <Compile Include="src\Views\Admin\Home.cs">
       <SubType>Form</SubType>
@@ -274,6 +309,9 @@
     <EmbeddedResource Include="src\Views\Admin\BestSellingProductControl.resx">
       <DependentUpon>BestSellingProductControl.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="src\Views\Admin\CreateControl.resx">
+      <DependentUpon>CreateControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="src\Views\Admin\CustomerControl.resx">
       <DependentUpon>CustomerControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -283,14 +321,26 @@
     <EmbeddedResource Include="src\Views\Admin\EmployeeControl.resx">
       <DependentUpon>EmployeeControl.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="src\Views\Admin\FrmColor.resx">
+      <DependentUpon>FrmColor.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="src\Views\Admin\FrmCreateAccount.resx">
       <DependentUpon>FrmCreateAccount.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\Views\Admin\FrmCreateProduct.resx">
       <DependentUpon>FrmCreateProduct.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="src\Views\Admin\FrmDemographic.resx">
+      <DependentUpon>FrmDemographic.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\Views\Admin\FrmMaterial.resx">
+      <DependentUpon>FrmMaterial.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="src\Views\Admin\FrmSeason.resx">
       <DependentUpon>FrmSeason.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\Views\Admin\FrmSize.resx">
+      <DependentUpon>FrmSize.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\Views\Admin\Home.resx">
       <DependentUpon>Home.cs</DependentUpon>
@@ -334,8 +384,9 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Resources\" />
+    <None Include="Resources\add.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

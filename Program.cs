@@ -1,5 +1,7 @@
-﻿using BTL_C_.src.Controllers.Admin;
+﻿using BTL_C_.src.Controllers;
+using BTL_C_.src.Controllers.Admin;
 using BTL_C_.src.Controllers.Client;
+using BTL_C_.src.Views;
 using BTL_C_.src.Views.Admin;
 using BTL_C_.src.Views.Client;
 using System;
@@ -20,21 +22,21 @@ namespace BTL_C_
       //FrmCreateAccount view = new FrmCreateAccount();
       //new AccountController(view);
       //FrmLogin view = new FrmLogin();
-      //Home view = new Home();
-      FrmInventoryAuditReport view = new FrmInventoryAuditReport();
+      Home view = new Home();
+      //FrmInventoryAuditReport view = new FrmInventoryAuditReport();
       //InvoiceDetailControl view = new InvoiceDetailControl();
       //FrmSeason view = new FrmSeason();
       //new LoginController(view);
 
       //FrmCreateProduct view = new FrmCreateProduct();
-      view.Load += (s, e) =>
-      {
-        //new ProductController(view);
-        //new HomeController(view);
-        new InventoryAuditReportController(view);
-        //new InvoiceDetailController(view);
-        //new SeasonController(view);
-      };
+      //view.Load += (s, e) =>
+      //{
+      //new ProductController(view);
+      new HomeController(view);
+      //new InventoryAuditReportController(view);
+      //new InvoiceDetailController(view);
+      //new SeasonController(view);
+      //};
       Application.Run(view);
     }
   }

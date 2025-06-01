@@ -10,6 +10,7 @@ namespace BTL_C_.src.Controllers
     public static void startDashBoard(Form previousForm)
     {
       Home home = new Home();
+      HomeController homeController = new HomeController(home);
       home.Show();
       previousForm.Hide();
     }
@@ -32,6 +33,41 @@ namespace BTL_C_.src.Controllers
       FrmLogin frmLogin = new FrmLogin();
       LoginController loginController = new LoginController(frmLogin);
       frmLogin.Show();
+      previousForm.Hide();
+    }
+    public static void StartFrmColor(Form previousForm)
+    {
+      FrmColor frmColor = new FrmColor();
+      ColorController colorController = new ColorController(frmColor);
+      frmColor.Show();
+      previousForm.Hide();
+    }
+    public static void StartFrmMaterial(Form previousForm)
+    {
+      FrmMaterial frmMaterial = new FrmMaterial();
+      MaterialController materialController = new MaterialController(frmMaterial);
+      frmMaterial.Show();
+      previousForm.Hide();
+    }
+    public static void StartFrmSize(Form previousForm)
+    {
+      FrmSize frmSize = new FrmSize();
+      SizeController sizeController = new SizeController(frmSize);
+      frmSize.Show();
+      previousForm.Hide();
+    }
+    public static void StartFrmDemographic(Form previousForm)
+    {
+      FrmDemographic frmDemographic = new FrmDemographic();
+      DemographicController demographicController = new DemographicController(frmDemographic);
+      frmDemographic.Show();
+      previousForm.Hide();
+    }
+    public static void StartFrmSeason(Form previousForm)
+    {
+      FrmSeason frmSeason = new FrmSeason();
+      SeasonController seasonController = new SeasonController(frmSeason);
+      frmSeason.Show();
       previousForm.Hide();
     }
   }

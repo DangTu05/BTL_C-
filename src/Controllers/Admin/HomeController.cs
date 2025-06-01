@@ -30,6 +30,7 @@ namespace BTL_C_.src.Controllers.Admin
       viewHome.getSidebar().SetKhachHangListener(initViewWithControllerCustomer);
       viewHome.getSidebar().SetDoanhThuListener(initViewWithControllerRevenue);
       viewHome.getSidebar().SetBaoCaoListener(initViewWithControllerReport);
+      viewHome.getSidebar().SetTaoListener(initViewWithControllerCreate);
       viewHome.getSidebar().SetDangXuatListener(logout);
 
     }
@@ -94,6 +95,12 @@ namespace BTL_C_.src.Controllers.Admin
       InvoiceDetailControl invoiceDetailControl = new InvoiceDetailControl();
       new InvoiceDetailController(invoiceDetailControl);
       viewHome.loadControl(invoiceDetailControl);
+    }
+    public void initViewWithControllerCreate(object sender, EventArgs e)
+    {
+      CreateControl createControl = new CreateControl();
+      CreateController createController = new CreateController(createControl);
+      viewHome.loadControl(createControl);
     }
     private void logout(object sender, EventArgs e)
     {

@@ -93,6 +93,7 @@ namespace BTL_C_.src.Controllers.Admin
           return;
         }
         MessageUtil.ShowInfo("Tạo thành công!");
+        AppController.startDashBoard(viewFrmCreateProduct.GetForm());
 
       }
       catch (Exception ex)
