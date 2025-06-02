@@ -65,7 +65,7 @@ namespace BTL_C_.src.Controllers.Admin
     private void InsertProduct(object sender, EventArgs e)
     {
       string maquanao = GenerateIdUtil.GenerateId("PRODUCT");
-      if (!InputValidate.inputCreateProductValidate(maquanao, viewFrmCreateProduct.GetTenSanPham()))
+      if (!InputValidate.inputCreateProductValidate(maquanao, viewFrmCreateProduct.GetTenSanPham(),viewFrmCreateProduct.GetTrangThai()))
       {
         return;
       }
@@ -140,11 +140,11 @@ namespace BTL_C_.src.Controllers.Admin
       }
     }
     private void LoadDataToGridView()
-    {// Giả sử bạn đã có DataTable chứa dữ liệu tài khoản
-      DataTable allAccounts = productDao.getAllRecord();
+    {
+      DataTable allProduct = productDao.getAllRecord();
 
       // Tạo DataView từ DataTable và lọc theo vai trò
-      DataView dv = new DataView(allAccounts);
+      DataView dv = new DataView(allProduct);
       viewProductControl.LoadDataToGridView(dv);
 
     }
@@ -160,7 +160,7 @@ namespace BTL_C_.src.Controllers.Admin
         MessageUtil.ShowWarning("Vui lòng chọn sản phẩm muốn sửa!");
         return;
       }
-      if (!InputValidate.inputCreateProductValidate(viewProductControl.GetMaSanPham(), viewProductControl.GetTenSanPham()))
+      if (!InputValidate.inputCreateProductValidate(viewProductControl.GetMaSanPham(), viewProductControl.GetTenSanPham(), viewFrmCreateProduct.GetTrangThai()))
       {
         return;
       }

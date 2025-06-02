@@ -26,7 +26,6 @@ namespace BTL_C_.src.DAO
           DataSet ds = new DataSet();
           adapter1.Fill(ds, "tblHoaDonBan");
           adapter2.Fill(ds, "tblChiTietHoaDonBan");
-
           return ds;
         }
         catch (Exception ex)

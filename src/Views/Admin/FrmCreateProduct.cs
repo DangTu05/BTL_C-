@@ -72,7 +72,7 @@ namespace BTL_C_.src.Views.Admin
     }
     public string GetTrangThai()
     {
-      return cmbTrangThai.SelectedItem.ToString();
+      return cmbTrangThai.SelectedItem?.ToString() ?? "còn bán";
     }
     public int GetSoLuongTonKho()
     {

@@ -15,24 +15,25 @@ namespace BTL_C_
     /// The main entry point for the application.
     /// </summary>
     [STAThread]
-    static void Main()
+    private static void Main()
     {
       Application.EnableVisualStyles();
       Application.SetCompatibleTextRenderingDefault(false);
       //FrmCreateAccount view = new FrmCreateAccount();
       //new AccountController(view);
-      //FrmLogin view = new FrmLogin();
-      Home view = new Home();
+      FrmLogin view = new FrmLogin();
+      //Home view = new Home();
+      //FrmHome view = new FrmHome();
       //FrmInventoryAuditReport view = new FrmInventoryAuditReport();
       //InvoiceDetailControl view = new InvoiceDetailControl();
       //FrmSeason view = new FrmSeason();
-      //new LoginController(view);
+      new LoginController(view);
 
       //FrmCreateProduct view = new FrmCreateProduct();
       //view.Load += (s, e) =>
       //{
       //new ProductController(view);
-      new HomeController(view);
+      //new HomeController(view);
       //new InventoryAuditReportController(view);
       //new InvoiceDetailController(view);
       //new SeasonController(view);

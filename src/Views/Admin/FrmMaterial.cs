@@ -48,5 +48,6 @@ namespace BTL_C_.src.Views.Admin
 
     public string GetTenChatLieu() => txtTenChatLieu.Text.Trim();
     public DataGridView GetDataGridViewMaterial() => dataGridViewChatLieu;
+    public Form GetForm() => this;
   }
 }

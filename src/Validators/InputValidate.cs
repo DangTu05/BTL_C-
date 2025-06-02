@@ -31,9 +31,9 @@ namespace BTL_C_.src.Validators
       return CheckEmptyFields(email, name, vaitro, status);
     }
 
-    public static bool inputCreateProductValidate(string maquanao, string tenquanao)
+    public static bool inputCreateProductValidate(string maquanao, string tenquanao, string trangthai)
     {
-      return CheckEmptyFields(maquanao, tenquanao);
+      return CheckEmptyFields(maquanao, tenquanao, trangthai);
     }
 
     public static bool inputCreaetSupplierValidate(string mancc, string tenncc, string diachi, string sdt)
@@ -60,6 +60,10 @@ namespace BTL_C_.src.Validators
     public static bool InputSizeValidate(string tenco)
     {
       return CheckEmptyFields(tenco);
+    }
+    public static bool InputSalesInvoice(string manv, string masp)
+    {
+      return CheckEmptyFields(manv, masp);
     }
   }
 }

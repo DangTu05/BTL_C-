@@ -38,6 +38,7 @@ namespace BTL_C_.src.Controllers.Admin
       viewFrmSeason.SetLuuListener(UpdateSeason);
       viewFrmSeason.SetXoaListener(Delete);
       viewFrmSeason.SetSeasonCellClickListener(OnAccountCellClick);
+      viewFrmSeason.SetThoatListener(Close);
 
     }
     /// <summary>
@@ -141,5 +142,6 @@ namespace BTL_C_.src.Controllers.Admin
     protected override bool DeleteById(string id) => seasonDao.delete(id);
 
     protected override void ResetView(object sender, EventArgs e) => ResetForm(sender, e);
+    protected override Form GetForm() => viewFrmSeason.GetForm();
   }
 }

@@ -49,5 +49,6 @@ namespace BTL_C_.src.Views.Admin
 
     public string GetTenCo() => txtTenCo.Text.Trim();
     public DataGridView GetDataGridViewSize() => dataGridViewCo;
+    public Form GetForm() => this;
   }
 }

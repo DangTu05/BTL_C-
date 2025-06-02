@@ -40,6 +40,7 @@ namespace BTL_C_.src.Controllers.Admin
       frmDemographic.SetLuuListener(UpdateObject);
       frmDemographic.SetXoaListener(Delete);
       frmDemographic.SetObjectCellClickListener(OnAccountCellClick);
+      frmDemographic.SetThoatListener(Close);
 
     }
     /// <summary>
@@ -143,5 +144,6 @@ namespace BTL_C_.src.Controllers.Admin
     protected override bool DeleteById(string id) => demographicDAO.delete(id);
 
     protected override void ResetView(object sender, EventArgs e) => ResetForm(sender, e);
+    protected override Form GetForm() => frmDemographic.GetForm();
   }
 }

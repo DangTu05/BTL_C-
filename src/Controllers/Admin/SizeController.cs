@@ -38,7 +38,7 @@ namespace BTL_C_.src.Controllers.Admin
       viewFrmSize.SetLuuListener(UpdateSize);
       viewFrmSize.SetXoaListener(Delete);
       viewFrmSize.SetSizeCellClickListener(OnAccountCellClick);
-
+      viewFrmSize.SetThoatListener(Close);
     }
     /// <summary>
     ///  Load data ra bảng
@@ -141,5 +141,6 @@ namespace BTL_C_.src.Controllers.Admin
     protected override bool DeleteById(string id) => sizeDao.delete(id);
 
     protected override void ResetView(object sender, EventArgs e) => ResetForm(sender, e);
+    protected override Form GetForm() => viewFrmSize.GetForm();
   }
 }

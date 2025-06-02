@@ -36,10 +36,18 @@ namespace BTL_C_.src.Controllers
           MessageUtil.ShowWarning("Mật khẩu không khớp!");
           return;
         }
-        MessageUtil.ShowInfo("Đăng nhập thành công!");
         if (account.vai_tro == "Admin")
         {
+          MessageUtil.ShowInfo("Đăng nhập thành công!");
           AppController.startDashBoard(viewLogin.getForm());
+        }
+        else
+        {
+          EmployeeDAO employeeDAO = new EmployeeDAO();
+          EmployeeModel nv = employeeDAO.findRecordByField("manv", account.ma_nhan_vien);
+          Session.SetEmployee(nv);
+          MessageUtil.ShowInfo("Đăng nhập thành công!");
+          AppController.StartHomeClient(viewLogin.getForm());
         }
 
       }

@@ -77,8 +77,11 @@ namespace BTL_C_.src.DAO
     }
     public T findRecordByField(string field, string value)
     {
-      string query = "Select " + getColumns() + " from " + GetTableName() + " where " + field + " = @value  and deleted=0";
-
+      string query;
+      if (GetAlias() == null)
+        query = "Select " + getColumns() + " from " + GetTableName() + " where " + field + " = @value  and deleted=0";
+      else
+        query = "Select " + getColumns() + " from " + GetTableName() + " where " + field + " = @value  and" + GetAlias() + ".deleted=0";
       try
       {
         using (SqlConnection conn = ConfigDB.GetConnection())

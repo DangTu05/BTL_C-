@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace BTL_C_.src.Controllers.Admin
 {
@@ -41,6 +42,12 @@ namespace BTL_C_.src.Controllers.Admin
     protected abstract bool DeleteById(string id);
     protected abstract void ResetView(object sender, EventArgs e);
     protected abstract string EntityName { get; }
-
+    protected virtual void Close(object sender, EventArgs e)
+    {
+      if (!MessageUtil.Confirm("Bạn có muốn thoát không?"))
+        return;
+      AppController.startDashBoard(GetForm());
+    }
+    protected virtual Form GetForm() => null;
   }
 }

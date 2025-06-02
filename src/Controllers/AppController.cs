@@ -1,7 +1,9 @@
 ﻿using BTL_C_.src.Controllers.Admin;
+using BTL_C_.src.Controllers.Client;
 using BTL_C_.src.Views;
 using BTL_C_.src.Views.Admin;
 using System.Windows.Forms;
+using WebQLCHQuanAo;
 
 namespace BTL_C_.src.Controllers
 {
@@ -10,7 +12,7 @@ namespace BTL_C_.src.Controllers
     public static void startDashBoard(Form previousForm)
     {
       Home home = new Home();
-      HomeController homeController = new HomeController(home);
+      Admin.HomeController homeController = new Admin.HomeController(home);
       home.Show();
       previousForm.Hide();
     }
@@ -68,6 +70,13 @@ namespace BTL_C_.src.Controllers
       FrmSeason frmSeason = new FrmSeason();
       SeasonController seasonController = new SeasonController(frmSeason);
       frmSeason.Show();
+      previousForm.Hide();
+    }
+    public static void StartHomeClient(Form previousForm)
+    {
+      FrmHome frmHome = new FrmHome();
+      Client.HomeController homeController = new Client.HomeController(frmHome);
+      frmHome.Show();
       previousForm.Hide();
     }
   }

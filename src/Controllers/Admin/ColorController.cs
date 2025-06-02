@@ -38,6 +38,7 @@ namespace BTL_C_.src.Controllers.Admin
       viewFrmColor.SetLuuListener(UpdateColor);
       viewFrmColor.SetXoaListener(Delete);
       viewFrmColor.SetColorCellClickListener(OnAccountCellClick);
+      viewFrmColor.SetThoatListener(Close);
 
     }
     /// <summary>
@@ -141,5 +142,6 @@ namespace BTL_C_.src.Controllers.Admin
     protected override bool DeleteById(string id) => colorDao.delete(id);
 
     protected override void ResetView(object sender, EventArgs e) => ResetForm(sender, e);
+    protected override Form GetForm() => viewFrmColor.GetForm();
   }
 }

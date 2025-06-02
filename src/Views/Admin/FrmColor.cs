@@ -48,5 +48,6 @@ namespace BTL_C_.src.Views.Admin
 
     public string GetTenMau() => txtTenMau.Text.Trim();
     public DataGridView GetDataGridViewColor() => dataGridViewMau;
+    public Form GetForm() => this;
   }
 }

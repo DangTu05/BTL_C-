@@ -92,7 +92,14 @@ namespace BTL_C_.src.Views.Admin
 
         if (inputForm.ShowDialog() == DialogResult.OK)
         {
-          month = (int)cbThang.SelectedItem;
+          if (cbThang.SelectedItem != null)
+          {
+            month = (int)cbThang.SelectedItem;
+          }
+          else
+          {
+            month = DateTime.Now.Month; // Default value or handle appropriately
+          }
           year = int.TryParse(txtNam.Text, out int y) ? y : DateTime.Now.Year;
           return true;
         }

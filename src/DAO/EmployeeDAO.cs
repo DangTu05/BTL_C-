@@ -51,7 +51,15 @@ namespace BTL_C_.src.DAO
 
     protected override EmployeeModel MapReaderToObject(SqlDataReader reader)
     {
-      throw new NotImplementedException();
+      return new EmployeeModel(
+        reader["manv"].ToString(),
+        reader["tennv"].ToString(),
+        reader["ngaysinh"] == DBNull.Value ? (DateTime?)null : Convert.ToDateTime(reader["ngaysinh"]),
+        reader["sdt"].ToString(),
+        reader["diachi"].ToString(),
+        reader["tencv"] != null ? reader["tencv"].ToString() : "",
+        reader["gioitinh"].ToString()
+    );
     }
     protected override string GetAlias() => " nv";
   }

@@ -2,7 +2,7 @@
 
 namespace BTL_C_.src.Models
 {
-  internal class EmployeeModel
+  public class EmployeeModel
   {
     public string MaNhanVien { get; set; }
     public string TenNhanVien { get; set; }

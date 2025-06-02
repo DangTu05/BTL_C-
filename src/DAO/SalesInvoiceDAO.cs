@@ -6,10 +6,7 @@ namespace BTL_C_.src.DAO
 {
   internal class SalesInvoiceDAO : BaseDAO<SalesInvoiceModel>
   {
-    protected override string getColumns()
-    {
-      throw new NotImplementedException();
-    }
+    protected override string getColumns() => " sohdb, hdb.manv, kh.tenkh, ngayban, tongtien ";
 
     protected override string getKeyColumn() => " sohdb ";
 

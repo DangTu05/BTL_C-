@@ -109,6 +109,7 @@
     <Compile Include="src\Controllers\Admin\SizeController.cs" />
     <Compile Include="src\Controllers\Admin\SupplierController.cs" />
     <Compile Include="src\Controllers\AppController.cs" />
+    <Compile Include="src\Controllers\Client\HomeController.cs" />
     <Compile Include="src\Controllers\Client\InventoryAuditReportController.cs" />
     <Compile Include="src\Controllers\LoginController.cs" />
     <Compile Include="src\DAO\AccountDAO.cs" />
@@ -159,6 +160,7 @@
     <Compile Include="src\Utils\HashPasswordUtil.cs" />
     <Compile Include="src\Utils\MessageConstants.cs" />
     <Compile Include="src\Utils\MessageUtil.cs" />
+    <Compile Include="src\Utils\Session.cs" />
     <Compile Include="src\Utils\SetImageUtil.cs" />
     <Compile Include="src\Validators\InputValidate.cs" />
     <Compile Include="src\Views\Admin\AccountControl.cs">
@@ -281,6 +283,12 @@
     <Compile Include="src\Views\Admin\SupplierControl.Designer.cs">
       <DependentUpon>SupplierControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="src\Views\Client\FrmHome.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="src\Views\Client\FrmHome.Designer.cs">
+      <DependentUpon>FrmHome.cs</DependentUpon>
+    </Compile>
     <Compile Include="src\Views\Client\FrmInventoryAuditReport.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -362,6 +370,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="src\Views\Admin\SupplierControl.resx">
       <DependentUpon>SupplierControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="src\Views\Client\FrmHome.resx">
+      <DependentUpon>FrmHome.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\Views\Client\FrmInventoryAuditReport.resx">
       <DependentUpon>FrmInventoryAuditReport.cs</DependentUpon>

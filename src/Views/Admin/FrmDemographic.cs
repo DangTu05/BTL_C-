@@ -48,5 +48,6 @@ namespace BTL_C_.src.Views.Admin
 
     public string GetTenDoiTuong() => txtTenDoiTuong.Text.Trim();
     public DataGridView GetDataGridViewObject() => dataGridViewDoiTuong;
+    public Form GetForm() => this;
   }
 }
