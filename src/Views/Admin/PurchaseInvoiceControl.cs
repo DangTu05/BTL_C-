@@ -16,7 +16,13 @@ namespace BTL_C_.src.Views.Admin
     {
       InitializeComponent();
     }
-    public void SetThemListener(EventHandler handler) => btnThem.Click += handler;
+    public void SetTaoListener(EventHandler handler) => btnTao.Click += handler;
+    public void SetTimKiemListener(EventHandler handler) => btnTimKiem.Click += handler;
+    public void SetLocListener(EventHandler handler) => btnLoc.Click += handler;
+    public void SetLamMoiListener(EventHandler handler) => btnLamMoi.Click += handler;
+    public void SetXuatExcelHDNListener(EventHandler handler) => btnXuatExcelHDN.Click += handler;
+    public void SetXuatExcelCTHDNListener(EventHandler handler) => btnXuatExcelCTHDN.Click += handler;
+    public void SetHDNCellClickListener(DataGridViewCellEventHandler handler) => dgvHoaDonNhap.CellClick += handler;
     public void LoadDataPurchaseInvoiceDetailToGridView(DataSet ds)
     {
       //Lấy ra 2 cột trong DataSet làm khóa liên kết
@@ -43,14 +49,38 @@ namespace BTL_C_.src.Views.Admin
     }
     public ComboBox GetCmbLocNCC() => cmbLocNCC;
     public ComboBox GetCmbNhaCungCap() => cmbMaNCC;
-    public ComboBox GetCmbSanPham() => cmbSanPham;
-    public string GetMaSanPham() => cmbSanPham.SelectedValue.ToString();
     public string GetMaNCC() => cmbMaNCC.SelectedValue.ToString();
+    public string GetMaNCCLoc() => cmbLocNCC?.SelectedValue?.ToString();
+
     public DateTime GetNgayNhap() => dtpNgayNhap.Value;
-    public int GetSoLuong() => (int)nudSoLuong.Value;
+    public string GetMaHDN() => txtMaHDN.Text.Trim();
     public decimal GetDonGia() => (decimal)nudDonGiaNhap.Value;
     public decimal GetTongTien() => (decimal)nudTongTien.Value;
-    public decimal GetGiamGia() => (decimal)nudGiamGia.Value;
     public void SetTxtTongTien(decimal tongtien) => nudTongTien.Value = tongtien;
+    public DataGridView GetDgvHDN() => dgvHoaDonNhap;
+    public DataGridView GetDgvCTHDN() => dgvChiTietHDN;
+    public void SetTxtThongKe(string thongke) => lblThongKe.Text = thongke;
+    public DateTime GetNgayBatDau() => dtpLocTuNgay.Value;
+    public DateTime GetNgayKetThuc() => dtpLocDenNgay.Value;
+    public Form GetForm()
+    {
+      return this.FindForm();
+    }
+    public void SetFormHDN(string sohdn, DateTime ngaynhap, decimal tongtien, string mancc, string ghichu)
+    {
+      txtMaHDN.Text = sohdn;
+      dtpNgayNhap.Value = ngaynhap;
+      nudTongTien.Value = tongtien;
+      cmbMaNCC.SelectedValue = mancc;
+      txtGhiChu.Text = ghichu;
+    }
+    public void ResetFormHDN()
+    {
+      txtMaHDN.Text = "";
+      dtpNgayNhap.Value = DateTime.Now;
+      nudTongTien.Value = 1;
+      cmbMaNCC.SelectedIndex = 0;
+      txtGhiChu.Text = "";
+    }
   }
 }

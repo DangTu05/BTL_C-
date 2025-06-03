@@ -18,7 +18,7 @@ namespace BTL_C_.src.DAO
         {
           conn.Open();
 
-          SqlDataAdapter adapter1 = new SqlDataAdapter("SELECT sohdn, mancc, ngaynhap, ghichu FROM tblHoaDonNhap where deleted=0", conn);
+          SqlDataAdapter adapter1 = new SqlDataAdapter("SELECT sohdn, mancc, ngaynhap, ghichu, tongtien FROM tblHoaDonNhap where deleted=0", conn);
           SqlDataAdapter adapter2 = new SqlDataAdapter("SELECT sohdn, maquanao, soluong, dongia, giamgia, thanhtien FROM tblChiTietHoaDonNhap where deleted=0", conn);
           DataSet ds = new DataSet();
           adapter1.Fill(ds, "tblHoaDonNhap");
@@ -97,6 +97,54 @@ namespace BTL_C_.src.DAO
           transaction.Rollback();
           throw new Exception("Đã xảy ra lỗi!!!", ex);
         }
+      }
+    }
+    public DataTable TimKiem(string mahdn, string mancc)
+    {
+      using (SqlConnection conn = ConfigDB.GetConnection())
+      {
+        try
+        {
+          string filter = "SELECT * FROM tblHoaDonNhap WHERE deleted=0";
+          if (!string.IsNullOrWhiteSpace(mahdn))
+            filter += " AND soHDN LIKE N'%" + mahdn + "%'";
+          if (mancc != null)
+            filter += " AND maNCC = N'" + mancc + "'";
+
+          SqlDataAdapter da = new SqlDataAdapter(filter, conn);
+          DataTable dt = new DataTable();
+          da.Fill(dt);
+          return dt;
+        }
+        catch (Exception ex)
+        {
+          throw new Exception("Đã xảy ra lỗi tìm kiếm trong DAO!!!", ex);
+        }
+      }
+
+    }
+    public DataTable Loc(string mancc, DateTime ngaybatdau, DateTime ngayketthuc)
+    {
+      using (SqlConnection conn = ConfigDB.GetConnection())
+      {
+        try
+        {
+          string query = "SELECT * FROM tblHoaDonNhap WHERE deleted=0";
+          if (!string.IsNullOrWhiteSpace(mancc))
+            query += " AND maNCC = N'" + mancc.ToString() + "'";
+          query += " AND ngayNhap >= @tuNgay AND ngayNhap <= @denNgay";
+          SqlDataAdapter da = new SqlDataAdapter(query, conn);
+          da.SelectCommand.Parameters.AddWithValue("@tuNgay", ngaybatdau);
+          da.SelectCommand.Parameters.AddWithValue("@denNgay", ngayketthuc);
+          DataTable dt = new DataTable();
+          da.Fill(dt);
+          return dt;
+        }
+        catch (Exception ex)
+        {
+          throw new Exception("Đã xảy ra lỗi khi lọc trong DAO!!!", ex);
+        }
+
       }
     }
 

@@ -21,12 +21,15 @@ namespace BTL_C_.src.Controllers.Admin
     private FrmCreatePurchaseInvoice frmCreatePurchaseInvoice;
     private PurchaseInvoiceDAO purchaseInvoiceDao;
     private ProductDAO productDao;
+
+
     public PurchaseInvoiceController(PurchaseInvoiceControl viewPurchaseInvoiceControl)
     {
       this.viewPurchaseInvoiceControl = viewPurchaseInvoiceControl;
       purchaseInvoiceDao = new PurchaseInvoiceDAO();
       LoadDataPurchaseInvoiceDetailToGridView();
       FillDataToComboBox();
+      SetupEventForHDNListener();
     }
     public PurchaseInvoiceController(FrmCreatePurchaseInvoice frmCreatePurchaseInvoice)
     {
@@ -45,13 +48,23 @@ namespace BTL_C_.src.Controllers.Admin
       frmCreatePurchaseInvoice.SetCellEndEditListener(dgvChiTietHoaDonban_CellEndEdit);
       frmCreatePurchaseInvoice.SetUserAddedRowListener(dgvChiTietHoaDonban_UserAddedRow);
     }
+    private void SetupEventForHDNListener()
+    {
+      viewPurchaseInvoiceControl.SetTaoListener(RedirectCreateHDN);
+      viewPurchaseInvoiceControl.SetTimKiemListener(TimKiem);
+      viewPurchaseInvoiceControl.SetLocListener(Loc);
+      viewPurchaseInvoiceControl.SetHDNCellClickListener(OnHDNCellClick);
+      viewPurchaseInvoiceControl.SetLamMoiListener(Reset);
+      viewPurchaseInvoiceControl.SetXuatExcelHDNListener(XuatExcelHDN);
+      viewPurchaseInvoiceControl.SetXuatExcelCTHDNListener(XuatExcelCTHDN);
+    }
     private void FillDataToComboBox()
     {
       try
       {
         FillSupplierToCombo(viewPurchaseInvoiceControl.GetCmbNhaCungCap());
-        ProductDAO.fillProductCombo(viewPurchaseInvoiceControl.GetCmbSanPham());
         SupplierDAO.fillSupplierCombo(viewPurchaseInvoiceControl.GetCmbNhaCungCap());
+        SupplierDAO.fillSupplierCombo(viewPurchaseInvoiceControl.GetCmbLocNCC());
 
       }
       catch (Exception ex)
@@ -209,6 +222,97 @@ namespace BTL_C_.src.Controllers.Admin
     {
       frmCreatePurchaseInvoice.XoaSP_CTHD();
     }
+    private void RedirectCreateHDN(object sender, EventArgs e) => AppController.StartFrmCreatePurchaseInvoice(viewPurchaseInvoiceControl.GetForm());
+    private void TimKiem(object sender, EventArgs e)
+    {
+      try
+      {
+        DataTable dt = purchaseInvoiceDao.TimKiem(viewPurchaseInvoiceControl.GetMaHDN(), viewPurchaseInvoiceControl.GetMaNCC());
+        viewPurchaseInvoiceControl.GetDgvHDN().DataSource = dt;
+        UpdateThongKe();
+      }
+      catch (Exception ex)
+      {
+        ErrorUtil.handle(ex, "Đã xảy ra lỗi khi tìm kiếm!!!");
+      }
 
+
+    }
+    private void UpdateThongKe()
+    {
+      int soLuong = viewPurchaseInvoiceControl.GetDgvHDN().Rows.Count;
+      decimal tongTien = 0;
+      foreach (DataGridViewRow row in viewPurchaseInvoiceControl.GetDgvHDN().Rows)
+      {
+        if (row.Cells["tongTien"].Value != null && row.Cells["tongTien"].Value.ToString() != "")
+        {
+          decimal value;
+          if (decimal.TryParse(row.Cells["tongTien"].Value.ToString(), out value))
+            tongTien += value;
+        }
+      }
+      string Text = $"Tổng số HĐN: {soLuong}, Tổng tiền nhập: {tongTien:N0} VND";
+      viewPurchaseInvoiceControl.SetTxtThongKe(Text);
+    }
+
+
+    private void Loc(object sender, EventArgs e)
+    {
+      DateTime ngaybd = viewPurchaseInvoiceControl.GetNgayBatDau().Date;
+      DateTime ngaykt = viewPurchaseInvoiceControl.GetNgayKetThuc().Date;
+      if (ngaybd > ngaykt)
+      {
+        MessageUtil.ShowWarning("Ngày bắt đầu không được phép lớn hơn ngày kết thúc!");
+        return;
+      }
+      try
+      {
+        string maNCCLoc = viewPurchaseInvoiceControl.GetMaNCCLoc();
+        DataTable dt = purchaseInvoiceDao.Loc(maNCCLoc, ngaybd, ngaykt);
+        viewPurchaseInvoiceControl.GetDgvHDN().DataSource = dt;
+      }
+      catch (Exception ex)
+      {
+        ErrorUtil.handle(ex, "Đã xảy ra lỗi khi lọc!!!");
+      }
+    }
+    private void OnHDNCellClick(object sender, DataGridViewCellEventArgs e)
+    {
+      if (e.RowIndex >= 0)
+      {
+        decimal tongtien = 0;
+        var dgv = viewPurchaseInvoiceControl.GetDgvHDN();
+        var row = dgv.Rows[e.RowIndex];
+
+        string sohdn = row.Cells[0].Value?.ToString() ?? "";
+        string mancc = row.Cells[1].Value?.ToString() ?? "";
+        DateTime ngaynhap = row.Cells[2].Value != DBNull.Value ? Convert.ToDateTime(row.Cells[2].Value) : DateTime.Now;
+        string ghichu = row.Cells[3].Value?.ToString() ?? "";
+
+        // Giả sử có thêm cột "tongtien" ở vị trí 4 thì mới dùng như sau:
+        if (row.Cells.Count > 4 && decimal.TryParse(row.Cells[4].Value?.ToString(), out tongtien) == false)
+        {
+          tongtien = 1m;
+        }
+        else if (row.Cells.Count <= 4)
+        {
+          tongtien = 1m;
+        }
+        viewPurchaseInvoiceControl.SetFormHDN(sohdn, ngaynhap, tongtien, mancc, ghichu);
+      }
+    }
+    private void Reset(object sender, EventArgs e)
+    {
+      LoadDataPurchaseInvoiceDetailToGridView();
+      viewPurchaseInvoiceControl.ResetFormHDN();
+    }
+    private void XuatExcelHDN(object sender, EventArgs e)
+    {
+      ExcelUtil.Export(viewPurchaseInvoiceControl.GetDgvHDN(), "HDN");
+    }
+    private void XuatExcelCTHDN(object sender, EventArgs e)
+    {
+      ExcelUtil.Export(viewPurchaseInvoiceControl.GetDgvCTHDN(), "ChiTietHDN");
+    }
   }
 }

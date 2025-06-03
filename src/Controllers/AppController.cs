@@ -79,5 +79,12 @@ namespace BTL_C_.src.Controllers
       frmHome.Show();
       previousForm.Hide();
     }
+    public static void StartFrmCreatePurchaseInvoice(Form previousForm)
+    {
+      FrmCreatePurchaseInvoice frmCreatePurchaseInvoice = new FrmCreatePurchaseInvoice();
+      PurchaseInvoiceController purchaseInvoiceController = new PurchaseInvoiceController(frmCreatePurchaseInvoice);
+      frmCreatePurchaseInvoice.Show();
+      previousForm.Hide();
+    }
   }
 }

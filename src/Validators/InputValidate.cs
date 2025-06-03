@@ -69,5 +69,9 @@ namespace BTL_C_.src.Validators
     {
       return CheckEmptyFields(masp, mancc);
     }
+    public static bool InputInfoNVValidate(string tennv, string sdt)
+    {
+      return CheckEmptyFields(tennv, sdt);
+    }
   }
 }

@@ -40,6 +40,7 @@
             this.btnThem = new System.Windows.Forms.Button();
             this.nudTongTien = new System.Windows.Forms.NumericUpDown();
             this.btnXoa = new System.Windows.Forms.Button();
+            this.btnThoat = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCTHDN)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudTongTien)).BeginInit();
             this.SuspendLayout();
@@ -114,7 +115,7 @@
             // 
             // btnTao
             // 
-            this.btnTao.Location = new System.Drawing.Point(510, 402);
+            this.btnTao.Location = new System.Drawing.Point(459, 402);
             this.btnTao.Name = "btnTao";
             this.btnTao.Size = new System.Drawing.Size(96, 36);
             this.btnTao.TabIndex = 9;
@@ -123,7 +124,7 @@
             // 
             // btnThem
             // 
-            this.btnThem.Location = new System.Drawing.Point(183, 402);
+            this.btnThem.Location = new System.Drawing.Point(127, 402);
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(102, 36);
             this.btnThem.TabIndex = 10;
@@ -145,18 +146,28 @@
             // 
             // btnXoa
             // 
-            this.btnXoa.Location = new System.Drawing.Point(355, 402);
+            this.btnXoa.Location = new System.Drawing.Point(298, 402);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(96, 36);
             this.btnXoa.TabIndex = 12;
             this.btnXoa.Text = "Xóa";
             this.btnXoa.UseVisualStyleBackColor = true;
             // 
+            // btnThoat
+            // 
+            this.btnThoat.Location = new System.Drawing.Point(614, 402);
+            this.btnThoat.Name = "btnThoat";
+            this.btnThoat.Size = new System.Drawing.Size(96, 36);
+            this.btnThoat.TabIndex = 13;
+            this.btnThoat.Text = "Thoát";
+            this.btnThoat.UseVisualStyleBackColor = true;
+            // 
             // FrmCreatePurchaseInvoice
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(821, 450);
+            this.Controls.Add(this.btnThoat);
             this.Controls.Add(this.btnXoa);
             this.Controls.Add(this.nudTongTien);
             this.Controls.Add(this.btnThem);
@@ -192,5 +203,6 @@
     private System.Windows.Forms.Button btnThem;
     private System.Windows.Forms.NumericUpDown nudTongTien;
     private System.Windows.Forms.Button btnXoa;
+    private System.Windows.Forms.Button btnThoat;
   }
 }

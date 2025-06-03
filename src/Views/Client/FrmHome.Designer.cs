@@ -36,7 +36,6 @@ namespace WebQLCHQuanAo
             this.label1 = new System.Windows.Forms.Label();
             this.dtpNgaysinh = new System.Windows.Forms.DateTimePicker();
             this.txbEmail = new System.Windows.Forms.TextBox();
-            this.txbSodienthoai = new System.Windows.Forms.TextBox();
             this.txbTenNV = new System.Windows.Forms.TextBox();
             this.lbNhanvien = new System.Windows.Forms.Label();
             this.lbChucvu = new System.Windows.Forms.Label();
@@ -59,6 +58,7 @@ namespace WebQLCHQuanAo
             this.lbTimkiemSP = new System.Windows.Forms.Label();
             this.lbDanhsachSP = new System.Windows.Forms.Label();
             this.tpTaoHD = new System.Windows.Forms.TabPage();
+            this.btnXoaHDT = new System.Windows.Forms.Button();
             this.btnThemSanPham = new System.Windows.Forms.Button();
             this.txtTongTien = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
@@ -103,7 +103,7 @@ namespace WebQLCHQuanAo
             this.colDonGia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colGiamGia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colThanhTien = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnXoaHDT = new System.Windows.Forms.Button();
+            this.mskSDT = new System.Windows.Forms.MaskedTextBox();
             this.tcNhanvien.SuspendLayout();
             this.tpThongtinNV.SuspendLayout();
             this.tpDanhsachSP.SuspendLayout();
@@ -132,11 +132,11 @@ namespace WebQLCHQuanAo
             // 
             // tpThongtinNV
             // 
+            this.tpThongtinNV.Controls.Add(this.mskSDT);
             this.tpThongtinNV.Controls.Add(this.txbMaNV);
             this.tpThongtinNV.Controls.Add(this.label1);
             this.tpThongtinNV.Controls.Add(this.dtpNgaysinh);
             this.tpThongtinNV.Controls.Add(this.txbEmail);
-            this.tpThongtinNV.Controls.Add(this.txbSodienthoai);
             this.tpThongtinNV.Controls.Add(this.txbTenNV);
             this.tpThongtinNV.Controls.Add(this.lbNhanvien);
             this.tpThongtinNV.Controls.Add(this.lbChucvu);
@@ -194,14 +194,6 @@ namespace WebQLCHQuanAo
             this.txbEmail.Name = "txbEmail";
             this.txbEmail.Size = new System.Drawing.Size(295, 27);
             this.txbEmail.TabIndex = 96;
-            // 
-            // txbSodienthoai
-            // 
-            this.txbSodienthoai.Font = new System.Drawing.Font("Arial Narrow", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txbSodienthoai.Location = new System.Drawing.Point(298, 248);
-            this.txbSodienthoai.Name = "txbSodienthoai";
-            this.txbSodienthoai.Size = new System.Drawing.Size(295, 27);
-            this.txbSodienthoai.TabIndex = 95;
             // 
             // txbTenNV
             // 
@@ -436,6 +428,15 @@ namespace WebQLCHQuanAo
             this.tpTaoHD.TabIndex = 2;
             this.tpTaoHD.Text = "Tạo hóa đơn";
             this.tpTaoHD.UseVisualStyleBackColor = true;
+            // 
+            // btnXoaHDT
+            // 
+            this.btnXoaHDT.Location = new System.Drawing.Point(117, 238);
+            this.btnXoaHDT.Name = "btnXoaHDT";
+            this.btnXoaHDT.Size = new System.Drawing.Size(75, 31);
+            this.btnXoaHDT.TabIndex = 134;
+            this.btnXoaHDT.Text = "Xóa";
+            this.btnXoaHDT.UseVisualStyleBackColor = true;
             // 
             // btnThemSanPham
             // 
@@ -868,14 +869,13 @@ namespace WebQLCHQuanAo
             this.colThanhTien.Name = "colThanhTien";
             this.colThanhTien.Width = 125;
             // 
-            // btnXoaHDT
+            // mskSDT
             // 
-            this.btnXoaHDT.Location = new System.Drawing.Point(117, 238);
-            this.btnXoaHDT.Name = "btnXoaHDT";
-            this.btnXoaHDT.Size = new System.Drawing.Size(75, 31);
-            this.btnXoaHDT.TabIndex = 134;
-            this.btnXoaHDT.Text = "Xóa";
-            this.btnXoaHDT.UseVisualStyleBackColor = true;
+            this.mskSDT.Location = new System.Drawing.Point(298, 252);
+            this.mskSDT.Mask = "(999) 000-0000";
+            this.mskSDT.Name = "mskSDT";
+            this.mskSDT.Size = new System.Drawing.Size(130, 22);
+            this.mskSDT.TabIndex = 102;
             // 
             // FrmHome
             // 
@@ -911,7 +911,6 @@ namespace WebQLCHQuanAo
     private System.Windows.Forms.TabPage tpThongtinNV;
     private System.Windows.Forms.DateTimePicker dtpNgaysinh;
     private System.Windows.Forms.TextBox txbEmail;
-    private System.Windows.Forms.TextBox txbSodienthoai;
     private System.Windows.Forms.TextBox txbTenNV;
     private System.Windows.Forms.Label lbNhanvien;
     private System.Windows.Forms.Label lbChucvu;
@@ -981,5 +980,6 @@ namespace WebQLCHQuanAo
     private System.Windows.Forms.TextBox txtTongTien;
     private Button btnThemSanPham;
     private Button btnXoaHDT;
+    private MaskedTextBox mskSDT;
   }
 }

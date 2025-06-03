@@ -49,43 +49,43 @@ namespace BTL_C_.src.Views.Admin
       // 
       this.btnTrangChu.Location = new System.Drawing.Point(0, 34);
       this.btnTrangChu.Name = "btnTrangChu";
-      this.btnTrangChu.Size = new System.Drawing.Size(243, 48);
+      this.btnTrangChu.Size = new System.Drawing.Size(243, 57);
       this.btnTrangChu.TabIndex = 0;
       this.btnTrangChu.Text = "Trang Chủ";
       this.btnTrangChu.UseVisualStyleBackColor = true;
       // 
       // btnTaiKhoan
       // 
-      this.btnTaiKhoan.Location = new System.Drawing.Point(0, 81);
+      this.btnTaiKhoan.Location = new System.Drawing.Point(0, 90);
       this.btnTaiKhoan.Name = "btnTaiKhoan";
-      this.btnTaiKhoan.Size = new System.Drawing.Size(243, 48);
+      this.btnTaiKhoan.Size = new System.Drawing.Size(243, 56);
       this.btnTaiKhoan.TabIndex = 1;
       this.btnTaiKhoan.Text = "Tài Khoản";
       this.btnTaiKhoan.UseVisualStyleBackColor = true;
       // 
       // btnSanPham
       // 
-      this.btnSanPham.Location = new System.Drawing.Point(0, 128);
+      this.btnSanPham.Location = new System.Drawing.Point(0, 145);
       this.btnSanPham.Name = "btnSanPham";
-      this.btnSanPham.Size = new System.Drawing.Size(243, 50);
+      this.btnSanPham.Size = new System.Drawing.Size(243, 60);
       this.btnSanPham.TabIndex = 2;
       this.btnSanPham.Text = "Sản Phẩm";
       this.btnSanPham.UseVisualStyleBackColor = true;
       // 
       // btnDangXuat
       // 
-      this.btnDangXuat.Location = new System.Drawing.Point(0, 495);
+      this.btnDangXuat.Location = new System.Drawing.Point(0, 489);
       this.btnDangXuat.Name = "btnDangXuat";
-      this.btnDangXuat.Size = new System.Drawing.Size(243, 51);
+      this.btnDangXuat.Size = new System.Drawing.Size(243, 57);
       this.btnDangXuat.TabIndex = 3;
       this.btnDangXuat.Text = "Đăng Xuất";
       this.btnDangXuat.UseVisualStyleBackColor = true;
       // 
       // btnNhaCungCap
       // 
-      this.btnNhaCungCap.Location = new System.Drawing.Point(0, 177);
+      this.btnNhaCungCap.Location = new System.Drawing.Point(0, 202);
       this.btnNhaCungCap.Name = "btnNhaCungCap";
-      this.btnNhaCungCap.Size = new System.Drawing.Size(243, 50);
+      this.btnNhaCungCap.Size = new System.Drawing.Size(243, 62);
       this.btnNhaCungCap.TabIndex = 4;
       this.btnNhaCungCap.Text = "Nhà cung cấp";
       this.btnNhaCungCap.UseVisualStyleBackColor = true;
@@ -101,36 +101,36 @@ namespace BTL_C_.src.Views.Admin
       // 
       // btnNhanVien
       // 
-      this.btnNhanVien.Location = new System.Drawing.Point(0, 226);
+      this.btnNhanVien.Location = new System.Drawing.Point(0, 260);
       this.btnNhanVien.Name = "btnNhanVien";
-      this.btnNhanVien.Size = new System.Drawing.Size(243, 50);
+      this.btnNhanVien.Size = new System.Drawing.Size(243, 56);
       this.btnNhanVien.TabIndex = 6;
       this.btnNhanVien.Text = "Nhân Viên";
       this.btnNhanVien.UseVisualStyleBackColor = true;
       // 
       // btnKhachHang
       // 
-      this.btnKhachHang.Location = new System.Drawing.Point(0, 276);
+      this.btnKhachHang.Location = new System.Drawing.Point(0, 315);
       this.btnKhachHang.Name = "btnKhachHang";
-      this.btnKhachHang.Size = new System.Drawing.Size(243, 51);
+      this.btnKhachHang.Size = new System.Drawing.Size(243, 61);
       this.btnKhachHang.TabIndex = 7;
       this.btnKhachHang.Text = "Khách Hàng";
       this.btnKhachHang.UseVisualStyleBackColor = true;
       // 
       // btnDoanhThu
       // 
-      this.btnDoanhThu.Location = new System.Drawing.Point(0, 325);
+      this.btnDoanhThu.Location = new System.Drawing.Point(0, 371);
       this.btnDoanhThu.Name = "btnDoanhThu";
-      this.btnDoanhThu.Size = new System.Drawing.Size(243, 49);
+      this.btnDoanhThu.Size = new System.Drawing.Size(243, 61);
       this.btnDoanhThu.TabIndex = 8;
       this.btnDoanhThu.Text = "Doanh Thu";
       this.btnDoanhThu.UseVisualStyleBackColor = true;
       // 
       // btnBaoCao
       // 
-      this.btnBaoCao.Location = new System.Drawing.Point(0, 373);
+      this.btnBaoCao.Location = new System.Drawing.Point(0, 431);
       this.btnBaoCao.Name = "btnBaoCao";
-      this.btnBaoCao.Size = new System.Drawing.Size(243, 51);
+      this.btnBaoCao.Size = new System.Drawing.Size(243, 62);
       this.btnBaoCao.TabIndex = 9;
       this.btnBaoCao.Text = "Báo Cáo";
       this.btnBaoCao.UseVisualStyleBackColor = true;
