@@ -21,13 +21,15 @@ namespace BTL_C_
       Application.SetCompatibleTextRenderingDefault(false);
       //FrmCreateAccount view = new FrmCreateAccount();
       //new AccountController(view);
-      FrmLogin view = new FrmLogin();
+      //FrmLogin view = new FrmLogin();
+      FrmCreatePurchaseInvoice view = new FrmCreatePurchaseInvoice();
       //Home view = new Home();
       //FrmHome view = new FrmHome();
       //FrmInventoryAuditReport view = new FrmInventoryAuditReport();
       //InvoiceDetailControl view = new InvoiceDetailControl();
       //FrmSeason view = new FrmSeason();
-      new LoginController(view);
+      //new LoginController(view);
+      new PurchaseInvoiceController(view);
 
       //FrmCreateProduct view = new FrmCreateProduct();
       //view.Load += (s, e) =>

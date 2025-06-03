@@ -46,7 +46,7 @@
             this.panel6 = new System.Windows.Forms.Panel();
             this.lblSLL = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.panel7 = new System.Windows.Forms.Panel();
+            this.pnlHoaDonNhap = new System.Windows.Forms.Panel();
             this.lblSLHDN = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.pnlHoaDonBan = new System.Windows.Forms.Panel();
@@ -67,7 +67,7 @@
             this.panel4.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel6.SuspendLayout();
-            this.panel7.SuspendLayout();
+            this.pnlHoaDonNhap.SuspendLayout();
             this.pnlHoaDonBan.SuspendLayout();
             this.panel9.SuspendLayout();
             this.panel10.SuspendLayout();
@@ -242,15 +242,16 @@
             this.label6.TabIndex = 0;
             this.label6.Text = "Số lượng loại";
             // 
-            // panel7
+            // pnlHoaDonNhap
             // 
-            this.panel7.BackColor = System.Drawing.Color.LawnGreen;
-            this.panel7.Controls.Add(this.lblSLHDN);
-            this.panel7.Controls.Add(this.label7);
-            this.panel7.Location = new System.Drawing.Point(522, 186);
-            this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(154, 132);
-            this.panel7.TabIndex = 6;
+            this.pnlHoaDonNhap.BackColor = System.Drawing.Color.LawnGreen;
+            this.pnlHoaDonNhap.Controls.Add(this.lblSLHDN);
+            this.pnlHoaDonNhap.Controls.Add(this.label7);
+            this.pnlHoaDonNhap.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pnlHoaDonNhap.Location = new System.Drawing.Point(522, 186);
+            this.pnlHoaDonNhap.Name = "pnlHoaDonNhap";
+            this.pnlHoaDonNhap.Size = new System.Drawing.Size(154, 132);
+            this.pnlHoaDonNhap.TabIndex = 6;
             // 
             // lblSLHDN
             // 
@@ -390,7 +391,7 @@
             this.Controls.Add(this.panel10);
             this.Controls.Add(this.panel9);
             this.Controls.Add(this.pnlHoaDonBan);
-            this.Controls.Add(this.panel7);
+            this.Controls.Add(this.pnlHoaDonNhap);
             this.Controls.Add(this.panel6);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.panel4);
@@ -411,8 +412,8 @@
             this.panel5.PerformLayout();
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
-            this.panel7.ResumeLayout(false);
-            this.panel7.PerformLayout();
+            this.pnlHoaDonNhap.ResumeLayout(false);
+            this.pnlHoaDonNhap.PerformLayout();
             this.pnlHoaDonBan.ResumeLayout(false);
             this.pnlHoaDonBan.PerformLayout();
             this.panel9.ResumeLayout(false);
@@ -439,7 +440,7 @@
     private System.Windows.Forms.Label label5;
     private System.Windows.Forms.Panel panel6;
     private System.Windows.Forms.Label label6;
-    private System.Windows.Forms.Panel panel7;
+    private System.Windows.Forms.Panel pnlHoaDonNhap;
     private System.Windows.Forms.Label label7;
     private System.Windows.Forms.Panel pnlHoaDonBan;
     private System.Windows.Forms.Label label8;

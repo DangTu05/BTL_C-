@@ -4,11 +4,16 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Windows.Forms;
 
 namespace BTL_C_.src.DAO
 {
   internal class ProductDAO : BaseDAO<ProductModel>
   {
+    public static void fillProductCombo(ComboBox cmb)
+    {
+      fillDataToCombo(cmb, "SELECT maquanao, tenquanao FROM tbLSanPham WHERE deleted=0", "maquanao", "tenquanao");
+    }
     public bool insert(ProductModel product)
     {
       string query = "INSERT INTO tblSanPham (maquanao, matheloai, tenquanao, mamau, mansx, madt, mamua, sltonkho, anh, dongianhap, dongiaban, trangthai, macl, maco) " +
@@ -53,6 +58,18 @@ namespace BTL_C_.src.DAO
             {"@trangthai", product.trangthai },
             {"@macl", product.macl },
             {"@maco", product.maco }
+        };
+      return ExecuteNonQuery(sql, parameters);
+    }
+    public bool UpdatePriceAndCount(string masp, decimal dongianhap, decimal dongiaban, int sl)
+    {
+      string sql = "UPDATE tblSanPham SET dongiaban=@dongiaban, dongianhap=@dongianhap, sltonkho=@soluong where maquanao = @maquanao";
+      var parameters = new Dictionary<string, object>
+        {
+            {"@maquanao", masp },
+            {"@dongianhap",dongianhap },
+            {"@dongiaban",dongiaban },
+            {"@soluong", sl }
         };
       return ExecuteNonQuery(sql, parameters);
     }

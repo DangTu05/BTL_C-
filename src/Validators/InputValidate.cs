@@ -65,5 +65,9 @@ namespace BTL_C_.src.Validators
     {
       return CheckEmptyFields(manv, masp);
     }
+    public static bool InputPurchaseinvoice(string masp, string mancc)
+    {
+      return CheckEmptyFields(masp, mancc);
+    }
   }
 }

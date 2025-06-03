@@ -2,11 +2,16 @@
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Windows.Forms;
 
 namespace BTL_C_.src.DAO
 {
   internal class SupplierDAO : BaseDAO<SupplierModel>
   {
+    public static void fillSupplierCombo(ComboBox cmb)
+    {
+      fillDataToCombo(cmb, "SELECT maNCC, tenNCC FROM tbLNhaCungCap WHERE maNCC IS NOT NULL AND maNCC <> '' AND tenNCC IS NOT NULL AND tenNCC <> ''", "mancc", "tenncc");
+    }
     protected override string getColumns() => " mancc, tenncc, diachi, sdt ";
 
     protected override string getKeyColumn() => "mancc";

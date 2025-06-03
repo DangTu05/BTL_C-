@@ -51,6 +51,7 @@ namespace BTL_C_.src.Controllers.Admin
     {
       viewDashBoardControl.SetSanPhamNoiBatListener(homeController.initViewWithControllerBestSellingProduct);
       viewDashBoardControl.SetHoaDonBanListener(homeController.initViewWithControllerInvoiceDetail);
+      viewDashBoardControl.SetHoaDonNhapListener(homeController.initViewWithControllerPurchaseInvoice);
     }
   }
 }

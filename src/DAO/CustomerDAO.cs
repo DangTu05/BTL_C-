@@ -4,11 +4,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Windows.Forms;
 
 namespace BTL_C_.src.DAO
 {
   internal class CustomerDAO : BaseDAO<CustomerModel>
   {
+
     public bool update(CustomerModel customer)
     {
       string sql = "Update tblKhachHang SET tenkh = @tenkh, sdt = @sdt, point = @point where makh = @makh";

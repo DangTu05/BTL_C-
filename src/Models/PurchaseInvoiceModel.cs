@@ -2,12 +2,13 @@
 
 namespace BTL_C_.src.Models
 {
-  internal class PurchaseInvoiceModel
+  public class PurchaseInvoiceModel
   {
     public string soHDN { get; set; }
     public string mancc { get; set; }
-    public DateTime nganhap { get; set; }
+    public DateTime ngaynhap { get; set; }
     public string ghichu { get; set; }
+    public decimal tongtien { get; set; }
 
   }
 }

@@ -11,6 +11,7 @@ namespace BTL_C_.src.Views.Admin
     }
     public void SetSanPhamNoiBatListener(EventHandler handler) => pnlSanPhamNoiBat.Click += handler;
     public void SetHoaDonBanListener(EventHandler handler) => pnlHoaDonBan.Click += handler;
+    public void SetHoaDonNhapListener(EventHandler handler) => pnlHoaDonNhap.Click += handler;
     public void loadFormData(int slsp, int slncc, int slkh, int slnv, int slcl, int sll, int slcv, int slhdn, int slhdb, string tenkhnb)
     {
       lblSLSP.Text = slsp.ToString();

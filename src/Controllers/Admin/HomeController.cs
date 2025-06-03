@@ -96,6 +96,12 @@ namespace BTL_C_.src.Controllers.Admin
       new InvoiceDetailController(invoiceDetailControl);
       viewHome.loadControl(invoiceDetailControl);
     }
+    public void initViewWithControllerPurchaseInvoice(object sender, EventArgs e)
+    {
+      PurchaseInvoiceControl purchaseInvoiceControl = new PurchaseInvoiceControl();
+      new PurchaseInvoiceController(purchaseInvoiceControl);
+      viewHome.loadControl(purchaseInvoiceControl);
+    }
     public void initViewWithControllerCreate(object sender, EventArgs e)
     {
       CreateControl createControl = new CreateControl();
