@@ -32,20 +32,19 @@ namespace WebQLCHQuanAo
     {
             this.tcNhanvien = new System.Windows.Forms.TabControl();
             this.tpThongtinNV = new System.Windows.Forms.TabPage();
-            this.txbMaNV = new System.Windows.Forms.TextBox();
+            this.mskSDT = new System.Windows.Forms.MaskedTextBox();
+            this.txtMaNV = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.dtpNgaysinh = new System.Windows.Forms.DateTimePicker();
-            this.txbEmail = new System.Windows.Forms.TextBox();
-            this.txbTenNV = new System.Windows.Forms.TextBox();
+            this.txtTenNV = new System.Windows.Forms.TextBox();
             this.lbNhanvien = new System.Windows.Forms.Label();
             this.lbChucvu = new System.Windows.Forms.Label();
-            this.btnXoaNV = new System.Windows.Forms.Button();
+            this.btnDangXuat = new System.Windows.Forms.Button();
             this.btnCapNhapNV = new System.Windows.Forms.Button();
             this.rdoNu = new System.Windows.Forms.RadioButton();
             this.rdoNam = new System.Windows.Forms.RadioButton();
-            this.txbDiachi = new System.Windows.Forms.TextBox();
+            this.txtDiachi = new System.Windows.Forms.TextBox();
             this.lbDiachiNV = new System.Windows.Forms.Label();
-            this.lbEmail = new System.Windows.Forms.Label();
             this.lbSodienthoai = new System.Windows.Forms.Label();
             this.lbNgaysinh = new System.Windows.Forms.Label();
             this.lbGioitinh = new System.Windows.Forms.Label();
@@ -103,7 +102,6 @@ namespace WebQLCHQuanAo
             this.colDonGia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colGiamGia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colThanhTien = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.mskSDT = new System.Windows.Forms.MaskedTextBox();
             this.tcNhanvien.SuspendLayout();
             this.tpThongtinNV.SuspendLayout();
             this.tpDanhsachSP.SuspendLayout();
@@ -133,20 +131,18 @@ namespace WebQLCHQuanAo
             // tpThongtinNV
             // 
             this.tpThongtinNV.Controls.Add(this.mskSDT);
-            this.tpThongtinNV.Controls.Add(this.txbMaNV);
+            this.tpThongtinNV.Controls.Add(this.txtMaNV);
             this.tpThongtinNV.Controls.Add(this.label1);
             this.tpThongtinNV.Controls.Add(this.dtpNgaysinh);
-            this.tpThongtinNV.Controls.Add(this.txbEmail);
-            this.tpThongtinNV.Controls.Add(this.txbTenNV);
+            this.tpThongtinNV.Controls.Add(this.txtTenNV);
             this.tpThongtinNV.Controls.Add(this.lbNhanvien);
             this.tpThongtinNV.Controls.Add(this.lbChucvu);
-            this.tpThongtinNV.Controls.Add(this.btnXoaNV);
+            this.tpThongtinNV.Controls.Add(this.btnDangXuat);
             this.tpThongtinNV.Controls.Add(this.btnCapNhapNV);
             this.tpThongtinNV.Controls.Add(this.rdoNu);
             this.tpThongtinNV.Controls.Add(this.rdoNam);
-            this.tpThongtinNV.Controls.Add(this.txbDiachi);
+            this.tpThongtinNV.Controls.Add(this.txtDiachi);
             this.tpThongtinNV.Controls.Add(this.lbDiachiNV);
-            this.tpThongtinNV.Controls.Add(this.lbEmail);
             this.tpThongtinNV.Controls.Add(this.lbSodienthoai);
             this.tpThongtinNV.Controls.Add(this.lbNgaysinh);
             this.tpThongtinNV.Controls.Add(this.lbGioitinh);
@@ -160,14 +156,22 @@ namespace WebQLCHQuanAo
             this.tpThongtinNV.Text = "Thông tin nhân viên";
             this.tpThongtinNV.UseVisualStyleBackColor = true;
             // 
-            // txbMaNV
+            // mskSDT
             // 
-            this.txbMaNV.Font = new System.Drawing.Font("Arial Narrow", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txbMaNV.Location = new System.Drawing.Point(298, 80);
-            this.txbMaNV.Name = "txbMaNV";
-            this.txbMaNV.ReadOnly = true;
-            this.txbMaNV.Size = new System.Drawing.Size(295, 27);
-            this.txbMaNV.TabIndex = 101;
+            this.mskSDT.Location = new System.Drawing.Point(298, 252);
+            this.mskSDT.Mask = "(999) 000-0000";
+            this.mskSDT.Name = "mskSDT";
+            this.mskSDT.Size = new System.Drawing.Size(130, 22);
+            this.mskSDT.TabIndex = 102;
+            // 
+            // txtMaNV
+            // 
+            this.txtMaNV.Font = new System.Drawing.Font("Arial Narrow", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMaNV.Location = new System.Drawing.Point(298, 80);
+            this.txtMaNV.Name = "txtMaNV";
+            this.txtMaNV.ReadOnly = true;
+            this.txtMaNV.Size = new System.Drawing.Size(295, 27);
+            this.txtMaNV.TabIndex = 101;
             // 
             // label1
             // 
@@ -187,27 +191,19 @@ namespace WebQLCHQuanAo
             this.dtpNgaysinh.Size = new System.Drawing.Size(295, 27);
             this.dtpNgaysinh.TabIndex = 97;
             // 
-            // txbEmail
+            // txtTenNV
             // 
-            this.txbEmail.Font = new System.Drawing.Font("Arial Narrow", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txbEmail.Location = new System.Drawing.Point(298, 281);
-            this.txbEmail.Name = "txbEmail";
-            this.txbEmail.Size = new System.Drawing.Size(295, 27);
-            this.txbEmail.TabIndex = 96;
-            // 
-            // txbTenNV
-            // 
-            this.txbTenNV.Font = new System.Drawing.Font("Arial Narrow", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txbTenNV.Location = new System.Drawing.Point(298, 113);
-            this.txbTenNV.Name = "txbTenNV";
-            this.txbTenNV.Size = new System.Drawing.Size(295, 27);
-            this.txbTenNV.TabIndex = 94;
+            this.txtTenNV.Font = new System.Drawing.Font("Arial Narrow", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTenNV.Location = new System.Drawing.Point(298, 113);
+            this.txtTenNV.Name = "txtTenNV";
+            this.txtTenNV.Size = new System.Drawing.Size(295, 27);
+            this.txtTenNV.TabIndex = 94;
             // 
             // lbNhanvien
             // 
             this.lbNhanvien.AutoSize = true;
             this.lbNhanvien.Font = new System.Drawing.Font("Arial Narrow", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbNhanvien.Location = new System.Drawing.Point(294, 323);
+            this.lbNhanvien.Location = new System.Drawing.Point(294, 305);
             this.lbNhanvien.Name = "lbNhanvien";
             this.lbNhanvien.Size = new System.Drawing.Size(74, 22);
             this.lbNhanvien.TabIndex = 93;
@@ -217,21 +213,21 @@ namespace WebQLCHQuanAo
             // 
             this.lbChucvu.AutoSize = true;
             this.lbChucvu.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbChucvu.Location = new System.Drawing.Point(182, 323);
+            this.lbChucvu.Location = new System.Drawing.Point(182, 305);
             this.lbChucvu.Name = "lbChucvu";
             this.lbChucvu.Size = new System.Drawing.Size(82, 19);
             this.lbChucvu.TabIndex = 92;
             this.lbChucvu.Text = "Chức vụ:";
             // 
-            // btnXoaNV
+            // btnDangXuat
             // 
-            this.btnXoaNV.Font = new System.Drawing.Font("Arial Narrow", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnXoaNV.Location = new System.Drawing.Point(452, 378);
-            this.btnXoaNV.Name = "btnXoaNV";
-            this.btnXoaNV.Size = new System.Drawing.Size(87, 32);
-            this.btnXoaNV.TabIndex = 91;
-            this.btnXoaNV.Text = "Xóa";
-            this.btnXoaNV.UseVisualStyleBackColor = true;
+            this.btnDangXuat.Font = new System.Drawing.Font("Arial Narrow", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDangXuat.Location = new System.Drawing.Point(452, 378);
+            this.btnDangXuat.Name = "btnDangXuat";
+            this.btnDangXuat.Size = new System.Drawing.Size(87, 32);
+            this.btnDangXuat.TabIndex = 91;
+            this.btnDangXuat.Text = "Đăng Xuất";
+            this.btnDangXuat.UseVisualStyleBackColor = true;
             // 
             // btnCapNhapNV
             // 
@@ -265,13 +261,13 @@ namespace WebQLCHQuanAo
             this.rdoNam.Text = "Nam";
             this.rdoNam.UseVisualStyleBackColor = true;
             // 
-            // txbDiachi
+            // txtDiachi
             // 
-            this.txbDiachi.Font = new System.Drawing.Font("Arial Narrow", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txbDiachi.Location = new System.Drawing.Point(298, 215);
-            this.txbDiachi.Name = "txbDiachi";
-            this.txbDiachi.Size = new System.Drawing.Size(295, 27);
-            this.txbDiachi.TabIndex = 99;
+            this.txtDiachi.Font = new System.Drawing.Font("Arial Narrow", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDiachi.Location = new System.Drawing.Point(298, 215);
+            this.txtDiachi.Name = "txtDiachi";
+            this.txtDiachi.Size = new System.Drawing.Size(295, 27);
+            this.txtDiachi.TabIndex = 99;
             // 
             // lbDiachiNV
             // 
@@ -282,16 +278,6 @@ namespace WebQLCHQuanAo
             this.lbDiachiNV.Size = new System.Drawing.Size(68, 19);
             this.lbDiachiNV.TabIndex = 98;
             this.lbDiachiNV.Text = "Địa chỉ:";
-            // 
-            // lbEmail
-            // 
-            this.lbEmail.AutoSize = true;
-            this.lbEmail.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbEmail.Location = new System.Drawing.Point(207, 286);
-            this.lbEmail.Name = "lbEmail";
-            this.lbEmail.Size = new System.Drawing.Size(57, 19);
-            this.lbEmail.TabIndex = 87;
-            this.lbEmail.Text = "Email:";
             // 
             // lbSodienthoai
             // 
@@ -869,14 +855,6 @@ namespace WebQLCHQuanAo
             this.colThanhTien.Name = "colThanhTien";
             this.colThanhTien.Width = 125;
             // 
-            // mskSDT
-            // 
-            this.mskSDT.Location = new System.Drawing.Point(298, 252);
-            this.mskSDT.Mask = "(999) 000-0000";
-            this.mskSDT.Name = "mskSDT";
-            this.mskSDT.Size = new System.Drawing.Size(130, 22);
-            this.mskSDT.TabIndex = 102;
-            // 
             // FrmHome
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -910,15 +888,13 @@ namespace WebQLCHQuanAo
     private System.Windows.Forms.TabControl tcNhanvien;
     private System.Windows.Forms.TabPage tpThongtinNV;
     private System.Windows.Forms.DateTimePicker dtpNgaysinh;
-    private System.Windows.Forms.TextBox txbEmail;
-    private System.Windows.Forms.TextBox txbTenNV;
+    private System.Windows.Forms.TextBox txtTenNV;
     private System.Windows.Forms.Label lbNhanvien;
     private System.Windows.Forms.Label lbChucvu;
-    private System.Windows.Forms.Button btnXoaNV;
+    private System.Windows.Forms.Button btnDangXuat;
     private System.Windows.Forms.Button btnCapNhapNV;
     private System.Windows.Forms.RadioButton rdoNu;
     private System.Windows.Forms.RadioButton rdoNam;
-    private System.Windows.Forms.Label lbEmail;
     private System.Windows.Forms.Label lbSodienthoai;
     private System.Windows.Forms.Label lbNgaysinh;
     private System.Windows.Forms.Label lbGioitinh;
@@ -972,9 +948,9 @@ namespace WebQLCHQuanAo
     private System.Windows.Forms.Label lbDienthoaiKH;
     private System.Windows.Forms.TextBox txbTenKH;
     private System.Windows.Forms.Label lbTenKH;
-    private System.Windows.Forms.TextBox txbDiachi;
+    private System.Windows.Forms.TextBox txtDiachi;
     private System.Windows.Forms.Label lbDiachiNV;
-    private System.Windows.Forms.TextBox txbMaNV;
+    private System.Windows.Forms.TextBox txtMaNV;
     private System.Windows.Forms.Label label1;
     private System.Windows.Forms.DataGridView dgvChiTietHD;
     private System.Windows.Forms.TextBox txtTongTien;

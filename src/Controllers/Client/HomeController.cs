@@ -2,6 +2,7 @@
 using BTL_C_.src.Entry;
 using BTL_C_.src.Models;
 using BTL_C_.src.Utils;
+using BTL_C_.src.Validators;
 using DocumentFormat.OpenXml.Wordprocessing;
 using SixLabors.Fonts;
 using System;
@@ -44,7 +45,8 @@ namespace BTL_C_.src.Controllers.Client
     }
     private void SetupEventListener()
     {
-      //frmHome.SetTinhToanListener(TinhTongTien);
+      frmHome.SetCapNhatNVListener(CapNhatNV);
+      frmHome.SetDangXuatListener(Logout);
     }
     // --- Setup Tab Initial States ---
     private void SetupThongTinNVTab()
@@ -232,5 +234,50 @@ namespace BTL_C_.src.Controllers.Client
     {
       frmHome.XoaSP_CTHD();
     }
+    private void CapNhatNV(object sender, EventArgs e)
+    {
+      try
+      {
+        string tennv = frmHome.GetTenNhanVien();
+        string sdt = frmHome.GetSdt();
+        // Validation cơ bản
+        if (!InputValidate.InputInfoNVValidate(tennv, sdt))
+          return;
+
+
+        EmployeeModel nv = new EmployeeModel
+        {
+          MaNhanVien = frmHome.GetMaNV(),
+          TenNhanVien = frmHome.GetTenNhanVien(),
+          NgaySinh = frmHome.GetNgaySinh(),
+          GioiTinh = string.IsNullOrWhiteSpace(frmHome.GetGT()) ? null : frmHome.GetGT(),
+          DiaChi = string.IsNullOrWhiteSpace(frmHome.GetDiaChi()) ? null : frmHome.GetDiaChi(),
+          SoDienThoai = frmHome.GetSdt(),
+        };
+
+        // Cập nhật
+        if (employeeDAO.update(nv))
+        {
+          MessageUtil.ShowInfo("Cập nhật thành công!");
+        }
+        else
+        {
+          MessageUtil.ShowInfo("Cập nhật thất bại!!!");
+        }
+
+      }
+      catch (Exception ex)
+      {
+        ErrorUtil.handle(ex, "Đã xảy ra lỗi khi cập nhật thông tin!!!");
+      }
+    }
+    private void Logout(object sender, EventArgs e)
+    {
+      if (!MessageUtil.Confirm("Bạn có muốn đăng xuất?"))
+        return;
+      Session.Logout();
+      AppController.startFrmLogin(frmHome.GetForm());
+    }
+
   }
 }

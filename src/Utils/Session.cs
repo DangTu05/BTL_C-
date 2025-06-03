@@ -22,7 +22,7 @@ namespace BTL_C_.src.Utils
     {
       currentNv = nv;
     }
-    public void Logout()
+    public static void Logout()
     {
       currentNv = null;
     }

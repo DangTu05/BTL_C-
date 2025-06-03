@@ -52,21 +52,37 @@ namespace WebQLCHQuanAo
     public void SetXoaHoaDonTaoListener(EventHandler handler) => btnXoaHDT.Click += handler;
     public void SetCellEndEditListener(DataGridViewCellEventHandler handler) => dgvSP.CellEndEdit += handler;
     public void SetUserAddedRowListener(DataGridViewRowEventHandler handler) => dgvSP.UserAddedRow += handler;
+    public void SetCapNhatNVListener(EventHandler handler) => btnCapNhapNV.Click += handler;
+    public void SetDangXuatListener(EventHandler handler) => btnDangXuat.Click += handler;
     public DataGridView GetDgvTaoHoaDon() => dgvSP;
     public string GetMaKH() => txbMaKH_TaoHD.Text.Trim();
     public string GetTongTien() => txtTongTien.Text.Trim();
+    public string GetTenNhanVien() => txtTenNV.Text.Trim();
+    public string GetSdt() => mskSDT.Text.Trim();
+    public string GetMaNV() => txtMaNV.Text.Trim();
+    public string GetDiaChi() => txtDiachi.Text.Trim();
+    public string GetGT()
+    {
+      string gioiTinh = "";
+      if (rdoNam.Checked)
+        gioiTinh = "Nam";
+      else if (rdoNu.Checked)
+        gioiTinh = "Nữ";
+      return gioiTinh;
+    }
+    public DateTime GetNgaySinh() => dtpNgaysinh.Value;
+    public Form GetForm() => this;
 
     //// --- Helper Methods to Clear Inputs ---
     public void ClearThongTinNVFields()
     {
-      txbDiachi.Clear();
-      txbTenNV.Clear();
+      txtDiachi.Clear();
+      txtTenNV.Clear();
       dtpNgaysinh.Value = DateTime.Now;
       rdoNam.Checked = true; // Default
       rdoNu.Checked = false;
-      txbDiachi.Clear();
-      txbSodienthoai.Clear();
-      txbEmail.Clear();
+      txtDiachi.Clear();
+      mskSDT.Clear();
     }
 
     public void ClearTaoHDFields()
@@ -135,13 +151,13 @@ namespace WebQLCHQuanAo
     // --- ThongTinNV Tab Functions ---
     public void LoadThongTinNhanVienHienTai(EmployeeModel nv)
     {
-      txbMaNV.Text = nv.MaNhanVien;
-      txbTenNV.Text = nv.TenNhanVien;
+      txtMaNV.Text = nv.MaNhanVien;
+      txtTenNV.Text = nv.TenNhanVien;
       dtpNgaysinh.Value = (DateTime)nv.NgaySinh;
       if (nv.GioiTinh == "Nam") rdoNam.Checked = true; else rdoNu.Checked = true;
-      txbDiachi.Text = nv.DiaChi;
-      txbSodienthoai.Text = nv.SoDienThoai;
-      txbMaNV.ReadOnly = true;
+      txtDiachi.Text = nv.DiaChi;
+      mskSDT.Text = nv.SoDienThoai;
+      txtMaNV.ReadOnly = true;
     }
 
     /// <summary>
