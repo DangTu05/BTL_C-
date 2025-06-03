@@ -52,7 +52,7 @@ namespace WebQLCHQuanAo
             this.label4 = new System.Windows.Forms.Label();
             this.tpDanhsachSP = new System.Windows.Forms.TabPage();
             this.btnTimkiemSP = new System.Windows.Forms.Button();
-            this.txbTimkiemSP = new System.Windows.Forms.TextBox();
+            this.txtTimkiemSP = new System.Windows.Forms.TextBox();
             this.dgvSanPham = new System.Windows.Forms.DataGridView();
             this.lbTimkiemSP = new System.Windows.Forms.Label();
             this.lbDanhsachSP = new System.Windows.Forms.Label();
@@ -224,7 +224,7 @@ namespace WebQLCHQuanAo
             this.btnDangXuat.Font = new System.Drawing.Font("Arial Narrow", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDangXuat.Location = new System.Drawing.Point(452, 378);
             this.btnDangXuat.Name = "btnDangXuat";
-            this.btnDangXuat.Size = new System.Drawing.Size(87, 32);
+            this.btnDangXuat.Size = new System.Drawing.Size(120, 32);
             this.btnDangXuat.TabIndex = 91;
             this.btnDangXuat.Text = "Đăng Xuất";
             this.btnDangXuat.UseVisualStyleBackColor = true;
@@ -332,7 +332,7 @@ namespace WebQLCHQuanAo
             // tpDanhsachSP
             // 
             this.tpDanhsachSP.Controls.Add(this.btnTimkiemSP);
-            this.tpDanhsachSP.Controls.Add(this.txbTimkiemSP);
+            this.tpDanhsachSP.Controls.Add(this.txtTimkiemSP);
             this.tpDanhsachSP.Controls.Add(this.dgvSanPham);
             this.tpDanhsachSP.Controls.Add(this.lbTimkiemSP);
             this.tpDanhsachSP.Controls.Add(this.lbDanhsachSP);
@@ -354,13 +354,13 @@ namespace WebQLCHQuanAo
             this.btnTimkiemSP.Text = "Tìm kiếm";
             this.btnTimkiemSP.UseVisualStyleBackColor = true;
             // 
-            // txbTimkiemSP
+            // txtTimkiemSP
             // 
-            this.txbTimkiemSP.Font = new System.Drawing.Font("Arial Narrow", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txbTimkiemSP.Location = new System.Drawing.Point(236, 68);
-            this.txbTimkiemSP.Name = "txbTimkiemSP";
-            this.txbTimkiemSP.Size = new System.Drawing.Size(295, 27);
-            this.txbTimkiemSP.TabIndex = 84;
+            this.txtTimkiemSP.Font = new System.Drawing.Font("Arial Narrow", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTimkiemSP.Location = new System.Drawing.Point(236, 68);
+            this.txtTimkiemSP.Name = "txtTimkiemSP";
+            this.txtTimkiemSP.Size = new System.Drawing.Size(295, 27);
+            this.txtTimkiemSP.TabIndex = 84;
             // 
             // dgvSanPham
             // 
@@ -902,7 +902,7 @@ namespace WebQLCHQuanAo
     private System.Windows.Forms.Label label4;
     private System.Windows.Forms.TabPage tpDanhsachSP;
     private System.Windows.Forms.Button btnTimkiemSP;
-    private System.Windows.Forms.TextBox txbTimkiemSP;
+    private System.Windows.Forms.TextBox txtTimkiemSP;
     private System.Windows.Forms.DataGridView dgvSanPham;
     private System.Windows.Forms.Label lbTimkiemSP;
     private System.Windows.Forms.Label lbDanhsachSP;

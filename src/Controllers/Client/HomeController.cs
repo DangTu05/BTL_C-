@@ -47,6 +47,7 @@ namespace BTL_C_.src.Controllers.Client
     {
       frmHome.SetCapNhatNVListener(CapNhatNV);
       frmHome.SetDangXuatListener(Logout);
+      frmHome.SetTimKiemSPListener(TimKiemSP);
     }
     // --- Setup Tab Initial States ---
     private void SetupThongTinNVTab()
@@ -279,5 +280,26 @@ namespace BTL_C_.src.Controllers.Client
       AppController.startFrmLogin(frmHome.GetForm());
     }
 
+    private void TimKiemSP(object sender, EventArgs e)
+    {
+      try
+      {
+        string tensp = frmHome.GetSearchSP();
+        DataView dv = productDao.findRecordsByName("tenquanao", tensp);
+
+        if (dv.Count == 0)
+        {
+          MessageUtil.ShowInfo("Không tìm thấy sản phẩm nào có tên như vậy!");
+        }
+        else
+        {
+          frmHome.LoadDataProductToGridView(dv);
+        }
+      }
+      catch (Exception ex)
+      {
+        ErrorUtil.handle(ex, "Đã xảy ra lỗi khi tìm kiếm sản phẩm!!!");
+      }
+    }
   }
 }

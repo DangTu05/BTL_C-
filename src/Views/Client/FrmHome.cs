@@ -54,6 +54,7 @@ namespace WebQLCHQuanAo
     public void SetUserAddedRowListener(DataGridViewRowEventHandler handler) => dgvSP.UserAddedRow += handler;
     public void SetCapNhatNVListener(EventHandler handler) => btnCapNhapNV.Click += handler;
     public void SetDangXuatListener(EventHandler handler) => btnDangXuat.Click += handler;
+    public void SetTimKiemSPListener(EventHandler handler) => btnTimkiemSP.Click += handler;
     public DataGridView GetDgvTaoHoaDon() => dgvSP;
     public string GetMaKH() => txbMaKH_TaoHD.Text.Trim();
     public string GetTongTien() => txtTongTien.Text.Trim();
@@ -72,6 +73,7 @@ namespace WebQLCHQuanAo
     }
     public DateTime GetNgaySinh() => dtpNgaysinh.Value;
     public Form GetForm() => this;
+    public string GetSearchSP() => txtTimkiemSP.Text.Trim();
 
     //// --- Helper Methods to Clear Inputs ---
     public void ClearThongTinNVFields()
