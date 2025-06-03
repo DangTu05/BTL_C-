@@ -44,7 +44,9 @@ namespace BTL_C_.src.Controllers
         else
         {
           EmployeeDAO employeeDAO = new EmployeeDAO();
+          /// Lấy ra thông tin nhân viên đó từ db
           EmployeeModel nv = employeeDAO.findRecordByField("manv", account.ma_nhan_vien);
+          /// Lưu thông tin đó local
           Session.SetEmployee(nv);
           MessageUtil.ShowInfo("Đăng nhập thành công!");
           AppController.StartHomeClient(viewLogin.getForm());

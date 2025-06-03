@@ -141,12 +141,21 @@ namespace BTL_C_.src.DAO
 
       try
       {
-        //DataView dv = new DataView(supplierDAO.findRecordsByName(supplierControl.getTextSearch()));
         DataTable dt = getAllRecord();
-        // Lọc theo tên
         string keyword = value.Replace("'", "''");
         DataView dv = new DataView(dt);
-        dv.RowFilter = $"{key} LIKE '%{keyword}%'";
+
+        // Kiểm tra kiểu cột
+        Type columnType = dt.Columns[key].DataType;
+        if (columnType == typeof(DateTime))
+        {
+          dv.RowFilter = $"CONVERT({key}, 'System.String') LIKE '%{keyword}%'";
+        }
+        else
+        {
+          dv.RowFilter = $"{key} LIKE '%{keyword}%'";
+        }
+
         return dv;
       }
       catch (Exception ex)

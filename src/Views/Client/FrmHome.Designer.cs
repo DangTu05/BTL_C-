@@ -71,28 +71,24 @@ namespace WebQLCHQuanAo
             this.lbMaKH_TaoHD = new System.Windows.Forms.Label();
             this.lbTaoHD = new System.Windows.Forms.Label();
             this.tpQuanlyHD = new System.Windows.Forms.TabPage();
+            this.btnLamMoi = new System.Windows.Forms.Button();
             this.btnTimkiemHD = new System.Windows.Forms.Button();
             this.dtpNgayTimkiemHD = new System.Windows.Forms.DateTimePicker();
-            this.txbTimkiemHD = new System.Windows.Forms.TextBox();
             this.lbNgay = new System.Windows.Forms.Label();
             this.lbChitietHD = new System.Windows.Forms.Label();
             this.dgvChiTietHD = new System.Windows.Forms.DataGridView();
             this.lbHDbanhang = new System.Windows.Forms.Label();
             this.dgvHoaDonBan = new System.Windows.Forms.DataGridView();
-            this.lbNhaptukhoa = new System.Windows.Forms.Label();
             this.lbQuanlyHD = new System.Windows.Forms.Label();
             this.tpQuanlyKH = new System.Windows.Forms.TabPage();
-            this.txbTenKH = new System.Windows.Forms.TextBox();
+            this.txtTenKH = new System.Windows.Forms.TextBox();
             this.lbTenKH = new System.Windows.Forms.Label();
             this.btnThemKH = new System.Windows.Forms.Button();
             this.btnTimkiemKH = new System.Windows.Forms.Button();
             this.dgvDanhsachKH = new System.Windows.Forms.DataGridView();
-            this.txbTimkiemKH = new System.Windows.Forms.TextBox();
-            this.txbSdtKH = new System.Windows.Forms.TextBox();
-            this.txbDiachiKH = new System.Windows.Forms.TextBox();
-            this.txbMaKH = new System.Windows.Forms.TextBox();
+            this.txtTimkiemKH = new System.Windows.Forms.TextBox();
+            this.txtMaKH = new System.Windows.Forms.TextBox();
             this.lbDienthoaiKH = new System.Windows.Forms.Label();
-            this.lbDiachi = new System.Windows.Forms.Label();
             this.lbMaKH = new System.Windows.Forms.Label();
             this.lbTimkiemKH = new System.Windows.Forms.Label();
             this.lbQuanlyKH = new System.Windows.Forms.Label();
@@ -102,6 +98,8 @@ namespace WebQLCHQuanAo
             this.colDonGia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colGiamGia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colThanhTien = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.mskSDTKH = new System.Windows.Forms.MaskedTextBox();
+            this.btnLamMoiKH = new System.Windows.Forms.Button();
             this.tcNhanvien.SuspendLayout();
             this.tpThongtinNV.SuspendLayout();
             this.tpDanhsachSP.SuspendLayout();
@@ -542,15 +540,14 @@ namespace WebQLCHQuanAo
             // 
             // tpQuanlyHD
             // 
+            this.tpQuanlyHD.Controls.Add(this.btnLamMoi);
             this.tpQuanlyHD.Controls.Add(this.btnTimkiemHD);
             this.tpQuanlyHD.Controls.Add(this.dtpNgayTimkiemHD);
-            this.tpQuanlyHD.Controls.Add(this.txbTimkiemHD);
             this.tpQuanlyHD.Controls.Add(this.lbNgay);
             this.tpQuanlyHD.Controls.Add(this.lbChitietHD);
             this.tpQuanlyHD.Controls.Add(this.dgvChiTietHD);
             this.tpQuanlyHD.Controls.Add(this.lbHDbanhang);
             this.tpQuanlyHD.Controls.Add(this.dgvHoaDonBan);
-            this.tpQuanlyHD.Controls.Add(this.lbNhaptukhoa);
             this.tpQuanlyHD.Controls.Add(this.lbQuanlyHD);
             this.tpQuanlyHD.Location = new System.Drawing.Point(4, 25);
             this.tpQuanlyHD.Name = "tpQuanlyHD";
@@ -559,6 +556,15 @@ namespace WebQLCHQuanAo
             this.tpQuanlyHD.TabIndex = 3;
             this.tpQuanlyHD.Text = "Quản lý hóa đơn";
             this.tpQuanlyHD.UseVisualStyleBackColor = true;
+            // 
+            // btnLamMoi
+            // 
+            this.btnLamMoi.Location = new System.Drawing.Point(679, 93);
+            this.btnLamMoi.Name = "btnLamMoi";
+            this.btnLamMoi.Size = new System.Drawing.Size(91, 32);
+            this.btnLamMoi.TabIndex = 91;
+            this.btnLamMoi.Text = "Làm mới";
+            this.btnLamMoi.UseVisualStyleBackColor = true;
             // 
             // btnTimkiemHD
             // 
@@ -577,14 +583,6 @@ namespace WebQLCHQuanAo
             this.dtpNgayTimkiemHD.Name = "dtpNgayTimkiemHD";
             this.dtpNgayTimkiemHD.Size = new System.Drawing.Size(280, 27);
             this.dtpNgayTimkiemHD.TabIndex = 89;
-            // 
-            // txbTimkiemHD
-            // 
-            this.txbTimkiemHD.Font = new System.Drawing.Font("Arial Narrow", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txbTimkiemHD.Location = new System.Drawing.Point(243, 61);
-            this.txbTimkiemHD.Name = "txbTimkiemHD";
-            this.txbTimkiemHD.Size = new System.Drawing.Size(280, 27);
-            this.txbTimkiemHD.TabIndex = 88;
             // 
             // lbNgay
             // 
@@ -639,16 +637,6 @@ namespace WebQLCHQuanAo
             this.dgvHoaDonBan.Size = new System.Drawing.Size(739, 146);
             this.dgvHoaDonBan.TabIndex = 83;
             // 
-            // lbNhaptukhoa
-            // 
-            this.lbNhaptukhoa.AutoSize = true;
-            this.lbNhaptukhoa.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbNhaptukhoa.Location = new System.Drawing.Point(91, 66);
-            this.lbNhaptukhoa.Name = "lbNhaptukhoa";
-            this.lbNhaptukhoa.Size = new System.Drawing.Size(122, 19);
-            this.lbNhaptukhoa.TabIndex = 82;
-            this.lbNhaptukhoa.Text = "Nhập từ khóa:";
-            // 
             // lbQuanlyHD
             // 
             this.lbQuanlyHD.AutoSize = true;
@@ -661,17 +649,16 @@ namespace WebQLCHQuanAo
             // 
             // tpQuanlyKH
             // 
-            this.tpQuanlyKH.Controls.Add(this.txbTenKH);
+            this.tpQuanlyKH.Controls.Add(this.btnLamMoiKH);
+            this.tpQuanlyKH.Controls.Add(this.mskSDTKH);
+            this.tpQuanlyKH.Controls.Add(this.txtTenKH);
             this.tpQuanlyKH.Controls.Add(this.lbTenKH);
             this.tpQuanlyKH.Controls.Add(this.btnThemKH);
             this.tpQuanlyKH.Controls.Add(this.btnTimkiemKH);
             this.tpQuanlyKH.Controls.Add(this.dgvDanhsachKH);
-            this.tpQuanlyKH.Controls.Add(this.txbTimkiemKH);
-            this.tpQuanlyKH.Controls.Add(this.txbSdtKH);
-            this.tpQuanlyKH.Controls.Add(this.txbDiachiKH);
-            this.tpQuanlyKH.Controls.Add(this.txbMaKH);
+            this.tpQuanlyKH.Controls.Add(this.txtTimkiemKH);
+            this.tpQuanlyKH.Controls.Add(this.txtMaKH);
             this.tpQuanlyKH.Controls.Add(this.lbDienthoaiKH);
-            this.tpQuanlyKH.Controls.Add(this.lbDiachi);
             this.tpQuanlyKH.Controls.Add(this.lbMaKH);
             this.tpQuanlyKH.Controls.Add(this.lbTimkiemKH);
             this.tpQuanlyKH.Controls.Add(this.lbQuanlyKH);
@@ -683,13 +670,13 @@ namespace WebQLCHQuanAo
             this.tpQuanlyKH.Text = "Quản lý khách hàng";
             this.tpQuanlyKH.UseVisualStyleBackColor = true;
             // 
-            // txbTenKH
+            // txtTenKH
             // 
-            this.txbTenKH.Font = new System.Drawing.Font("Arial Narrow", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txbTenKH.Location = new System.Drawing.Point(174, 100);
-            this.txbTenKH.Name = "txbTenKH";
-            this.txbTenKH.Size = new System.Drawing.Size(216, 27);
-            this.txbTenKH.TabIndex = 94;
+            this.txtTenKH.Font = new System.Drawing.Font("Arial Narrow", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTenKH.Location = new System.Drawing.Point(174, 100);
+            this.txtTenKH.Name = "txtTenKH";
+            this.txtTenKH.Size = new System.Drawing.Size(216, 27);
+            this.txtTenKH.TabIndex = 94;
             // 
             // lbTenKH
             // 
@@ -704,7 +691,7 @@ namespace WebQLCHQuanAo
             // btnThemKH
             // 
             this.btnThemKH.Font = new System.Drawing.Font("Arial Narrow", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnThemKH.Location = new System.Drawing.Point(354, 144);
+            this.btnThemKH.Location = new System.Drawing.Point(291, 142);
             this.btnThemKH.Name = "btnThemKH";
             this.btnThemKH.Size = new System.Drawing.Size(87, 32);
             this.btnThemKH.TabIndex = 92;
@@ -731,37 +718,22 @@ namespace WebQLCHQuanAo
             this.dgvDanhsachKH.Size = new System.Drawing.Size(772, 249);
             this.dgvDanhsachKH.TabIndex = 90;
             // 
-            // txbTimkiemKH
+            // txtTimkiemKH
             // 
-            this.txbTimkiemKH.Font = new System.Drawing.Font("Arial Narrow", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txbTimkiemKH.Location = new System.Drawing.Point(251, 197);
-            this.txbTimkiemKH.Name = "txbTimkiemKH";
-            this.txbTimkiemKH.Size = new System.Drawing.Size(295, 27);
-            this.txbTimkiemKH.TabIndex = 89;
+            this.txtTimkiemKH.Font = new System.Drawing.Font("Arial Narrow", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTimkiemKH.Location = new System.Drawing.Point(251, 197);
+            this.txtTimkiemKH.Name = "txtTimkiemKH";
+            this.txtTimkiemKH.Size = new System.Drawing.Size(295, 27);
+            this.txtTimkiemKH.TabIndex = 89;
             // 
-            // txbSdtKH
+            // txtMaKH
             // 
-            this.txbSdtKH.Font = new System.Drawing.Font("Arial Narrow", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txbSdtKH.Location = new System.Drawing.Point(533, 62);
-            this.txbSdtKH.Name = "txbSdtKH";
-            this.txbSdtKH.Size = new System.Drawing.Size(232, 27);
-            this.txbSdtKH.TabIndex = 88;
-            // 
-            // txbDiachiKH
-            // 
-            this.txbDiachiKH.Font = new System.Drawing.Font("Arial Narrow", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txbDiachiKH.Location = new System.Drawing.Point(533, 95);
-            this.txbDiachiKH.Name = "txbDiachiKH";
-            this.txbDiachiKH.Size = new System.Drawing.Size(232, 27);
-            this.txbDiachiKH.TabIndex = 87;
-            // 
-            // txbMaKH
-            // 
-            this.txbMaKH.Font = new System.Drawing.Font("Arial Narrow", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txbMaKH.Location = new System.Drawing.Point(174, 62);
-            this.txbMaKH.Name = "txbMaKH";
-            this.txbMaKH.Size = new System.Drawing.Size(216, 27);
-            this.txbMaKH.TabIndex = 86;
+            this.txtMaKH.Font = new System.Drawing.Font("Arial Narrow", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMaKH.Location = new System.Drawing.Point(174, 62);
+            this.txtMaKH.Name = "txtMaKH";
+            this.txtMaKH.ReadOnly = true;
+            this.txtMaKH.Size = new System.Drawing.Size(216, 27);
+            this.txtMaKH.TabIndex = 86;
             // 
             // lbDienthoaiKH
             // 
@@ -772,16 +744,6 @@ namespace WebQLCHQuanAo
             this.lbDienthoaiKH.Size = new System.Drawing.Size(94, 19);
             this.lbDienthoaiKH.TabIndex = 85;
             this.lbDienthoaiKH.Text = "Điện thoại:";
-            // 
-            // lbDiachi
-            // 
-            this.lbDiachi.AutoSize = true;
-            this.lbDiachi.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbDiachi.Location = new System.Drawing.Point(446, 100);
-            this.lbDiachi.Name = "lbDiachi";
-            this.lbDiachi.Size = new System.Drawing.Size(68, 19);
-            this.lbDiachi.TabIndex = 84;
-            this.lbDiachi.Text = "Địa chỉ:";
             // 
             // lbMaKH
             // 
@@ -797,11 +759,11 @@ namespace WebQLCHQuanAo
             // 
             this.lbTimkiemKH.AutoSize = true;
             this.lbTimkiemKH.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbTimkiemKH.Location = new System.Drawing.Point(139, 202);
+            this.lbTimkiemKH.Location = new System.Drawing.Point(80, 202);
             this.lbTimkiemKH.Name = "lbTimkiemKH";
-            this.lbTimkiemKH.Size = new System.Drawing.Size(84, 19);
+            this.lbTimkiemKH.Size = new System.Drawing.Size(154, 19);
             this.lbTimkiemKH.TabIndex = 82;
-            this.lbTimkiemKH.Text = "Tìm kiếm:";
+            this.lbTimkiemKH.Text = "Tìm kiếm theo sđt:";
             // 
             // lbQuanlyKH
             // 
@@ -854,6 +816,23 @@ namespace WebQLCHQuanAo
             this.colThanhTien.MinimumWidth = 6;
             this.colThanhTien.Name = "colThanhTien";
             this.colThanhTien.Width = 125;
+            // 
+            // mskSDTKH
+            // 
+            this.mskSDTKH.Location = new System.Drawing.Point(533, 63);
+            this.mskSDTKH.Mask = "(999) 000-0000";
+            this.mskSDTKH.Name = "mskSDTKH";
+            this.mskSDTKH.Size = new System.Drawing.Size(232, 22);
+            this.mskSDTKH.TabIndex = 95;
+            // 
+            // btnLamMoiKH
+            // 
+            this.btnLamMoiKH.Location = new System.Drawing.Point(424, 142);
+            this.btnLamMoiKH.Name = "btnLamMoiKH";
+            this.btnLamMoiKH.Size = new System.Drawing.Size(90, 32);
+            this.btnLamMoiKH.TabIndex = 96;
+            this.btnLamMoiKH.Text = "Làm Mới";
+            this.btnLamMoiKH.UseVisualStyleBackColor = true;
             // 
             // FrmHome
             // 
@@ -926,27 +905,22 @@ namespace WebQLCHQuanAo
     private System.Windows.Forms.TabPage tpQuanlyHD;
     private System.Windows.Forms.Button btnTimkiemHD;
     private System.Windows.Forms.DateTimePicker dtpNgayTimkiemHD;
-    private System.Windows.Forms.TextBox txbTimkiemHD;
     private System.Windows.Forms.Label lbNgay;
     private System.Windows.Forms.Label lbChitietHD;
     private System.Windows.Forms.Label lbHDbanhang;
     private System.Windows.Forms.DataGridView dgvHoaDonBan;
-    private System.Windows.Forms.Label lbNhaptukhoa;
     private System.Windows.Forms.Label lbQuanlyHD;
     private System.Windows.Forms.TabPage tpQuanlyKH;
     private System.Windows.Forms.Button btnThemKH;
     private System.Windows.Forms.Button btnTimkiemKH;
     private System.Windows.Forms.DataGridView dgvDanhsachKH;
-    private System.Windows.Forms.TextBox txbTimkiemKH;
-    private System.Windows.Forms.TextBox txbSdtKH;
-    private System.Windows.Forms.TextBox txbDiachiKH;
-    private System.Windows.Forms.TextBox txbMaKH;
-    private System.Windows.Forms.Label lbDiachi;
+    private System.Windows.Forms.TextBox txtTimkiemKH;
+    private System.Windows.Forms.TextBox txtMaKH;
     private System.Windows.Forms.Label lbMaKH;
     private System.Windows.Forms.Label lbTimkiemKH;
     private System.Windows.Forms.Label lbQuanlyKH;
     private System.Windows.Forms.Label lbDienthoaiKH;
-    private System.Windows.Forms.TextBox txbTenKH;
+    private System.Windows.Forms.TextBox txtTenKH;
     private System.Windows.Forms.Label lbTenKH;
     private System.Windows.Forms.TextBox txtDiachi;
     private System.Windows.Forms.Label lbDiachiNV;
@@ -957,5 +931,8 @@ namespace WebQLCHQuanAo
     private Button btnThemSanPham;
     private Button btnXoaHDT;
     private MaskedTextBox mskSDT;
+    private Button btnLamMoi;
+    private MaskedTextBox mskSDTKH;
+    private Button btnLamMoiKH;
   }
 }

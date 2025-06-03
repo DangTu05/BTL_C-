@@ -48,6 +48,8 @@ namespace BTL_C_.src.Controllers.Client
       frmHome.SetCapNhatNVListener(CapNhatNV);
       frmHome.SetDangXuatListener(Logout);
       frmHome.SetTimKiemSPListener(TimKiemSP);
+      frmHome.SetLamMoiHDBListener(LamMoiHDB);
+      frmHome.SetThemKHListener(ThemKH);
     }
     // --- Setup Tab Initial States ---
     private void SetupThongTinNVTab()
@@ -60,6 +62,7 @@ namespace BTL_C_.src.Controllers.Client
       frmHome.SetThemSPListener(frmHome.ThemDong);
       frmHome.SetTaoHDListener(ThemHD);
       frmHome.SetXoaHoaDonTaoListener(XoaHDTao);
+      frmHome.SetTimKiemHDListener(TimkiemHD);
     }
     // --- QuanlyHD Tab Functions ---
     private void LoadDataProductToGridView()
@@ -300,6 +303,58 @@ namespace BTL_C_.src.Controllers.Client
       {
         ErrorUtil.handle(ex, "Đã xảy ra lỗi khi tìm kiếm sản phẩm!!!");
       }
+    }
+    private void TimkiemHD(object sender, EventArgs e)
+    {
+      try
+      {
+        string ngayBan = frmHome.GetNgayTimKiemHoaDon().ToString("dd/MM/yyyy");
+        DataView dv = salesInvoiceDao.findRecordsByName("ngayban", ngayBan);
+        frmHome.GetDgvHoaDonBan().DataSource = dv;
+      }
+      catch (Exception ex)
+      {
+        ErrorUtil.handle(ex, "Đã xảy ra lỗi khi tìm kiếm!!!");
+      }
+    }
+    private void LamMoiHDB(object sender, EventArgs e)
+    {
+      frmHome.SetNgayTimKiemHoaDon(DateTime.Now);
+      LoadDataInvoiceDetailToGridView();
+    }
+    private void ThemKH(object sender, EventArgs e)
+    {
+      string sdt = ConvertUtil.convertSdtToDB(frmHome.GetSDTKH());
+      string tenkh = frmHome.GetTenKH();
+      try
+      {
+        if (!InputValidate.InputKhachHangValidate(sdt, tenkh))
+          return;
+
+        CustomerModel kh = new CustomerModel
+        {
+          makh = GenerateIdUtil.GenerateId("CUS"), // Automatically generate ID  
+          tenkh = tenkh,
+          sdt = sdt,
+          diem = 1
+        };
+
+        if (customerDao.insert(kh))
+        {
+          MessageUtil.ShowInfo("Đã thêm thành công!");
+          LoadDataCustomerToGridView();
+          frmHome.ClearQuanLyKHFields();
+        }
+        else
+        {
+          MessageUtil.ShowError("Thêm không thành công!!!");
+        }
+      }
+      catch (Exception ex)
+      {
+        ErrorUtil.handle(ex, "Đã xảy ra lỗi khi thêm!!!");
+      }
+
     }
   }
 }

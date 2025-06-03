@@ -73,5 +73,9 @@ namespace BTL_C_.src.Validators
     {
       return CheckEmptyFields(tennv, sdt);
     }
+    public static bool InputKhachHangValidate(string sdt, string tenkh)
+    {
+      return CheckEmptyFields(sdt, tenkh);
+    }
   }
 }

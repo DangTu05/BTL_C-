@@ -55,6 +55,9 @@ namespace WebQLCHQuanAo
     public void SetCapNhatNVListener(EventHandler handler) => btnCapNhapNV.Click += handler;
     public void SetDangXuatListener(EventHandler handler) => btnDangXuat.Click += handler;
     public void SetTimKiemSPListener(EventHandler handler) => btnTimkiemSP.Click += handler;
+    public void SetTimKiemHDListener(EventHandler handler) => btnTimkiemHD.Click += handler;
+    public void SetLamMoiHDBListener(EventHandler handler) => btnLamMoi.Click += handler;
+    public void SetThemKHListener(EventHandler handler) => btnThemKH.Click += handler;
     public DataGridView GetDgvTaoHoaDon() => dgvSP;
     public string GetMaKH() => txbMaKH_TaoHD.Text.Trim();
     public string GetTongTien() => txtTongTien.Text.Trim();
@@ -74,7 +77,11 @@ namespace WebQLCHQuanAo
     public DateTime GetNgaySinh() => dtpNgaysinh.Value;
     public Form GetForm() => this;
     public string GetSearchSP() => txtTimkiemSP.Text.Trim();
-
+    public DateTime GetNgayTimKiemHoaDon() => dtpNgayTimkiemHD.Value;
+    public void SetNgayTimKiemHoaDon(DateTime value) => dtpNgayTimkiemHD.Value = value;
+    public DataGridView GetDgvHoaDonBan() => dgvHoaDonBan;
+    public string GetSDTKH() => mskSDTKH.Text.Trim();
+    public string GetTenKH() => txtTenKH.Text.Trim();
     //// --- Helper Methods to Clear Inputs ---
     public void ClearThongTinNVFields()
     {
@@ -96,18 +103,20 @@ namespace WebQLCHQuanAo
 
     public void ClearQuanLyKHFields()
     {
-      txbMaKH.Clear();
-      txbTenKH.Clear();
-      txbDiachiKH.Clear();
-      txbSdtKH.Clear();
-      txbTimkiemKH.Clear();
+      txtMaKH.Clear();
+      txtTenKH.Clear(); ;
+      mskSDTKH.Clear();
+      txtTimkiemKH.Clear();
     }
+
+
 
     //private void SetupDanhSachSPTab()
     //{
     //  LoadDanhSachSanPham();
     //  // this.btnTimkiemSP.Click += new System.EventHandler(this.btnTimkiemSP_Click);
     //}
+
 
     public void SetupTaoHDTab()
     {
@@ -122,7 +131,6 @@ namespace WebQLCHQuanAo
       dgvSP.Columns[4].ReadOnly = true;
       dgvSP.Columns.Add("colThanhTien", "Thành tiền"); // cột 5
       dgvSP.Columns[5].ReadOnly = true;
-
       dgvSP.AutoGenerateColumns = false;
       // Đảm bảo các cột được thêm thủ công trong designer và có DataPropertyName đúng
       // Ví dụ:
@@ -298,10 +306,8 @@ namespace WebQLCHQuanAo
     {
       dgvSanPham.DataSource = dv;
       dgvSanPham.Columns[0].HeaderText = "Mã sản phẩm";
-
       dgvSanPham.Columns[1].HeaderText = "Tên sản phẩm";
       dgvSanPham.Columns[1].Width = 147; // Email rộng 147px
-
       dgvSanPham.Columns[2].HeaderText = "Thể loại";
       dgvSanPham.Columns[3].HeaderText = "Màu";
       dgvSanPham.Columns[4].HeaderText = "Nơi sản xuất";
@@ -314,7 +320,6 @@ namespace WebQLCHQuanAo
       dgvSanPham.Columns[11].HeaderText = "Đơn giá nhập";
       dgvSanPham.Columns[12].HeaderText = "Đơn giá bán";
       dgvSanPham.Columns[13].HeaderText = "Trạng thái";
-
       dgvSanPham.ReadOnly = true;
       dgvSanPham.AllowUserToAddRows = false;
     }

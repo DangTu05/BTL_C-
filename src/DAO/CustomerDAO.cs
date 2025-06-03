@@ -10,7 +10,19 @@ namespace BTL_C_.src.DAO
 {
   internal class CustomerDAO : BaseDAO<CustomerModel>
   {
-
+    public bool insert(CustomerModel customer)
+    {
+      string sql = "Insert into tblKhachHang(makh, tenkh, sdt, point) values(@makh, @tenkh,@sdt,@point)";
+      var parameters = new Dictionary<string, object>
+      {
+        {"@makh",customer.makh },
+        {"@tenkh", customer.tenkh },
+        {"@sdt", customer.sdt },
+        {"@point", customer.diem },
+        {"@makh", customer.makh }
+      };
+      return ExecuteNonQuery(sql, parameters);
+    }
     public bool update(CustomerModel customer)
     {
       string sql = "Update tblKhachHang SET tenkh = @tenkh, sdt = @sdt, point = @point where makh = @makh";
