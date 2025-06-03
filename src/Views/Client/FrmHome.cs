@@ -58,6 +58,9 @@ namespace WebQLCHQuanAo
     public void SetTimKiemHDListener(EventHandler handler) => btnTimkiemHD.Click += handler;
     public void SetLamMoiHDBListener(EventHandler handler) => btnLamMoi.Click += handler;
     public void SetThemKHListener(EventHandler handler) => btnThemKH.Click += handler;
+    public void SetLamMoiFormKH(EventHandler handler) => btnLamMoiKH.Click += handler;
+    public void SetTimKiemKHListener(EventHandler handler) => btnTimkiemKH.Click += handler;
+    public void SetTonKhoListener(EventHandler handler) => btnTonKho.Click += handler;
     public DataGridView GetDgvTaoHoaDon() => dgvSP;
     public string GetMaKH() => txbMaKH_TaoHD.Text.Trim();
     public string GetTongTien() => txtTongTien.Text.Trim();
@@ -78,6 +81,7 @@ namespace WebQLCHQuanAo
     public Form GetForm() => this;
     public string GetSearchSP() => txtTimkiemSP.Text.Trim();
     public DateTime GetNgayTimKiemHoaDon() => dtpNgayTimkiemHD.Value;
+    public String GetSDTSearch() => txtTimkiemKH.Text.Trim();
     public void SetNgayTimKiemHoaDon(DateTime value) => dtpNgayTimkiemHD.Value = value;
     public DataGridView GetDgvHoaDonBan() => dgvHoaDonBan;
     public string GetSDTKH() => mskSDTKH.Text.Trim();
@@ -96,6 +100,7 @@ namespace WebQLCHQuanAo
 
     public void ClearTaoHDFields()
     {
+      txbMaKH_TaoHD.Clear();
       dgvSP.DataSource = null; // Clear DataGridView
       dgvSP.Rows.Clear(); // Đảm bảo DataGridView trống rỗng
       txtTongTien.Text = "0.00";
@@ -103,7 +108,6 @@ namespace WebQLCHQuanAo
 
     public void ClearQuanLyKHFields()
     {
-      txtMaKH.Clear();
       txtTenKH.Clear(); ;
       mskSDTKH.Clear();
       txtTimkiemKH.Clear();
@@ -162,11 +166,11 @@ namespace WebQLCHQuanAo
     public void LoadThongTinNhanVienHienTai(EmployeeModel nv)
     {
       txtMaNV.Text = nv.MaNhanVien;
-      txtTenNV.Text = nv.TenNhanVien;
-      dtpNgaysinh.Value = (DateTime)nv.NgaySinh;
-      if (nv.GioiTinh == "Nam") rdoNam.Checked = true; else rdoNu.Checked = true;
-      txtDiachi.Text = nv.DiaChi;
-      mskSDT.Text = nv.SoDienThoai;
+      txtTenNV.Text = nv.TenNhanVien ?? "";
+      dtpNgaysinh.Value = nv.NgaySinh ?? DateTime.Today;
+      if (nv.GioiTinh != null && nv.GioiTinh == "Nam") rdoNam.Checked = true; else rdoNu.Checked = true;
+      txtDiachi.Text = nv.DiaChi ?? "";
+      mskSDT.Text = nv.SoDienThoai ?? "";
       txtMaNV.ReadOnly = true;
     }
 
@@ -572,126 +576,6 @@ namespace WebQLCHQuanAo
     //  }
     //}
 
-    //private void dgvHoaDonBan_CellClick(object sender, DataGridViewCellEventArgs e)
-    //{
-    //  if (e.RowIndex >= 0 && e.RowIndex < dgvHoaDonBan.Rows.Count)
-    //  {
-    //    DataGridViewRow row = dgvHoaDonBan.Rows[e.RowIndex];
-    //    string soHDB = row.Cells["SoHDB"].Value?.ToString(); // Đảm bảo cột SoHDB có trong dgvHoaDonBan
-    //    if (!string.IsNullOrWhiteSpace(soHDB))
-    //    {
-    //      try
-    //      {
-    //        List<ChiTietHoaDonBan> chiTietList = hoaDonBanController.GetChiTietHoaDonBan(soHDB);
-    //        dgvChiTietHoaDon.DataSource = chiTietList;
-    //        // Cần gán colTenSP nếu bạn muốn hiển thị Tên SP trong dgvChiTietHoaDon
-    //        // foreach (var item in chiTietList)
-    //        // {
-    //        //     SanPham sp = sanPhamController.GetSanPhamDetails(item.MaSP);
-    //        //     if (sp != null)
-    //        //     {
-    //        //         item.TenSP = sp.TenSP; // Nếu ChiTietHoaDonBan có thuộc tính TenSP
-    //        //     }
-    //        // }
-    //      }
-    //      catch (Exception ex)
-    //      {
-    //        MessageBox.Show("Lỗi khi tải chi tiết hóa đơn: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-    //      }
-    //    }
-    //  }
-    //}
 
-    //// --- QuanlyKH Tab Functions ---
-    //private void LoadDanhSachKhachHang()
-    //{
-    //  try
-    //  {
-    //    List<KhachHang> khachHangList = khachHangController.GetAllKhachHang();
-    //    dgvDanhsachKH.DataSource = khachHangList;
-    //  }
-    //  catch (Exception ex)
-    //  {
-    //    MessageBox.Show("Lỗi khi tải danh sách khách hàng: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-    //  }
-    //}
-
-    //private void btnThemKH_Click(object sender, EventArgs e)
-    //{
-    //  try
-    //  {
-    //    if (string.IsNullOrWhiteSpace(txbTenKH.Text) || string.IsNullOrWhiteSpace(txbSdtKH.Text))
-    //    {
-    //      MessageBox.Show("Tên khách hàng và Số điện thoại không được để trống.", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-    //      return;
-    //    }
-
-    //    // Kiểm tra xem khách hàng có tồn tại không (bằng SĐT hoặc tên), nếu không cho trùng SĐT chẳng hạn
-    //    // Hiện tại đang sinh mã KH tự động và thêm mới, nên sẽ luôn thêm nếu SĐT hợp lệ.
-    //    // Thêm kiểm tra trùng SĐT nếu cần:
-    //    // if (khachHangController.IsPhoneNumberExists(txbSdtKH.Text)) { MessageBox.Show("Số điện thoại đã tồn tại.", "Lỗi"); return; }
-
-    //    KhachHang newKhachHang = new KhachHang
-    //    {
-    //      MaKH = khachHangController.GenerateNewMaKH(), // Tự động sinh mã
-    //      TenKH = txbTenKH.Text,
-    //      DiaChi = txbDiachiKH.Text,
-    //      SoDienThoai = txbSdtKH.Text,
-    //      Deleted = 0
-    //    };
-
-    //    if (khachHangController.AddKhachHang(newKhachHang))
-    //    {
-    //      MessageBox.Show("Thêm khách hàng thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-    //      LoadDanhSachKhachHang(); // Cập nhật DataGridView
-    //      ClearQuanLyKHFields();
-    //    }
-    //    else
-    //    {
-    //      MessageBox.Show("Thêm khách hàng thất bại.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-    //    }
-    //  }
-    //  catch (Exception ex)
-    //  {
-    //    MessageBox.Show("Lỗi khi thêm khách hàng: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-    //  }
-    //}
-
-    //private void btnTimkiemKH_Click(object sender, EventArgs e)
-    //{
-    //  try
-    //  {
-    //    string keyword = txbTimkiemKH.Text.Trim();
-    //    List<KhachHang> searchResults = khachHangController.SearchKhachHang(keyword);
-    //    dgvDanhsachKH.DataSource = searchResults;
-
-    //    if (searchResults.Count == 0 && !string.IsNullOrWhiteSpace(keyword))
-    //    {
-    //      MessageBox.Show("Không tìm thấy khách hàng nào phù hợp.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-    //    }
-    //  }
-    //  catch (Exception ex)
-    //  {
-    //    MessageBox.Show("Lỗi khi tìm kiếm khách hàng: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-    //  }
-    //}
-
-    //private void dgvDanhsachKH_CellClick(object sender, DataGridViewCellEventArgs e)
-    //{
-    //  if (e.RowIndex >= 0 && e.RowIndex < dgvDanhsachKH.Rows.Count)
-    //  {
-    //    DataGridViewRow row = dgvDanhsachKH.Rows[e.RowIndex];
-    //    txbMaKH.Text = row.Cells["MaKH"].Value?.ToString();
-    //    txbTenKH.Text = row.Cells["TenKH"].Value?.ToString();
-    //    txbDiachiKH.Text = row.Cells["DiaChi"].Value?.ToString();
-    //    txbSdtKH.Text = row.Cells["SoDienThoai"].Value?.ToString();
-    //  }
-    //}
-
-    //// --- Form Load Event ---
-    //private void frmNhanVien_Load(object sender, EventArgs e)
-    //{
-    //  // Các setup ban đầu đã được gọi trong constructor
-    //}
   }
 }

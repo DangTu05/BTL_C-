@@ -16,6 +16,7 @@ namespace BTL_C_.src.Controllers.Admin
     private TaskDAO taskDao;
     private SalesInvoiceDAO salesInvoiceDao;
     private PurchaseInvoiceDAO purchaseInvoiceDao;
+    private InvoiceDetailDAO invoiceDetailDao;
     private HomeController homeController;
     public DashBoardController(DashBoardControl viewDashBoardControl, HomeController homeController)
     {
@@ -29,6 +30,7 @@ namespace BTL_C_.src.Controllers.Admin
       taskDao = new TaskDAO();
       salesInvoiceDao = new SalesInvoiceDAO();
       purchaseInvoiceDao = new PurchaseInvoiceDAO();
+      invoiceDetailDao = new InvoiceDetailDAO();
       this.homeController = homeController;
       loadFormData();
       SetUpEventListeners();
@@ -45,7 +47,10 @@ namespace BTL_C_.src.Controllers.Admin
       int slhdn = purchaseInvoiceDao.getCount();
       int slhdb = salesInvoiceDao.getCount();
       string tenkhnb = customerDao.getVIPCustomer().tenkh;
-      viewDashBoardControl.loadFormData(slsp, slncc, slkh, slnv, slcl, sll, slcv, slhdn, slhdb, tenkhnb);
+      int thang = DateTime.Now.Month - 1;
+      decimal tongdoanhthu = invoiceDetailDao.GetDoanhThuCuaThangTruoc();
+      //decimal doanhthu =
+      viewDashBoardControl.loadFormData(slsp, slncc, slkh, slnv, slcl, sll, slcv, slhdn, slhdb, tenkhnb, thang, tongdoanhthu);
     }
     private void SetUpEventListeners()
     {

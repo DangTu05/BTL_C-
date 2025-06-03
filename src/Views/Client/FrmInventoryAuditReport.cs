@@ -91,6 +91,7 @@ namespace BTL_C_.src.Views.Client
     }
     public DateTime GetStartDate() => dtpNgayBatDauKiemDuyet.Value;
     public DateTime GetEndDate() => dtpNgayKetThucKiemDuyet.Value;
+    public Form GetForm() => this;
 
   }
 }

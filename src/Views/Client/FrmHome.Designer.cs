@@ -51,6 +51,7 @@ namespace WebQLCHQuanAo
             this.lbTenNV = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.tpDanhsachSP = new System.Windows.Forms.TabPage();
+            this.btnTonKho = new System.Windows.Forms.Button();
             this.btnTimkiemSP = new System.Windows.Forms.Button();
             this.txtTimkiemSP = new System.Windows.Forms.TextBox();
             this.dgvSanPham = new System.Windows.Forms.DataGridView();
@@ -81,15 +82,15 @@ namespace WebQLCHQuanAo
             this.dgvHoaDonBan = new System.Windows.Forms.DataGridView();
             this.lbQuanlyHD = new System.Windows.Forms.Label();
             this.tpQuanlyKH = new System.Windows.Forms.TabPage();
+            this.btnLamMoiKH = new System.Windows.Forms.Button();
+            this.mskSDTKH = new System.Windows.Forms.MaskedTextBox();
             this.txtTenKH = new System.Windows.Forms.TextBox();
             this.lbTenKH = new System.Windows.Forms.Label();
             this.btnThemKH = new System.Windows.Forms.Button();
             this.btnTimkiemKH = new System.Windows.Forms.Button();
             this.dgvDanhsachKH = new System.Windows.Forms.DataGridView();
             this.txtTimkiemKH = new System.Windows.Forms.TextBox();
-            this.txtMaKH = new System.Windows.Forms.TextBox();
             this.lbDienthoaiKH = new System.Windows.Forms.Label();
-            this.lbMaKH = new System.Windows.Forms.Label();
             this.lbTimkiemKH = new System.Windows.Forms.Label();
             this.lbQuanlyKH = new System.Windows.Forms.Label();
             this.colMaSP = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -98,8 +99,6 @@ namespace WebQLCHQuanAo
             this.colDonGia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colGiamGia = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colThanhTien = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.mskSDTKH = new System.Windows.Forms.MaskedTextBox();
-            this.btnLamMoiKH = new System.Windows.Forms.Button();
             this.tcNhanvien.SuspendLayout();
             this.tpThongtinNV.SuspendLayout();
             this.tpDanhsachSP.SuspendLayout();
@@ -329,6 +328,7 @@ namespace WebQLCHQuanAo
             // 
             // tpDanhsachSP
             // 
+            this.tpDanhsachSP.Controls.Add(this.btnTonKho);
             this.tpDanhsachSP.Controls.Add(this.btnTimkiemSP);
             this.tpDanhsachSP.Controls.Add(this.txtTimkiemSP);
             this.tpDanhsachSP.Controls.Add(this.dgvSanPham);
@@ -341,6 +341,15 @@ namespace WebQLCHQuanAo
             this.tpDanhsachSP.TabIndex = 1;
             this.tpDanhsachSP.Text = "Danh sách sản phẩm";
             this.tpDanhsachSP.UseVisualStyleBackColor = true;
+            // 
+            // btnTonKho
+            // 
+            this.btnTonKho.Location = new System.Drawing.Point(674, 66);
+            this.btnTonKho.Name = "btnTonKho";
+            this.btnTonKho.Size = new System.Drawing.Size(96, 32);
+            this.btnTonKho.TabIndex = 86;
+            this.btnTonKho.Text = "Tồn kho";
+            this.btnTonKho.UseVisualStyleBackColor = true;
             // 
             // btnTimkiemSP
             // 
@@ -657,9 +666,7 @@ namespace WebQLCHQuanAo
             this.tpQuanlyKH.Controls.Add(this.btnTimkiemKH);
             this.tpQuanlyKH.Controls.Add(this.dgvDanhsachKH);
             this.tpQuanlyKH.Controls.Add(this.txtTimkiemKH);
-            this.tpQuanlyKH.Controls.Add(this.txtMaKH);
             this.tpQuanlyKH.Controls.Add(this.lbDienthoaiKH);
-            this.tpQuanlyKH.Controls.Add(this.lbMaKH);
             this.tpQuanlyKH.Controls.Add(this.lbTimkiemKH);
             this.tpQuanlyKH.Controls.Add(this.lbQuanlyKH);
             this.tpQuanlyKH.Location = new System.Drawing.Point(4, 25);
@@ -670,10 +677,27 @@ namespace WebQLCHQuanAo
             this.tpQuanlyKH.Text = "Quản lý khách hàng";
             this.tpQuanlyKH.UseVisualStyleBackColor = true;
             // 
+            // btnLamMoiKH
+            // 
+            this.btnLamMoiKH.Location = new System.Drawing.Point(424, 142);
+            this.btnLamMoiKH.Name = "btnLamMoiKH";
+            this.btnLamMoiKH.Size = new System.Drawing.Size(90, 32);
+            this.btnLamMoiKH.TabIndex = 96;
+            this.btnLamMoiKH.Text = "Làm Mới";
+            this.btnLamMoiKH.UseVisualStyleBackColor = true;
+            // 
+            // mskSDTKH
+            // 
+            this.mskSDTKH.Location = new System.Drawing.Point(533, 63);
+            this.mskSDTKH.Mask = "(999) 000-0000";
+            this.mskSDTKH.Name = "mskSDTKH";
+            this.mskSDTKH.Size = new System.Drawing.Size(232, 22);
+            this.mskSDTKH.TabIndex = 95;
+            // 
             // txtTenKH
             // 
             this.txtTenKH.Font = new System.Drawing.Font("Arial Narrow", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTenKH.Location = new System.Drawing.Point(174, 100);
+            this.txtTenKH.Location = new System.Drawing.Point(173, 63);
             this.txtTenKH.Name = "txtTenKH";
             this.txtTenKH.Size = new System.Drawing.Size(216, 27);
             this.txtTenKH.TabIndex = 94;
@@ -682,7 +706,7 @@ namespace WebQLCHQuanAo
             // 
             this.lbTenKH.AutoSize = true;
             this.lbTenKH.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbTenKH.Location = new System.Drawing.Point(10, 105);
+            this.lbTenKH.Location = new System.Drawing.Point(10, 68);
             this.lbTenKH.Name = "lbTenKH";
             this.lbTenKH.Size = new System.Drawing.Size(140, 19);
             this.lbTenKH.TabIndex = 93;
@@ -726,15 +750,6 @@ namespace WebQLCHQuanAo
             this.txtTimkiemKH.Size = new System.Drawing.Size(295, 27);
             this.txtTimkiemKH.TabIndex = 89;
             // 
-            // txtMaKH
-            // 
-            this.txtMaKH.Font = new System.Drawing.Font("Arial Narrow", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMaKH.Location = new System.Drawing.Point(174, 62);
-            this.txtMaKH.Name = "txtMaKH";
-            this.txtMaKH.ReadOnly = true;
-            this.txtMaKH.Size = new System.Drawing.Size(216, 27);
-            this.txtMaKH.TabIndex = 86;
-            // 
             // lbDienthoaiKH
             // 
             this.lbDienthoaiKH.AutoSize = true;
@@ -745,21 +760,11 @@ namespace WebQLCHQuanAo
             this.lbDienthoaiKH.TabIndex = 85;
             this.lbDienthoaiKH.Text = "Điện thoại:";
             // 
-            // lbMaKH
-            // 
-            this.lbMaKH.AutoSize = true;
-            this.lbMaKH.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbMaKH.Location = new System.Drawing.Point(17, 67);
-            this.lbMaKH.Name = "lbMaKH";
-            this.lbMaKH.Size = new System.Drawing.Size(133, 19);
-            this.lbMaKH.TabIndex = 83;
-            this.lbMaKH.Text = "Mã khách hàng:";
-            // 
             // lbTimkiemKH
             // 
             this.lbTimkiemKH.AutoSize = true;
             this.lbTimkiemKH.Font = new System.Drawing.Font("Arial", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbTimkiemKH.Location = new System.Drawing.Point(80, 202);
+            this.lbTimkiemKH.Location = new System.Drawing.Point(70, 202);
             this.lbTimkiemKH.Name = "lbTimkiemKH";
             this.lbTimkiemKH.Size = new System.Drawing.Size(154, 19);
             this.lbTimkiemKH.TabIndex = 82;
@@ -816,23 +821,6 @@ namespace WebQLCHQuanAo
             this.colThanhTien.MinimumWidth = 6;
             this.colThanhTien.Name = "colThanhTien";
             this.colThanhTien.Width = 125;
-            // 
-            // mskSDTKH
-            // 
-            this.mskSDTKH.Location = new System.Drawing.Point(533, 63);
-            this.mskSDTKH.Mask = "(999) 000-0000";
-            this.mskSDTKH.Name = "mskSDTKH";
-            this.mskSDTKH.Size = new System.Drawing.Size(232, 22);
-            this.mskSDTKH.TabIndex = 95;
-            // 
-            // btnLamMoiKH
-            // 
-            this.btnLamMoiKH.Location = new System.Drawing.Point(424, 142);
-            this.btnLamMoiKH.Name = "btnLamMoiKH";
-            this.btnLamMoiKH.Size = new System.Drawing.Size(90, 32);
-            this.btnLamMoiKH.TabIndex = 96;
-            this.btnLamMoiKH.Text = "Làm Mới";
-            this.btnLamMoiKH.UseVisualStyleBackColor = true;
             // 
             // FrmHome
             // 
@@ -915,8 +903,6 @@ namespace WebQLCHQuanAo
     private System.Windows.Forms.Button btnTimkiemKH;
     private System.Windows.Forms.DataGridView dgvDanhsachKH;
     private System.Windows.Forms.TextBox txtTimkiemKH;
-    private System.Windows.Forms.TextBox txtMaKH;
-    private System.Windows.Forms.Label lbMaKH;
     private System.Windows.Forms.Label lbTimkiemKH;
     private System.Windows.Forms.Label lbQuanlyKH;
     private System.Windows.Forms.Label lbDienthoaiKH;
@@ -934,5 +920,6 @@ namespace WebQLCHQuanAo
     private Button btnLamMoi;
     private MaskedTextBox mskSDTKH;
     private Button btnLamMoiKH;
+    private Button btnTonKho;
   }
 }

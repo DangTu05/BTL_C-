@@ -55,7 +55,7 @@ namespace BTL_C_.src.Controllers
       }
       catch (Exception ex)
       {
-        ErrorUtil.handle(ex, "Đăng nhập không thành công!!!");
+        ErrorUtil.handle(ex, "Đã xảy ra lỗi!!!");
       }
     }
   }

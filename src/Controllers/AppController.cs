@@ -2,6 +2,7 @@
 using BTL_C_.src.Controllers.Client;
 using BTL_C_.src.Views;
 using BTL_C_.src.Views.Admin;
+using BTL_C_.src.Views.Client;
 using System.Windows.Forms;
 using WebQLCHQuanAo;
 
@@ -86,5 +87,13 @@ namespace BTL_C_.src.Controllers
       frmCreatePurchaseInvoice.Show();
       previousForm.Hide();
     }
+    public static void StartFrmInventoryAuditReport(Form previousForm)
+    {
+      FrmInventoryAuditReport frmInventoryAuditReport = new FrmInventoryAuditReport();
+      InventoryAuditReportController inventoryAuditReportController = new InventoryAuditReportController(frmInventoryAuditReport);
+      frmInventoryAuditReport.Show();
+      previousForm.Hide();
+    }
+
   }
 }

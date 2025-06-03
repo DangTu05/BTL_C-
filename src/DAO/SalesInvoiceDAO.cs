@@ -119,12 +119,13 @@ namespace BTL_C_.src.DAO
               return false;
             }
           }
-
+          ProductDAO productDAO = new ProductDAO();
           // Thêm chi tiết hóa đơn
           foreach (var ct in chiTietList)
           {
             string insertCTQuery = @"INSERT INTO tblchitiethoadonban (sohdb, maquanao, soluong, dongia,giamgia,thanhtien)
                                          VALUES (@sohdb, @masp, @soluong, @dongia,@giamgia,@thanhtien)";
+
             using (SqlCommand cmd = new SqlCommand(insertCTQuery, conn, transaction))
             {
               cmd.Parameters.AddWithValue("@sohdb", ct.mahdb);
@@ -135,6 +136,11 @@ namespace BTL_C_.src.DAO
               cmd.Parameters.AddWithValue("@thanhtien", ct.thanhtien);
 
               if (cmd.ExecuteNonQuery() <= 0)
+              {
+                transaction.Rollback();
+                return false;
+              }
+              if (!productDAO.UpdateCount(ct.masp, ct.soluong, conn, transaction))
               {
                 transaction.Rollback();
                 return false;

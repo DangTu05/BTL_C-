@@ -21,6 +21,7 @@ namespace BTL_C_.src.Views.Admin
     public void SetThemListener(EventHandler handler) => btnThem.Click += handler;
     public void SetTaoListener(EventHandler handler) => btnTao.Click += handler;
     public void SetXoaListener(EventHandler handler) => btnXoa.Click += handler;
+    public void SetThoatListener(EventHandler handler) => btnThoat.Click += handler;
     public void SetCellEndEditListener(DataGridViewCellEventHandler handler) => dgvCTHDN.CellEndEdit += handler;
     public void SetUserAddedRowListener(DataGridViewRowEventHandler handler) => dgvCTHDN.UserAddedRow += handler;
     public ComboBox GetCmbNCC() => cmbNhaCungCap;
@@ -29,6 +30,7 @@ namespace BTL_C_.src.Views.Admin
     public string GetGhiChu() => txtGhiChu.Text.Trim();
     public decimal GetTongTien() => nudTongTien.Value;
     public DateTime GetNgayNhap() => dtpNgayNhap.Value;
+    public Form GetForm() => this;
     public void SetupDataGridView()
     {
       //ClearTaoHDFields(); // Sinh mã hóa đơn mới và xóa các trường

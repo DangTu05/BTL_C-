@@ -47,6 +47,7 @@ namespace BTL_C_.src.Controllers.Admin
       frmCreatePurchaseInvoice.SetXoaListener(XoaHDTao);
       frmCreatePurchaseInvoice.SetCellEndEditListener(dgvChiTietHoaDonban_CellEndEdit);
       frmCreatePurchaseInvoice.SetUserAddedRowListener(dgvChiTietHoaDonban_UserAddedRow);
+      frmCreatePurchaseInvoice.SetThoatListener(RedirectDashBoard);
     }
     private void SetupEventForHDNListener()
     {
@@ -314,5 +315,6 @@ namespace BTL_C_.src.Controllers.Admin
     {
       ExcelUtil.Export(viewPurchaseInvoiceControl.GetDgvCTHDN(), "ChiTietHDN");
     }
+    private void RedirectDashBoard(object sender, EventArgs e) => AppController.startDashBoard(frmCreatePurchaseInvoice.GetForm());
   }
 }

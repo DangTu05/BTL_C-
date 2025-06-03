@@ -50,6 +50,7 @@ namespace BTL_C_.src.Controllers.Client
       frmHome.SetTimKiemSPListener(TimKiemSP);
       frmHome.SetLamMoiHDBListener(LamMoiHDB);
       frmHome.SetThemKHListener(ThemKH);
+      frmHome.SetLamMoiFormKH(ResetFormKH);
     }
     // --- Setup Tab Initial States ---
     private void SetupThongTinNVTab()
@@ -63,6 +64,8 @@ namespace BTL_C_.src.Controllers.Client
       frmHome.SetTaoHDListener(ThemHD);
       frmHome.SetXoaHoaDonTaoListener(XoaHDTao);
       frmHome.SetTimKiemHDListener(TimkiemHD);
+      frmHome.SetTonKhoListener(RedirectTonkho);
+      frmHome.SetTimKiemKHListener(TimKiemKhachHang);
     }
     // --- QuanlyHD Tab Functions ---
     private void LoadDataProductToGridView()
@@ -116,7 +119,16 @@ namespace BTL_C_.src.Controllers.Client
     {
       try
       {
-
+        CustomerModel kh = null;
+        if (!string.IsNullOrWhiteSpace(frmHome.GetMaKH()))
+        {
+          kh = customerDao.findRecordByField("makh", frmHome.GetMaKH());
+          if (kh == null)
+          {
+            MessageUtil.ShowInfo("Không có khách hàng có mã như vậy!");
+            return;
+          }
+        }
         // Initialize the list if not already done  
         List<InvoiceDetailModel> currentChiTietHoaDonList = new List<InvoiceDetailModel>();
         string sohdb = GenerateIdUtil.GenerateId("RE");
@@ -140,6 +152,7 @@ namespace BTL_C_.src.Controllers.Client
               MessageUtil.ShowWarning("Dữ liệu chi tiết hóa đơn không hợp lệ. Vui lòng kiểm tra lại các dòng!");
               return;
             }
+            //if (sol)
             currentChiTietHoaDonList.Add(new InvoiceDetailModel
             {
               mahdb = sohdb, // Fix: Provide the required 'mahdb' parameter  
@@ -166,12 +179,19 @@ namespace BTL_C_.src.Controllers.Client
           ngayban = DateTime.Now,
           tongtien = !string.IsNullOrWhiteSpace(frmHome.GetTongTien()) ? (float)decimal.Parse(frmHome.GetTongTien()) : 1f,
         };
-
         if (salesInvoiceDao.AddHoaDonBan(newHoaDon, currentChiTietHoaDonList))
         {
           MessageUtil.ShowInfo("Thêm hóa đơn thành công!");
+          if (kh != null)
+          {
+            kh.diem = kh.diem + 1;
+            customerDao.UpdatePoint(kh);
+          }
+
           frmHome.ClearTaoHDFields();
           LoadDataInvoiceDetailToGridView(); // Cập nhật danh sách hóa đơn ở tab Quản lý HD
+          LoadDataProductToGridView();
+          LoadDataCustomerToGridView();
         }
         else
         {
@@ -180,12 +200,13 @@ namespace BTL_C_.src.Controllers.Client
       }
       catch (Exception ex)
       {
-        ErrorUtil.handle(ex, "Đã xảy ra lỗi khi tạo hóa đơn!!!");
+        ErrorUtil.handle(ex, ex.Message);
       }
     }
     //// Xử lý khi người dùng kết thúc chỉnh sửa một ô trong DataGridView
     private void dgvChiTietHoaDonban_CellEndEdit(object sender, DataGridViewCellEventArgs e)
     {
+      int sltonkho = 0;
       if (e.RowIndex < 0 || e.RowIndex >= frmHome.GetDgvTaoHoaDon().Rows.Count - 1) return; // Tránh hàng thêm mới cuối cùng  
 
       DataGridViewRow row = frmHome.GetDgvTaoHoaDon().Rows[e.RowIndex];
@@ -200,6 +221,17 @@ namespace BTL_C_.src.Controllers.Client
           ProductModel sp = productDao.findRecordByField("maquanao", maSP);
           if (sp != null)
           {
+            if (sp.trangthai != null && sp.trangthai.Equals("ngưng bán"))
+            {
+              MessageUtil.ShowWarning("Sản phẩm này tạm thời đã ngưng bán!");
+              return;
+            }
+            if (sp.sltonkho == 0)
+            {
+              MessageUtil.ShowWarning("Sản phẩm này đã hết hàng!");
+              return;
+            }
+            sltonkho = sp.sltonkho;
             row.Cells["colTenSP"].Value = "Tên: " + sp.tenquanao; // Placeholder or actual product name if available  
             row.Cells["colDonGia"].Value = sp.dongiaban;
             // Mặc định giảm giá 0% nếu chưa có  
@@ -207,10 +239,11 @@ namespace BTL_C_.src.Controllers.Client
             {
               row.Cells["colGiamGia"].Value = 0m;
             }
+
           }
           else
           {
-            MessageBox.Show("Không tìm thấy sản phẩm với mã này.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            MessageUtil.ShowWarning("Không tìm thấy sản phẩm với mã như này!");
             row.Cells["colMaSP"].Value = null; // Clear invalid input  
             row.Cells["colTenSP"].Value = null;
             row.Cells["colDonGia"].Value = 0m;
@@ -222,6 +255,26 @@ namespace BTL_C_.src.Controllers.Client
       // Tính toán Thành tiền khi Số lượng, Đơn giá, Giảm giá thay đổi
       if (colName == "colSoLuong" || colName == "colDonGia" || colName == "colGiamGia" || colName == "colMaSP")
       {
+        object value = row.Cells["colSoLuong"].Value;
+        int soluong = (value != null && value != DBNull.Value) ? Convert.ToInt32(value) : 0;
+
+        // Tìm lại sản phẩm để kiểm tra tồn kho
+        string maSP = row.Cells["colMaSP"].Value?.ToString();
+        if (!string.IsNullOrWhiteSpace(maSP))
+        {
+          ProductModel sp = productDao.findRecordByField("maquanao", maSP);
+          if (sp != null)
+          {
+            sltonkho = sp.sltonkho;
+
+            if (soluong > sltonkho)
+            {
+              MessageUtil.ShowWarning("Số lượng không đủ!");
+              row.Cells["colSoLuong"].Value = 0;
+              return;
+            }
+          }
+        }
         frmHome.CalculateThanhTienForRow(row);
         frmHome.UpdateOverallTongTien();
       }
@@ -256,7 +309,7 @@ namespace BTL_C_.src.Controllers.Client
           NgaySinh = frmHome.GetNgaySinh(),
           GioiTinh = string.IsNullOrWhiteSpace(frmHome.GetGT()) ? null : frmHome.GetGT(),
           DiaChi = string.IsNullOrWhiteSpace(frmHome.GetDiaChi()) ? null : frmHome.GetDiaChi(),
-          SoDienThoai = frmHome.GetSdt(),
+          SoDienThoai = ConvertUtil.convertSdtToDB(frmHome.GetSdt()),
         };
 
         // Cập nhật
@@ -335,11 +388,11 @@ namespace BTL_C_.src.Controllers.Client
         {
           makh = GenerateIdUtil.GenerateId("CUS"), // Automatically generate ID  
           tenkh = tenkh,
-          sdt = sdt,
+          sdt = ConvertUtil.convertSdtToDB(sdt),
           diem = 1
         };
 
-        if (customerDao.insert(kh))
+        if (customerDao.Insert(kh))
         {
           MessageUtil.ShowInfo("Đã thêm thành công!");
           LoadDataCustomerToGridView();
@@ -355,6 +408,34 @@ namespace BTL_C_.src.Controllers.Client
         ErrorUtil.handle(ex, "Đã xảy ra lỗi khi thêm!!!");
       }
 
+    }
+    private void RedirectTonkho(object sender, EventArgs e)
+    {
+      AppController.StartFrmInventoryAuditReport(frmHome.GetForm());
+    }
+    private void ResetFormKH(object sender, EventArgs e)
+    {
+      frmHome.ClearQuanLyKHFields();
+      LoadDataCustomerToGridView();
+    }
+    private void TimKiemKhachHang(object sender, EventArgs e)
+    {
+      try
+      {
+        CustomerModel customer = customerDao.findRecordByField("sdt", frmHome.GetSDTSearch());
+        if (customer == null)
+        {
+          MessageUtil.ShowInfo("Không có khách hàng nào có số điện thoại như vậy!");
+          return;
+        }
+        DataView dv = ConvertToDataView.ObjectToDataView(customer);
+        frmHome.LoadDataCustomerToGridView(dv);
+
+      }
+      catch (Exception ex)
+      {
+        ErrorUtil.handle(ex, "Đã xảy ra lỗi khi tìm kiếm!!!");
+      }
     }
   }
 }

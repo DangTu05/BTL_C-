@@ -84,5 +84,38 @@ namespace BTL_C_.src.DAO
         }
       }
     }
+    public decimal GetDoanhThuCuaThangTruoc()
+    {
+      decimal doanhThu = 0;
+
+      string sql = @"
+        SELECT SUM(tongtien) 
+        FROM tblHoaDonBan 
+        WHERE deleted = 0 
+          AND MONTH(ngayban) = MONTH(DATEADD(MONTH, -1, GETDATE())) 
+          AND YEAR(ngayban) = YEAR(DATEADD(MONTH, -1, GETDATE()))";
+
+      using (SqlConnection conn = ConfigDB.GetConnection())
+      using (SqlCommand cmd = new SqlCommand(sql, conn))
+      {
+        try
+        {
+          conn.Open();
+          object result = cmd.ExecuteScalar();
+          if (result != DBNull.Value && result != null)
+          {
+            doanhThu = Convert.ToDecimal(result);
+          }
+        }
+        catch (Exception ex)
+        {
+          // Ghi log hoặc xử lý lỗi nếu cần
+          throw new Exception("Lỗi khi lấy doanh thu trong DAO!!!", ex);
+        }
+      }
+
+      return doanhThu;
+    }
+
   }
 }

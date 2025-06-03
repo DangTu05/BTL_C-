@@ -53,8 +53,8 @@
             this.lblSLHDB = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.panel9 = new System.Windows.Forms.Panel();
-            this.lblSLCV = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
+            this.lblSoTien = new System.Windows.Forms.Label();
+            this.lblDoanhThuThang = new System.Windows.Forms.Label();
             this.panel10 = new System.Windows.Forms.Panel();
             this.lblKhachHangNoiBat = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
@@ -303,37 +303,37 @@
             // panel9
             // 
             this.panel9.BackColor = System.Drawing.Color.LawnGreen;
-            this.panel9.Controls.Add(this.lblSLCV);
-            this.panel9.Controls.Add(this.label9);
+            this.panel9.Controls.Add(this.lblSoTien);
+            this.panel9.Controls.Add(this.lblDoanhThuThang);
             this.panel9.Location = new System.Drawing.Point(87, 347);
             this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(149, 130);
+            this.panel9.Size = new System.Drawing.Size(251, 130);
             this.panel9.TabIndex = 8;
             // 
-            // lblSLCV
+            // lblSoTien
             // 
-            this.lblSLCV.AutoSize = true;
-            this.lblSLCV.Location = new System.Drawing.Point(65, 87);
-            this.lblSLCV.Name = "lblSLCV";
-            this.lblSLCV.Size = new System.Drawing.Size(14, 16);
-            this.lblSLCV.TabIndex = 1;
-            this.lblSLCV.Text = "0";
+            this.lblSoTien.AutoSize = true;
+            this.lblSoTien.Location = new System.Drawing.Point(41, 78);
+            this.lblSoTien.Name = "lblSoTien";
+            this.lblSoTien.Size = new System.Drawing.Size(14, 16);
+            this.lblSoTien.TabIndex = 1;
+            this.lblSoTien.Text = "0";
             // 
-            // label9
+            // lblDoanhThuThang
             // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(3, 17);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(127, 16);
-            this.label9.TabIndex = 0;
-            this.label9.Text = "  Số lượng công việc";
+            this.lblDoanhThuThang.AutoSize = true;
+            this.lblDoanhThuThang.Location = new System.Drawing.Point(50, 17);
+            this.lblDoanhThuThang.Name = "lblDoanhThuThang";
+            this.lblDoanhThuThang.Size = new System.Drawing.Size(70, 16);
+            this.lblDoanhThuThang.TabIndex = 0;
+            this.lblDoanhThuThang.Text = "Doanh thu ";
             // 
             // panel10
             // 
             this.panel10.BackColor = System.Drawing.Color.LawnGreen;
             this.panel10.Controls.Add(this.lblKhachHangNoiBat);
             this.panel10.Controls.Add(this.label10);
-            this.panel10.Location = new System.Drawing.Point(302, 347);
+            this.panel10.Location = new System.Drawing.Point(380, 347);
             this.panel10.Name = "panel10";
             this.panel10.Size = new System.Drawing.Size(229, 130);
             this.panel10.TabIndex = 9;
@@ -361,7 +361,7 @@
             this.pnlSanPhamNoiBat.Controls.Add(this.lblSanPhamNoiBat);
             this.pnlSanPhamNoiBat.Controls.Add(this.label11);
             this.pnlSanPhamNoiBat.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pnlSanPhamNoiBat.Location = new System.Drawing.Point(614, 347);
+            this.pnlSanPhamNoiBat.Location = new System.Drawing.Point(660, 347);
             this.pnlSanPhamNoiBat.Name = "pnlSanPhamNoiBat";
             this.pnlSanPhamNoiBat.Size = new System.Drawing.Size(233, 130);
             this.pnlSanPhamNoiBat.TabIndex = 10;
@@ -445,7 +445,7 @@
     private System.Windows.Forms.Panel pnlHoaDonBan;
     private System.Windows.Forms.Label label8;
     private System.Windows.Forms.Panel panel9;
-    private System.Windows.Forms.Label label9;
+    private System.Windows.Forms.Label lblDoanhThuThang;
     private System.Windows.Forms.Panel panel10;
     private System.Windows.Forms.Label label10;
     private System.Windows.Forms.Panel pnlSanPhamNoiBat;
@@ -458,7 +458,7 @@
     private System.Windows.Forms.Label lblSLL;
     private System.Windows.Forms.Label lblSLHDN;
     private System.Windows.Forms.Label lblSLHDB;
-    private System.Windows.Forms.Label lblSLCV;
+    private System.Windows.Forms.Label lblSoTien;
     private System.Windows.Forms.Label lblKhachHangNoiBat;
     private System.Windows.Forms.Label lblSanPhamNoiBat;
   }

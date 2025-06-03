@@ -1,5 +1,6 @@
 ﻿using BTL_C_.Configs;
 using BTL_C_.src.Models;
+using DocumentFormat.OpenXml.Spreadsheet;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -10,7 +11,7 @@ namespace BTL_C_.src.DAO
 {
   internal class CustomerDAO : BaseDAO<CustomerModel>
   {
-    public bool insert(CustomerModel customer)
+    public bool Insert(CustomerModel customer)
     {
       string sql = "Insert into tblKhachHang(makh, tenkh, sdt, point) values(@makh, @tenkh,@sdt,@point)";
       var parameters = new Dictionary<string, object>
@@ -19,7 +20,6 @@ namespace BTL_C_.src.DAO
         {"@tenkh", customer.tenkh },
         {"@sdt", customer.sdt },
         {"@point", customer.diem },
-        {"@makh", customer.makh }
       };
       return ExecuteNonQuery(sql, parameters);
     }
@@ -30,6 +30,16 @@ namespace BTL_C_.src.DAO
       {
         {"@tenkh", customer.tenkh },
         {"@sdt", customer.sdt },
+        {"@point", customer.diem },
+        {"@makh", customer.makh }
+      };
+      return ExecuteNonQuery(sql, parameters);
+    }
+    public bool UpdatePoint(CustomerModel customer)
+    {
+      string sql = "Update tblKhachHang SET point=@point where makh=@makh";
+      var parameters = new Dictionary<string, object>
+      {
         {"@point", customer.diem },
         {"@makh", customer.makh }
       };

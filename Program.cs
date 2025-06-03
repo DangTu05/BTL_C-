@@ -35,7 +35,7 @@ namespace BTL_C_
       //view.Load += (s, e) =>
       //{
       //new ProductController(view);
-      //new HomeController(view);
+      //new src.Controllers.Admin.HomeController(view);
       //new InventoryAuditReportController(view);
       //new InvoiceDetailController(view);
       //new SeasonController(view);

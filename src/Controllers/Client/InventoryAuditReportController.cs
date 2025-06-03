@@ -22,6 +22,7 @@ namespace BTL_C_.src.Controllers.Client
       inventoryAuditReportDao = new InventoryAuditReportDAO();
       frmInventoryAuditReport.SetTimKiemListener(TimKiem);
       frmInventoryAuditReport.SetXuatExcelListener(XuatExcel);
+      frmInventoryAuditReport.SetThoatListener(RedirectFrmHome);
 
     }
     private void TimKiem(object sender, EventArgs e)
@@ -63,6 +64,10 @@ namespace BTL_C_.src.Controllers.Client
       {
         ErrorUtil.handle(ex, "Xuất ra file excel thất bại!!!");
       }
+    }
+    private void RedirectFrmHome(object sender, EventArgs e)
+    {
+      AppController.StartHomeClient(frmInventoryAuditReport.GetForm());
     }
   }
 }

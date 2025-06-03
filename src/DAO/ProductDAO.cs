@@ -73,6 +73,39 @@ namespace BTL_C_.src.DAO
         };
       return ExecuteNonQuery(sql, parameters);
     }
+    public bool UpdateCount(string masp, int soluong, SqlConnection conn, SqlTransaction transaction)
+    {
+      string selectSql = "SELECT sltonkho FROM tblSanPham WHERE maquanao = @maquanao";
+      int sltonkho;
+
+      using (SqlCommand selectCmd = new SqlCommand(selectSql, conn, transaction))
+      {
+        selectCmd.Parameters.AddWithValue("@maquanao", masp);
+        object result = selectCmd.ExecuteScalar();
+        if (result == null || result == DBNull.Value)
+        {
+          return false; // Không tìm thấy sản phẩm
+        }
+
+        sltonkho = Convert.ToInt32(result);
+      }
+
+      int slconlai = sltonkho - soluong;
+      if (slconlai < 0)
+      {
+        return false; // Không đủ tồn kho
+      }
+
+      string updateSql = "UPDATE tblSanPham SET sltonkho = @soluong WHERE maquanao = @maquanao";
+      using (SqlCommand updateCmd = new SqlCommand(updateSql, conn, transaction))
+      {
+        updateCmd.Parameters.AddWithValue("@soluong", slconlai);
+        updateCmd.Parameters.AddWithValue("@maquanao", masp);
+
+        return updateCmd.ExecuteNonQuery() > 0;
+      }
+    }
+
     public DataTable GetSanPhamBanChay(DateTime ngayBatDau, DateTime ngayKetThuc)
     {
       DataTable dt = new DataTable();
@@ -139,6 +172,8 @@ namespace BTL_C_.src.DAO
         maquanao = reader["maquanao"].ToString(),
         tenquanao = reader["tenquanao"].ToString(),
         dongiaban = reader["dongiaban"] == DBNull.Value ? 0 : Convert.ToSingle(reader["dongiaban"]),
+        sltonkho = reader["sltonkho"] == DBNull.Value ? 0 : Convert.ToInt32(reader["sltonkho"]),
+        trangthai = reader["trangthai"].ToString()
       };
 
 
