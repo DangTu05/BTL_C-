@@ -2,7 +2,7 @@
 
 namespace BTL_C_.src.Models
 {
-  internal class SalesInvoiceModel
+  public class SalesInvoiceModel
   {
     public string soHDB { get; set; }
     public string manv { get; set; }

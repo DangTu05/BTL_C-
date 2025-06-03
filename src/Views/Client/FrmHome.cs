@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using BTL_C_.src.Models;
+using BTL_C_.src.Utils;
 
 namespace WebQLCHQuanAo
 {
@@ -46,6 +47,15 @@ namespace WebQLCHQuanAo
     //                           // Các dữ liệu khác nếu cần
     //}
     public void SetLamMoiTabTaoHoaDonListener(EventHandler handler) => btnLamMoiTaoHD.Click += handler;
+    public void SetThemSPListener(EventHandler handler) => btnThemSanPham.Click += handler;
+    public void SetTaoHDListener(EventHandler handler) => btnTaoHD.Click += handler;
+    public void SetXoaHoaDonTaoListener(EventHandler handler) => btnXoaHDT.Click += handler;
+    public void SetCellEndEditListener(DataGridViewCellEventHandler handler) => dgvSP.CellEndEdit += handler;
+    public void SetUserAddedRowListener(DataGridViewRowEventHandler handler) => dgvSP.UserAddedRow += handler;
+    public DataGridView GetDgvTaoHoaDon() => dgvSP;
+    public string GetMaKH() => txbMaKH_TaoHD.Text.Trim();
+    public string GetTongTien() => txtTongTien.Text.Trim();
+
     //// --- Helper Methods to Clear Inputs ---
     public void ClearThongTinNVFields()
     {
@@ -59,17 +69,12 @@ namespace WebQLCHQuanAo
       txbEmail.Clear();
     }
 
-    //private void ClearTaoHDFields()
-    //{
-    //  txbSoHDB.Text = hoaDonBanController.GenerateNewSoHDB(); // Sinh mã mới cho hóa đơn
-    //  txbMaNV_TaoHD.Clear(); // Giữ nguyên nếu NV hiện tại luôn lập hóa đơn
-    //  txbMaKH_TaoHD.Clear();
-    //  dtpNgayban.Value = DateTime.Now;
-    //  currentChiTietHoaDonList.Clear();
-    //  dgvChiTietHoaDonban.DataSource = null; // Clear DataGridView
-    //  dgvChiTietHoaDonban.Rows.Clear(); // Đảm bảo DataGridView trống rỗng
-    //  txbTongtien.Text = "0.00";
-    //}
+    public void ClearTaoHDFields()
+    {
+      dgvSP.DataSource = null; // Clear DataGridView
+      dgvSP.Rows.Clear(); // Đảm bảo DataGridView trống rỗng
+      txtTongTien.Text = "0.00";
+    }
 
     public void ClearQuanLyKHFields()
     {
@@ -80,54 +85,52 @@ namespace WebQLCHQuanAo
       txbTimkiemKH.Clear();
     }
 
-
     //private void SetupDanhSachSPTab()
     //{
     //  LoadDanhSachSanPham();
     //  // this.btnTimkiemSP.Click += new System.EventHandler(this.btnTimkiemSP_Click);
     //}
 
-    //private void SetupTaoHDTab()
-    //{
-    //  currentChiTietHoaDonList = new List<ChiTietHoaDonBan>();
-    //  ClearTaoHDFields(); // Sinh mã hóa đơn mới và xóa các trường
+    public void SetupTaoHDTab()
+    {
+      //ClearTaoHDFields(); // Sinh mã hóa đơn mới và xóa các trường
+      dgvSP.Columns.Add("colMaSP", "Mã SP");         // cột 0
+      dgvSP.Columns.Add("colTenSP", "Tên sản phẩm");    // cột 1
+      dgvSP.Columns[1].ReadOnly = true;
+      dgvSP.Columns.Add("colSoLuong", "Số lượng");   // cột 2
+      dgvSP.Columns.Add("colDonGia", "Đơn giá");     // cột 3
+      dgvSP.Columns[3].ReadOnly = true;
+      dgvSP.Columns.Add("colGiamGia", "Giảm giá");   // cột 4
+      dgvSP.Columns[4].ReadOnly = true;
+      dgvSP.Columns.Add("colThanhTien", "Thành tiền"); // cột 5
+      dgvSP.Columns[5].ReadOnly = true;
 
-    //  dgvChiTietHoaDonban.AutoGenerateColumns = false;
-    //  // Đảm bảo các cột được thêm thủ công trong designer và có DataPropertyName đúng
-    //  // Ví dụ:
-    //  // colMaSP.DataPropertyName = "MaSP";
-    //  // colTenSP.DataPropertyName = "TenSP"; // Col TenSP không có trong Model ChiTietHoaDonBan, sẽ xử lý trong code
-    //  // colSoLuong.DataPropertyName = "SoLuong";
-    //  // colDonGia.DataPropertyName = "DonGia";
-    //  // colGiamGia.DataPropertyName = "GiamGia";
-    //  // colThanhTien.DataPropertyName = "ThanhTien";
+      dgvSP.AutoGenerateColumns = false;
+      // Đảm bảo các cột được thêm thủ công trong designer và có DataPropertyName đúng
+      // Ví dụ:
+      // colMaSP.DataPropertyName = "MaSP";
+      // colTenSP.DataPropertyName = "TenSP"; // Col TenSP không có trong Model ChiTietHoaDonBan, sẽ xử lý trong code
+      // colSoLuong.DataPropertyName = "SoLuong";
+      // colDonGia.DataPropertyName = "DonGia";
+      // colGiamGia.DataPropertyName = "GiamGia";
+      // colThanhTien.DataPropertyName = "ThanhTien";
 
-    //  // Gán sự kiện CellEndEdit để xử lý khi người dùng kết thúc chỉnh sửa một ô
-    //  dgvChiTietHoaDonban.CellEndEdit += dgvChiTietHoaDonban_CellEndEdit;
-    //  dgvChiTietHoaDonban.UserAddedRow += dgvChiTietHoaDonban_UserAddedRow; // Khi người dùng thêm dòng mới
-    //  dgvChiTietHoaDonban.SelectionChanged += dgvChiTietHoaDonban_SelectionChanged; // Để cập nhật selected row cho nút Sửa/Xóa
+    }
 
-    //  // this.btnThemHD.Click += new System.EventHandler(this.btnThemHD_Click);
-    //  // this.btnHuyHD.Click += new System.EventHandler(this.btnHuyHD_Click);
-    //  // this.btnThemSP_CTHD.Click += new System.EventHandler(this.btnThemSP_CTHD_Click); // Nút này giờ sẽ thêm dòng trống
-    //  // this.btnSuaSP_CTHD.Click += new System.EventHandler(this.btnSuaSP_CTHD_Click);
-    //  // this.btnXoaSP_CTHD.Click += new System.EventHandler(this.btnXoaSP_CTHD_Click);
-    //}
+    ////private void SetupQuanLyHDTab()
+    ////{
+    ////  LoadDanhSachHoaDonBan();
+    ////  // this.btnTimkiemHD.Click += new System.EventHandler(this.btnTimkiemHD_Click);
+    ////  // this.dgvHoaDonBan.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvHoaDonBan_CellClick);
+    ////}
 
-    //private void SetupQuanLyHDTab()
-    //{
-    //  LoadDanhSachHoaDonBan();
-    //  // this.btnTimkiemHD.Click += new System.EventHandler(this.btnTimkiemHD_Click);
-    //  // this.dgvHoaDonBan.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvHoaDonBan_CellClick);
-    //}
-
-    //private void SetupQuanLyKHTab()
-    //{
-    //  LoadDanhSachKhachHang();
-    //  // this.btnThemKH.Click += new System.EventHandler(this.btnThemKH_Click);
-    //  // this.btnTimkiemKH.Click += new System.EventHandler(this.btnTimkiemKH_Click);
-    //  // this.dgvDanhsachKH.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDanhsachKH_CellClick);
-    //}
+    ////private void SetupQuanLyKHTab()
+    ////{
+    ////  LoadDanhSachKhachHang();
+    ////  // this.btnThemKH.Click += new System.EventHandler(this.btnThemKH_Click);
+    ////  // this.btnTimkiemKH.Click += new System.EventHandler(this.btnTimkiemKH_Click);
+    ////  // this.dgvDanhsachKH.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDanhsachKH_CellClick);
+    ////}
 
     // --- ThongTinNV Tab Functions ---
     public void LoadThongTinNhanVienHienTai(EmployeeModel nv)
@@ -297,18 +300,8 @@ namespace WebQLCHQuanAo
       dgvSanPham.ReadOnly = true;
       dgvSanPham.AllowUserToAddRows = false;
     }
-    public void LoadDataHDBToGridView(DataView dv)
-    {
-      dgvHoaDonTao.DataSource = dv;
-      dgvHoaDonTao.Columns[0].HeaderText = "Số hóa đơn bán";
-      dgvHoaDonTao.Columns[1].HeaderText = "Mã nhân viên";
-      dgvHoaDonTao.Columns[2].HeaderText = "Tên khách hàng";
-      dgvHoaDonTao.Columns[3].HeaderText = "Ngày bán";
-      dgvHoaDonTao.Columns[4].HeaderText = "Tổng tiền";
-      dgvHoaDonTao.Columns[4].Width = 140;
-      dgvHoaDonTao.ReadOnly = true;
-      dgvHoaDonTao.AllowUserToAddRows = false;
-    }
+
+
 
 
 
@@ -333,105 +326,61 @@ namespace WebQLCHQuanAo
 
     //// --- TaoHD Tab Functions ---
     //// Xử lý khi người dùng thêm một dòng mới vào DataGridView
-    //private void dgvChiTietHoaDonban_UserAddedRow(object sender, DataGridViewRowEventArgs e)
-    //{
-    //  // Set giá trị mặc định cho các cột nếu cần (ví dụ: GiamGia = 0)
-    //  e.Row.Cells["colGiamGia"].Value = 0m;
-    //  e.Row.Cells["colSoLuong"].Value = 0;
-    //  e.Row.Cells["colDonGia"].Value = 0m;
-    //  e.Row.Cells["colThanhTien"].Value = 0m;
-    //}
+    private void dgvChiTietHoaDonban_UserAddedRow(object sender, DataGridViewRowEventArgs e)
+    {
+      // Set giá trị mặc định cho các cột nếu cần (ví dụ: GiamGia = 0)
+      e.Row.Cells["colGiamGia"].Value = 0m;
+      e.Row.Cells["colSoLuong"].Value = 0;
+      e.Row.Cells["colDonGia"].Value = 0m;
+      e.Row.Cells["colThanhTien"].Value = 0m;
+    }
 
-    //// Xử lý khi người dùng kết thúc chỉnh sửa một ô trong DataGridView
-    //private void dgvChiTietHoaDonban_CellEndEdit(object sender, DataGridViewCellEventArgs e)
-    //{
-    //  if (e.RowIndex < 0 || e.RowIndex >= dgvChiTietHoaDonban.Rows.Count - 1) return; // Tránh hàng thêm mới cuối cùng
-
-    //  DataGridViewRow row = dgvChiTietHoaDonban.Rows[e.RowIndex];
-    //  string colName = dgvChiTietHoaDonban.Columns[e.ColumnIndex].Name;
-
-    //  // Xử lý khi MaSP được nhập
-    //  if (colName == "colMaSP")
-    //  {
-    //    string maSP = row.Cells["colMaSP"].Value?.ToString();
-    //    if (!string.IsNullOrWhiteSpace(maSP))
-    //    {
-    //      SanPham sp = sanPhamController.GetSanPhamDetails(maSP);
-    //      if (sp != null)
-    //      {
-    //        row.Cells["colTenSP"].Value = "Tên: " + sp.MaSP; // Placeholder or actual product name if available
-    //        row.Cells["colDonGia"].Value = sp.DonGiaBan;
-    //        // Mặc định giảm giá 0% nếu chưa có
-    //        if (row.Cells["colGiamGia"].Value == null || string.IsNullOrWhiteSpace(row.Cells["colGiamGia"].Value.ToString()))
-    //        {
-    //          row.Cells["colGiamGia"].Value = 0m;
-    //        }
-    //      }
-    //      else
-    //      {
-    //        MessageBox.Show("Không tìm thấy sản phẩm với mã này.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-    //        row.Cells["colMaSP"].Value = null; // Clear invalid input
-    //        row.Cells["colTenSP"].Value = null;
-    //        row.Cells["colDonGia"].Value = 0m;
-    //        row.Cells["colSoLuong"].Value = 0;
-    //        row.Cells["colGiamGia"].Value = 0m;
-    //      }
-    //    }
-    //  }
-
-    //  // Tính toán Thành tiền khi Số lượng, Đơn giá, Giảm giá thay đổi
-    //  if (colName == "colSoLuong" || colName == "colDonGia" || colName == "colGiamGia" || colName == "colMaSP")
-    //  {
-    //    CalculateThanhTienForRow(row);
-    //    UpdateOverallTongTien();
-    //  }
-    //}
 
     //// Tính toán thành tiền cho một dòng cụ thể trong DataGridView
-    //private void CalculateThanhTienForRow(DataGridViewRow row)
-    //{
-    //  decimal donGia = 0m;
-    //  int soLuong = 0;
-    //  decimal giamGiaPhanTram = 0m;
+    public void CalculateThanhTienForRow(DataGridViewRow row)
+    {
+      decimal donGia = 0m;
+      int soLuong = 0;
+      decimal giamGiaPhanTram = 0m;
 
-    //  if (row.Cells["colDonGia"].Value != null && decimal.TryParse(row.Cells["colDonGia"].Value.ToString(), out donGia) &&
-    //      row.Cells["colSoLuong"].Value != null && int.TryParse(row.Cells["colSoLuong"].Value.ToString(), out soLuong) &&
-    //      row.Cells["colGiamGia"].Value != null && decimal.TryParse(row.Cells["colGiamGia"].Value.ToString(), out giamGiaPhanTram))
-    //  {
-    //    if (soLuong < 0) soLuong = 0; // Đảm bảo số lượng không âm
-    //    if (giamGiaPhanTram < 0 || giamGiaPhanTram > 100) giamGiaPhanTram = 0; // Đảm bảo giảm giá hợp lệ
+      if (row.Cells["colDonGia"].Value != null && decimal.TryParse(row.Cells["colDonGia"].Value.ToString(), out donGia) &&
+          row.Cells["colSoLuong"].Value != null && int.TryParse(row.Cells["colSoLuong"].Value.ToString(), out soLuong) &&
+          row.Cells["colGiamGia"].Value != null && decimal.TryParse(row.Cells["colGiamGia"].Value.ToString(), out giamGiaPhanTram))
+      {
+        if (soLuong < 0) soLuong = 0; // Đảm bảo số lượng không âm
+        if (giamGiaPhanTram < 0 || giamGiaPhanTram > 100) giamGiaPhanTram = 0; // Đảm bảo giảm giá hợp lệ
 
-    //    decimal giamGiaDecimal = giamGiaPhanTram / 100;
-    //    decimal thanhTien = soLuong * donGia * (1 - giamGiaDecimal);
-    //    row.Cells["colThanhTien"].Value = thanhTien;
-    //  }
-    //  else
-    //  {
-    //    row.Cells["colThanhTien"].Value = 0m;
-    //  }
-    //}
+        decimal giamGiaDecimal = giamGiaPhanTram / 100;
+        decimal thanhTien = soLuong * donGia * (1 - giamGiaDecimal);
+        row.Cells["colThanhTien"].Value = thanhTien;
+      }
+      else
+      {
+        row.Cells["colThanhTien"].Value = 0m;
+      }
+    }
 
-    //// Cập nhật tổng tiền của hóa đơn
-    //private void UpdateOverallTongTien()
-    //{
-    //  decimal total = 0;
-    //  foreach (DataGridViewRow row in dgvChiTietHoaDonban.Rows)
-    //  {
-    //    if (!row.IsNewRow && row.Cells["colThanhTien"].Value != null)
-    //    {
-    //      total += Convert.ToDecimal(row.Cells["colThanhTien"].Value);
-    //    }
-    //  }
-    //  txbTongtien.Text = total.ToString("N0");
-    //}
+    // Cập nhật tổng tiền của hóa đơn
+    public void UpdateOverallTongTien()
+    {
+      decimal total = 0;
+      foreach (DataGridViewRow row in dgvSP.Rows)
+      {
+        if (!row.IsNewRow && row.Cells["colThanhTien"].Value != null)
+        {
+          total += Convert.ToDecimal(row.Cells["colThanhTien"].Value);
+        }
+      }
+      txtTongTien.Text = total.ToString("N0");
+    }
 
-    //// Nút Thêm SP trong chi tiết hóa đơn (nay chỉ thêm dòng trống)
-    //private void btnThemSP_CTHD_Click(object sender, EventArgs e)
-    //{
-    //  dgvChiTietHoaDonban.Rows.Add(); // Thêm một dòng trống mới
-    //  dgvChiTietHoaDonban.CurrentCell = dgvChiTietHoaDonban.Rows[dgvChiTietHoaDonban.Rows.Count - 2].Cells["colMaSP"];
-    //  dgvChiTietHoaDonban.BeginEdit(true); // Bắt đầu chỉnh sửa ô Mã SP
-    //}
+    // Nút Thêm SP trong chi tiết hóa đơn (nay chỉ thêm dòng trống)
+    public void ThemDong(object sender, EventArgs e)
+    {
+      dgvSP.Rows.Add(); // Thêm một dòng trống mới
+      dgvSP.CurrentCell = dgvSP.Rows[dgvSP.Rows.Count - 2].Cells["colMaSP"];
+      dgvSP.BeginEdit(true); // Bắt đầu chỉnh sửa ô Mã SP
+    }
 
     //// Nút Sửa SP trong chi tiết hóa đơn (thực chất là lưu chỉnh sửa trên dòng đã chọn)
     //private void btnSuaSP_CTHD_Click(object sender, EventArgs e)
@@ -446,25 +395,25 @@ namespace WebQLCHQuanAo
     //  MessageBox.Show("Các thay đổi trong chi tiết sản phẩm đã được cập nhật trên bảng. Nhấn 'Thêm Hóa Đơn' để lưu toàn bộ.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
     //}
 
-    //// Nút Xóa SP trong chi tiết hóa đơn
-    //private void btnXoaSP_CTHD_Click(object sender, EventArgs e)
-    //{
-    //  if (dgvChiTietHoaDonban.SelectedRows.Count == 0)
-    //  {
-    //    MessageBox.Show("Vui lòng chọn một dòng để xóa.", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-    //    return;
-    //  }
+    // Nút Xóa SP trong chi tiết hóa đơn
+    public void XoaSP_CTHD()
+    {
+      if (dgvSP.SelectedRows.Count == 0)
+      {
+        MessageUtil.ShowWarning("Vui lòng chọn một dòng để xóa!");
+        return;
+      }
 
-    //  DataGridViewRow selectedRow = dgvChiTietHoaDonban.SelectedRows[0];
-    //  if (selectedRow.IsNewRow) return; // Không xóa dòng thêm mới trống
+      DataGridViewRow selectedRow = dgvSP.SelectedRows[0];
+      if (selectedRow.IsNewRow) return; // Không xóa dòng thêm mới trống
 
-    //  if (MessageBox.Show("Bạn có chắc chắn muốn xóa dòng sản phẩm này khỏi hóa đơn?", "Xác nhận xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-    //  {
-    //    dgvChiTietHoaDonban.Rows.Remove(selectedRow);
-    //    UpdateOverallTongTien(); // Cập nhật lại tổng tiền
-    //    MessageBox.Show("Đã xóa sản phẩm khỏi chi tiết hóa đơn.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-    //  }
-    //}
+      if (MessageUtil.Confirm("Bạn có chắc chắn muốn xóa dòng sản phẩm này khỏi hóa đơn?"))
+      {
+        dgvSP.Rows.Remove(selectedRow);
+        UpdateOverallTongTien(); // Cập nhật lại tổng tiền
+        MessageUtil.ShowInfo("Đã xóa sản phẩm khỏi chi tiết hóa đơn!");
+      }
+    }
 
     //// Cập nhật currentChiTietHoaDonList khi DataGridView thay đổi
     //private void dgvChiTietHoaDonban_SelectionChanged(object sender, EventArgs e)

@@ -117,7 +117,14 @@ namespace BTL_C_.src.DAO
 
     protected override ProductModel MapReaderToObject(SqlDataReader reader)
     {
-      throw new NotImplementedException();
+      return new ProductModel
+      {
+        maquanao = reader["maquanao"].ToString(),
+        tenquanao = reader["tenquanao"].ToString(),
+        dongiaban = reader["dongiaban"] == DBNull.Value ? 0 : Convert.ToSingle(reader["dongiaban"]),
+      };
+
+
     }
 
     protected override string getName() => "sp.tenquanao";

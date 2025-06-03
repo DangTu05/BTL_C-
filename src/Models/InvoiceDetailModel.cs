@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BTL_C_.src.Models
 {
-  internal class InvoiceDetailModel
+  public class InvoiceDetailModel
   {
     public string mahdb { get; set; }
     public string masp { get; set; }
@@ -14,5 +14,6 @@ namespace BTL_C_.src.Models
     public decimal dongia { get; set; }
     public decimal giamgia { get; set; }
     public decimal thanhtien { get; set; }
+
   }
 }

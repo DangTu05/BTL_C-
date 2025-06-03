@@ -65,7 +65,7 @@ namespace BTL_C_.src.Controllers.Admin
     private void InsertProduct(object sender, EventArgs e)
     {
       string maquanao = GenerateIdUtil.GenerateId("PRODUCT");
-      if (!InputValidate.inputCreateProductValidate(maquanao, viewFrmCreateProduct.GetTenSanPham(),viewFrmCreateProduct.GetTrangThai()))
+      if (!InputValidate.inputCreateProductValidate(maquanao, viewFrmCreateProduct.GetTenSanPham(), viewFrmCreateProduct.GetTrangThai()))
       {
         return;
       }
@@ -82,7 +82,8 @@ namespace BTL_C_.src.Controllers.Admin
           viewFrmCreateProduct.GetSoLuongTonKho(),
           "", // đường dẫn ảnh để trống
           viewFrmCreateProduct.GetDonGiaNhap(),
-          viewFrmCreateProduct.GetDonGiaBan(),
+          //viewFrmCreateProduct.GetDonGiaBan(),
+          1000,
           viewFrmCreateProduct.GetTrangThai()
       );
       try

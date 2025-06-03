@@ -132,6 +132,7 @@
     <Compile Include="src\DAO\DemographicDAO.cs" />
     <Compile Include="src\DAO\SupplierDAO.cs" />
     <Compile Include="src\DAO\TaskDAO.cs" />
+    <Compile Include="src\Entry\Item.cs" />
     <Compile Include="src\Models\AccountModel.cs" />
     <Compile Include="src\Models\CategoryModel.cs" />
     <Compile Include="src\Models\ColorModel.cs" />
