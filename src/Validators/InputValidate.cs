@@ -77,5 +77,17 @@ namespace BTL_C_.src.Validators
     {
       return CheckEmptyFields(sdt, tenkh);
     }
+    public static bool InputMadeInValidate(string tennsx)
+    {
+      return CheckEmptyFields(tennsx);
+    }
+    public static bool InputTaskValidate(string tencv)
+    {
+      return CheckEmptyFields(tencv);
+    }
+    public static bool InputCategoryValidate(string tentl)
+    {
+      return CheckEmptyFields(tentl);
+    }
   }
 }

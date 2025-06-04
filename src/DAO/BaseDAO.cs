@@ -67,12 +67,20 @@ namespace BTL_C_.src.DAO
       using (SqlConnection conn = ConfigDB.GetConnection())
       using (SqlCommand cmd = new SqlCommand(query, conn))
       {
-        cmd.Parameters.AddWithValue("@value", value);
+        try
+        {
+          cmd.Parameters.AddWithValue("@value", value);
 
-        conn.Open();
-        int count = (int)cmd.ExecuteScalar(); // lấy số lượng dòng
+          conn.Open();
+          int count = (int)cmd.ExecuteScalar(); // lấy số lượng dòng
 
-        return count > 0; // nếu > 0 thì tồn tại
+          return count > 0; // nếu > 0 thì tồn tại
+        }
+        catch (Exception ex)
+        {
+          throw new Exception("Đã xảy ra lỗi!!!", ex);
+        }
+
       }
     }
     public T findRecordByField(string field, string value)
@@ -197,13 +205,21 @@ namespace BTL_C_.src.DAO
     {
       using (SqlConnection conn = ConfigDB.GetConnection())
       {
-        conn.Open();
-        SqlDataAdapter adapter = new SqlDataAdapter(sql, conn);
-        DataTable dt = new DataTable();
-        adapter.Fill(dt);
-        cmb.DataSource = dt;
-        cmb.ValueMember = value;
-        cmb.DisplayMember = display;
+        try
+        {
+          conn.Open();
+          SqlDataAdapter adapter = new SqlDataAdapter(sql, conn);
+          DataTable dt = new DataTable();
+          adapter.Fill(dt);
+          cmb.DataSource = dt;
+          cmb.ValueMember = value;
+          cmb.DisplayMember = display;
+        }
+        catch (Exception ex)
+        {
+          throw new Exception("Đã xảy ra lỗi!!!", ex);
+        }
+
       }
 
     }

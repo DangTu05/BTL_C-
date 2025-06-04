@@ -22,6 +22,9 @@ namespace BTL_C_.src.Controllers.Admin
       createControl.SetCoListener(RedirectFrmSize);
       createControl.SetDoiTuongListener(RedirectFrmDemographic);
       createControl.SetMuaListener(RedirectFrmSeason);
+      createControl.SetNoiSanXuatListener(RedirectFrmMadeIn);
+      createControl.SetCongViecListener(RedirectFrmTask);
+      createControl.SetTheLoaiListener(RedirectFrmCategory);
     }
     private void redirectFrmColor(object sender, EventArgs e)
     {
@@ -42,6 +45,18 @@ namespace BTL_C_.src.Controllers.Admin
     private void RedirectFrmSeason(object sender, EventArgs e)
     {
       AppController.StartFrmSeason(createControl.GetForm());
+    }
+    private void RedirectFrmMadeIn(object sender, EventArgs e)
+    {
+      AppController.StartFrmMadeIn(createControl.GetForm());
+    }
+    private void RedirectFrmTask(object sender, EventArgs e)
+    {
+      AppController.StartFrmTask(createControl.GetForm());
+    }
+    private void RedirectFrmCategory(object sender, EventArgs e)
+    {
+      AppController.StartFrmCategory(createControl.GetForm());
     }
   }
 }

@@ -70,17 +70,33 @@ namespace BTL_C_.src.Controllers.Client
     // --- QuanlyHD Tab Functions ---
     private void LoadDataProductToGridView()
     {
-      DataTable allProduct = productDao.getAllRecord();
 
-      // Tạo DataView từ DataTable và lọc theo vai trò
-      DataView dv = new DataView(allProduct);
-      frmHome.LoadDataProductToGridView(dv);
+      try
+      {
+        DataTable allProduct = productDao.getAllRecord();
+
+        // Tạo DataView từ DataTable và lọc theo vai trò
+        DataView dv = new DataView(allProduct);
+        frmHome.LoadDataProductToGridView(dv);
+      }
+      catch (Exception ex)
+      {
+        ErrorUtil.handle(ex, "Đã xảy ra lỗi!!!");
+      }
     }
     private void LoadDataCustomerToGridView()
     {
-      DataTable allCustomer = customerDao.getAllRecord();
-      DataView dv = new DataView(allCustomer);
-      frmHome.LoadDataCustomerToGridView(dv);
+
+      try
+      {
+        DataTable allCustomer = customerDao.getAllRecord();
+        DataView dv = new DataView(allCustomer);
+        frmHome.LoadDataCustomerToGridView(dv);
+      }
+      catch (Exception ex)
+      {
+        ErrorUtil.handle(ex, "Đã xảy ra lỗi!!!");
+      }
     }
     private void LoadDataInvoiceDetailToGridView()
     {

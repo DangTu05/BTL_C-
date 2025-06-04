@@ -69,6 +69,7 @@ namespace BTL_C_.src.Controllers.Admin
       {
         return;
       }
+      float dongiaban = (float)(viewFrmCreateProduct.GetDonGiaNhap() * 1.1);
       ProductModel product = new ProductModel(
           maquanao,
           viewFrmCreateProduct.GetTenSanPham(),
@@ -83,7 +84,7 @@ namespace BTL_C_.src.Controllers.Admin
           "", // đường dẫn ảnh để trống
           viewFrmCreateProduct.GetDonGiaNhap(),
           //viewFrmCreateProduct.GetDonGiaBan(),
-          1000,
+          dongiaban,
           viewFrmCreateProduct.GetTrangThai()
       );
       try
@@ -119,7 +120,7 @@ namespace BTL_C_.src.Controllers.Admin
         string cl = row.Cells[7].Value?.ToString() ?? "";
         string co = row.Cells[8].Value?.ToString() ?? "";
         int sltonkho = 1; // Default value
-        if (row.Cells[9].Value != null && int.TryParse(row.Cells[10].Value.ToString(), out int result))
+        if (row.Cells[9].Value != null && int.TryParse(row.Cells[9].Value.ToString(), out int result))
         {
           sltonkho = result;
         }
@@ -142,11 +143,20 @@ namespace BTL_C_.src.Controllers.Admin
     }
     private void LoadDataToGridView()
     {
-      DataTable allProduct = productDao.getAllRecord();
 
-      // Tạo DataView từ DataTable và lọc theo vai trò
-      DataView dv = new DataView(allProduct);
-      viewProductControl.LoadDataToGridView(dv);
+
+      try
+      {
+        DataTable allProduct = productDao.getAllRecord();
+
+        // Tạo DataView từ DataTable và lọc theo vai trò
+        DataView dv = new DataView(allProduct);
+        viewProductControl.LoadDataToGridView(dv);
+      }
+      catch (Exception ex)
+      {
+        ErrorUtil.handle(ex, "Đã xảy ra lỗi!!!");
+      }
 
     }
     private void Reset(object sender, EventArgs e)
@@ -161,21 +171,34 @@ namespace BTL_C_.src.Controllers.Admin
         MessageUtil.ShowWarning("Vui lòng chọn sản phẩm muốn sửa!");
         return;
       }
-      if (!InputValidate.inputCreateProductValidate(viewProductControl.GetMaSanPham(), viewProductControl.GetTenSanPham(), viewFrmCreateProduct.GetTrangThai()))
+      if (!InputValidate.inputCreateProductValidate(viewProductControl.GetMaSanPham(), viewProductControl.GetTenSanPham(), viewProductControl.GetTrangThai()))
       {
         return;
       }
 
       try
       {
-        ProductModel product = new ProductModel(viewProductControl.GetMaSanPham(), viewProductControl.GetTenSanPham(), viewProductControl.GetMaCo(), viewProductControl.GetMaMau(), viewProductControl.GetMaMua(), viewProductControl.GetMaDoiTuong(), viewProductControl.GetMaNoiSanXuat(), viewProductControl.GetMaTheLoai(), viewProductControl.GetMaChatLieu(), viewProductControl.GetSoLuongTonKho(), viewProductControl.GetAnh(), viewProductControl.GetDonGiaNhap(), viewProductControl.GetDonGiaBan(), viewProductControl.GetTrangThai());
+        ProductModel product = new ProductModel
+        {
+          maquanao = viewProductControl.GetMaSanPham(),
+          tenquanao = viewProductControl.GetTenSanPham(),
+          maco = viewProductControl.GetMaCo(),
+          mamau = viewProductControl.GetMaMau(),
+          mamua = viewProductControl.GetMaMua(),
+          madt = viewProductControl.GetMaDoiTuong(),
+          mansx = viewProductControl.GetMaNoiSanXuat(),
+          matheloai = viewProductControl.GetMaTheLoai(),
+          macl = viewProductControl.GetMaChatLieu(),
+          anh = viewProductControl.GetAnh(),
+          trangthai = viewProductControl.GetTrangThai()
+        };
         if (!productDao.update(product))
         {
           MessageUtil.ShowError("Cập nhật không thành công!!!");
           return;
         }
         MessageUtil.ShowInfo("Cập nhật thành công!");
-        LoadDataToGridView();
+        Reset(sender, e);
       }
       catch (Exception ex)
       {

@@ -89,13 +89,21 @@ namespace BTL_C_.src.Controllers.Admin
     }
 
     private void LoadDataToGridView()
-    {// Giả sử bạn đã có DataTable chứa dữ liệu tài khoản
-      DataTable allAccounts = supplierDao.getAllRecord();
+    {
+      try
+      {// Giả sử bạn đã có DataTable chứa dữ liệu tài khoản
+        DataTable allAccounts = supplierDao.getAllRecord();
 
-      // Tạo DataView từ DataTable và lọc theo vai trò
-      DataView dv = new DataView(allAccounts);
+        // Tạo DataView từ DataTable và lọc theo vai trò
+        DataView dv = new DataView(allAccounts);
 
-      viewSupplierControl.LoadDataToGridView(dv);
+        viewSupplierControl.LoadDataToGridView(dv);
+
+      }
+      catch (Exception ex)
+      {
+        ErrorUtil.handle(ex, "Đã xảy ra lôi!!!");
+      }
     }
     private void OnSupplierCellClick(object sender, DataGridViewCellEventArgs e)
     {

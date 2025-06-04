@@ -51,11 +51,8 @@
       this.btnLuu = new System.Windows.Forms.Button();
       this.btnLamMoi = new System.Windows.Forms.Button();
       this.label9 = new System.Windows.Forms.Label();
-      this.slTonKho = new System.Windows.Forms.NumericUpDown();
       this.label10 = new System.Windows.Forms.Label();
-      this.donGiaNhap = new System.Windows.Forms.NumericUpDown();
       this.label11 = new System.Windows.Forms.Label();
-      this.donGiaBan = new System.Windows.Forms.NumericUpDown();
       this.label12 = new System.Windows.Forms.Label();
       this.cmbDoiTuong = new System.Windows.Forms.ComboBox();
       this.label13 = new System.Windows.Forms.Label();
@@ -66,11 +63,11 @@
       this.label15 = new System.Windows.Forms.Label();
       this.txtAnh = new System.Windows.Forms.TextBox();
       this.label16 = new System.Windows.Forms.Label();
+      this.txtSLTonKho = new System.Windows.Forms.TextBox();
+      this.txtDonGiaNhap = new System.Windows.Forms.TextBox();
+      this.txtDonGiaBan = new System.Windows.Forms.TextBox();
       ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProduct)).BeginInit();
       this.panel1.SuspendLayout();
-      ((System.ComponentModel.ISupportInitialize)(this.slTonKho)).BeginInit();
-      ((System.ComponentModel.ISupportInitialize)(this.donGiaNhap)).BeginInit();
-      ((System.ComponentModel.ISupportInitialize)(this.donGiaBan)).BeginInit();
       this.SuspendLayout();
       // 
       // label1
@@ -280,28 +277,6 @@
       this.label9.TabIndex = 15;
       this.label9.Text = "Nơi sản xuất";
       // 
-      // slTonKho
-      // 
-      this.slTonKho.Location = new System.Drawing.Point(30, 274);
-      this.slTonKho.Maximum = new decimal(new int[] {
-            1000,
-            0,
-            0,
-            0});
-      this.slTonKho.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-      this.slTonKho.Name = "slTonKho";
-      this.slTonKho.Size = new System.Drawing.Size(148, 22);
-      this.slTonKho.TabIndex = 17;
-      this.slTonKho.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-      // 
       // label10
       // 
       this.label10.AutoSize = true;
@@ -311,23 +286,6 @@
       this.label10.TabIndex = 18;
       this.label10.Text = "Só lượng tồn kho";
       // 
-      // donGiaNhap
-      // 
-      this.donGiaNhap.Location = new System.Drawing.Point(458, 194);
-      this.donGiaNhap.Maximum = new decimal(new int[] {
-            100000000,
-            0,
-            0,
-            0});
-      this.donGiaNhap.Name = "donGiaNhap";
-      this.donGiaNhap.Size = new System.Drawing.Size(144, 22);
-      this.donGiaNhap.TabIndex = 19;
-      this.donGiaNhap.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-      // 
       // label11
       // 
       this.label11.AutoSize = true;
@@ -336,18 +294,6 @@
       this.label11.Size = new System.Drawing.Size(86, 16);
       this.label11.TabIndex = 20;
       this.label11.Text = "Đơn giá nhập";
-      // 
-      // donGiaBan
-      // 
-      this.donGiaBan.Location = new System.Drawing.Point(641, 194);
-      this.donGiaBan.Maximum = new decimal(new int[] {
-            100000000,
-            0,
-            0,
-            0});
-      this.donGiaBan.Name = "donGiaBan";
-      this.donGiaBan.Size = new System.Drawing.Size(153, 22);
-      this.donGiaBan.TabIndex = 21;
       // 
       // label12
       // 
@@ -439,10 +385,37 @@
       this.label16.TabIndex = 31;
       this.label16.Text = "Ảnh";
       // 
+      // txtSLTonKho
+      // 
+      this.txtSLTonKho.Location = new System.Drawing.Point(22, 273);
+      this.txtSLTonKho.Name = "txtSLTonKho";
+      this.txtSLTonKho.ReadOnly = true;
+      this.txtSLTonKho.Size = new System.Drawing.Size(171, 22);
+      this.txtSLTonKho.TabIndex = 32;
+      // 
+      // txtDonGiaNhap
+      // 
+      this.txtDonGiaNhap.Location = new System.Drawing.Point(453, 193);
+      this.txtDonGiaNhap.Name = "txtDonGiaNhap";
+      this.txtDonGiaNhap.ReadOnly = true;
+      this.txtDonGiaNhap.Size = new System.Drawing.Size(137, 22);
+      this.txtDonGiaNhap.TabIndex = 33;
+      // 
+      // txtDonGiaBan
+      // 
+      this.txtDonGiaBan.Location = new System.Drawing.Point(654, 195);
+      this.txtDonGiaBan.Name = "txtDonGiaBan";
+      this.txtDonGiaBan.ReadOnly = true;
+      this.txtDonGiaBan.Size = new System.Drawing.Size(132, 22);
+      this.txtDonGiaBan.TabIndex = 34;
+      // 
       // ProductControl
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+      this.Controls.Add(this.txtDonGiaBan);
+      this.Controls.Add(this.txtDonGiaNhap);
+      this.Controls.Add(this.txtSLTonKho);
       this.Controls.Add(this.label16);
       this.Controls.Add(this.txtAnh);
       this.Controls.Add(this.label15);
@@ -453,11 +426,8 @@
       this.Controls.Add(this.label13);
       this.Controls.Add(this.cmbDoiTuong);
       this.Controls.Add(this.label12);
-      this.Controls.Add(this.donGiaBan);
       this.Controls.Add(this.label11);
-      this.Controls.Add(this.donGiaNhap);
       this.Controls.Add(this.label10);
-      this.Controls.Add(this.slTonKho);
       this.Controls.Add(this.label9);
       this.Controls.Add(this.panel1);
       this.Controls.Add(this.dataGridViewProduct);
@@ -479,9 +449,6 @@
       ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProduct)).EndInit();
       this.panel1.ResumeLayout(false);
       this.panel1.PerformLayout();
-      ((System.ComponentModel.ISupportInitialize)(this.slTonKho)).EndInit();
-      ((System.ComponentModel.ISupportInitialize)(this.donGiaNhap)).EndInit();
-      ((System.ComponentModel.ISupportInitialize)(this.donGiaBan)).EndInit();
       this.ResumeLayout(false);
       this.PerformLayout();
 
@@ -512,11 +479,8 @@
     private System.Windows.Forms.TextBox txtSearch;
     private System.Windows.Forms.Label label8;
     private System.Windows.Forms.Label label9;
-    private System.Windows.Forms.NumericUpDown slTonKho;
     private System.Windows.Forms.Label label10;
-    private System.Windows.Forms.NumericUpDown donGiaNhap;
     private System.Windows.Forms.Label label11;
-    private System.Windows.Forms.NumericUpDown donGiaBan;
     private System.Windows.Forms.Label label12;
     private System.Windows.Forms.ComboBox cmbDoiTuong;
     private System.Windows.Forms.Label label13;
@@ -527,5 +491,8 @@
     private System.Windows.Forms.Label label15;
     private System.Windows.Forms.TextBox txtAnh;
     private System.Windows.Forms.Label label16;
+    private System.Windows.Forms.TextBox txtSLTonKho;
+    private System.Windows.Forms.TextBox txtDonGiaNhap;
+    private System.Windows.Forms.TextBox txtDonGiaBan;
   }
 }

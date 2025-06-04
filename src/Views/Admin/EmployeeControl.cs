@@ -46,8 +46,12 @@ namespace BTL_C_.src.Views.Admin
       if (cmbGioiTinh.Items.Contains(gt))
         cmbGioiTinh.SelectedItem = gt;
 
-      if (cmbCongViec.Items.Contains(congviec))
-        cmbCongViec.SelectedItem = congviec;
+      // Công việc
+      int idx = cmbCongViec.FindStringExact(congviec);
+      if (idx != -1)
+      {
+        cmbCongViec.SelectedIndex = idx;
+      }
       mskSDT.Text = sdt;
       dateNgaySinh.Value = ngaysinh ?? DateTime.Today;
     }
@@ -56,8 +60,12 @@ namespace BTL_C_.src.Views.Admin
       txtMaNhanVien.Text = "";
       txtTenNhanVien.Text = "";
       txtDiaChi.Text = "";
-      cmbCongViec.SelectedItem = "";
-      cmbGioiTinh.SelectedItem = "";
+      if (cmbGioiTinh.Items.Count > 0)
+        cmbGioiTinh.SelectedIndex = 0;
+
+      if (cmbCongViec.Items.Count > 0)
+        cmbCongViec.SelectedIndex = 0;
+
       mskSDT.Text = "";
       dateNgaySinh.Value = DateTime.Today;
     }

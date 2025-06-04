@@ -41,7 +41,7 @@ namespace BTL_C_.src.DAO
     }
     public bool update(ProductModel product)
     {
-      string sql = "UPDATE tblSanPham SET matheloai = @matheloai, mamau = @mamau, mansx = @mansx, madt = @madt, mamua = @mamua, anh = @anh, sltonkho = @sltonkho, dongianhap = @dongianhap, dongiaban = @dongiaban, macl = @macl, maco = @maco, trangthai = @trangthai, tenquanao = @tenquanao where maquanao = @maquanao";
+      string sql = "UPDATE tblSanPham SET matheloai = @matheloai, mamau = @mamau, mansx = @mansx, madt = @madt, mamua = @mamua, anh = @anh, macl = @macl, maco = @maco, trangthai = @trangthai, tenquanao = @tenquanao where maquanao = @maquanao";
       var parameters = new Dictionary<string, object>
         {
             {"@maquanao", product.maquanao },
@@ -51,10 +51,7 @@ namespace BTL_C_.src.DAO
             {"@mansx", product.mansx},
             {"@madt", product.madt},
             {"@mamua",product.mamua },
-            {"@sltonkho", product.sltonkho },
             {"@anh", product.anh },
-            {"@dongianhap", product.dongianhap },
-            {"@dongiaban", product.dongiaban },
             {"@trangthai", product.trangthai },
             {"@macl", product.macl },
             {"@maco", product.maco }
@@ -63,13 +60,15 @@ namespace BTL_C_.src.DAO
     }
     public bool UpdatePriceAndCount(string masp, decimal dongianhap, decimal dongiaban, int sl)
     {
+      ProductModel sp = findRecordByField("maquanao", masp);
+
       string sql = "UPDATE tblSanPham SET dongiaban=@dongiaban, dongianhap=@dongianhap, sltonkho=@soluong where maquanao = @maquanao";
       var parameters = new Dictionary<string, object>
         {
             {"@maquanao", masp },
             {"@dongianhap",dongianhap },
             {"@dongiaban",dongiaban },
-            {"@soluong", sl }
+            {"@soluong", sp.sltonkho+sl }
         };
       return ExecuteNonQuery(sql, parameters);
     }

@@ -43,6 +43,11 @@ namespace BTL_C_.src.Controllers
         }
         else
         {
+          if (account.status == "ngừng hoạt động")
+          {
+            MessageUtil.ShowInfo("Tài khoản này đã bị khóa!");
+            return;
+          }
           EmployeeDAO employeeDAO = new EmployeeDAO();
           /// Lấy ra thông tin nhân viên đó từ db
           EmployeeModel nv = employeeDAO.findRecordByField("manv", account.ma_nhan_vien);

@@ -94,6 +94,26 @@ namespace BTL_C_.src.Controllers
       frmInventoryAuditReport.Show();
       previousForm.Hide();
     }
-
+    public static void StartFrmMadeIn(Form previousForm)
+    {
+      FrmMadeIn frmMadeIn = new FrmMadeIn();
+      MadeInController madeInController = new MadeInController(frmMadeIn);
+      frmMadeIn.Show();
+      previousForm.Hide();
+    }
+    public static void StartFrmTask(Form previousForm)
+    {
+      FrmTask frmTask = new FrmTask();
+      TaskController taskController = new TaskController(frmTask);
+      frmTask.Show();
+      previousForm.Hide();
+    }
+    public static void StartFrmCategory(Form previousForm)
+    {
+      FrmCategory frmCategory = new FrmCategory();
+      CategoryController categoryController = new CategoryController(frmCategory);
+      frmCategory.Show();
+      previousForm.Hide();
+    }
   }
 }

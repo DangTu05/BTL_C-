@@ -47,34 +47,34 @@ namespace BTL_C_.src.Views.Admin
       txtTenSanPham.Text = "";
       txtAnh.Text = "";
       txtSearch.Text = "";
-      cmbChatLieu.SelectedItem = "";
-      cmbCo.SelectedItem = "";
-      cmbDoiTuong.SelectedItem = "";
-      cmbMau.SelectedItem = "";
-      cmbMua.SelectedItem = "";
-      cmbNoiSanXuat.SelectedItem = "";
-      cmbTheLoai.SelectedItem = "";
-      cmbTrangThai.SelectedItem = "";
-      donGiaNhap.Value = 1;
-      donGiaBan.Value = 1;
-      slTonKho.Value = 1;
+      if (cmbChatLieu.Items.Count > 0) cmbChatLieu.SelectedIndex = 0;
+      if (cmbCo.Items.Count > 0) cmbCo.SelectedIndex = 0;
+      if (cmbDoiTuong.Items.Count > 0) cmbDoiTuong.SelectedIndex = 0;
+      if (cmbMau.Items.Count > 0) cmbMau.SelectedIndex = 0;
+      if (cmbMua.Items.Count > 0) cmbMua.SelectedIndex = 0;
+      if (cmbNoiSanXuat.Items.Count > 0) cmbNoiSanXuat.SelectedIndex = 0;
+      if (cmbTheLoai.Items.Count > 0) cmbTheLoai.SelectedIndex = 0;
+      if (cmbTrangThai.Items.Count > 0) cmbTrangThai.SelectedIndex = 0;
+      txtSLTonKho.Text = "";
+      txtDonGiaBan.Text = "";
+      txtDonGiaNhap.Text = "";
     }
     public void SetForm(string masanpham, string tensanpham, string theloai, string chatlieu, string mau, string dt, string mua, string nsx, string co, int sltonkho, float dongianhap, float dongiaban, string anh, string trangthai)
     {
       txtMaSanPham.Text = masanpham ?? "";
       txtTenSanPham.Text = tensanpham ?? "";
       txtAnh.Text = anh ?? "";
-      slTonKho.Value = sltonkho;
-      donGiaNhap.Value = (decimal)dongianhap;
-      donGiaBan.Value = (decimal)dongiaban;
-      cmbChatLieu.SelectedItem = chatlieu ?? "";
-      cmbCo.SelectedItem = co ?? "";
-      cmbDoiTuong.SelectedItem = dt ?? "";
-      cmbMau.SelectedItem = mau ?? "";
-      cmbMua.SelectedItem = mua ?? "";
-      cmbNoiSanXuat.SelectedItem = nsx ?? "";
-      cmbTheLoai.SelectedItem = theloai ?? "";
-      cmbTrangThai.SelectedItem = trangthai ?? "";
+      txtSLTonKho.Text = sltonkho.ToString();
+      txtDonGiaNhap.Text = dongianhap.ToString("N0"); // Format: 1,000
+      txtDonGiaBan.Text = dongiaban.ToString("N0");
+      cmbChatLieu.SelectedIndex = cmbChatLieu.FindStringExact(chatlieu);
+      cmbMau.SelectedIndex = cmbMau.FindStringExact(mau);
+      cmbMua.SelectedIndex = cmbMua.FindStringExact(mua);
+      cmbDoiTuong.SelectedIndex = cmbDoiTuong.FindStringExact(dt);
+      cmbTheLoai.SelectedIndex = cmbTheLoai.FindStringExact(theloai);
+      cmbCo.SelectedIndex = cmbCo.FindStringExact(co);
+      cmbNoiSanXuat.SelectedIndex = cmbNoiSanXuat.FindStringExact(nsx);
+      cmbTrangThai.SelectedIndex = cmbTrangThai.FindStringExact(trangthai);
 
       dataGridViewProduct.ClearSelection();
 
@@ -153,16 +153,44 @@ namespace BTL_C_.src.Views.Admin
     }
     public int GetSoLuongTonKho()
     {
-      return (int)slTonKho.Value;
+      int sl;
+      if (int.TryParse(txtSLTonKho.Text, out sl))
+      {
+        return sl;
+      }
+      else
+      {
+        // Có thể log lỗi hoặc trả về giá trị mặc định
+        return 1;
+      }
     }
     public float GetDonGiaNhap()
     {
-      return (float)donGiaNhap.Value;
+      float donGia;
+      if (float.TryParse(txtDonGiaNhap.Text, out donGia))
+      {
+        return donGia;
+      }
+      else
+      {
+        // Có thể log lỗi hoặc trả về giá trị mặc định
+        return 0f;
+      }
     }
     public float GetDonGiaBan()
     {
-      return (float)donGiaBan.Value;
+      float donGia;
+      if (float.TryParse(txtDonGiaBan.Text, out donGia))
+      {
+        return donGia;
+      }
+      else
+      {
+        // Có thể log lỗi hoặc trả về giá trị mặc định
+        return 0f;
+      }
     }
+
     public string GetAnh()
     {
       return txtAnh.Text.Trim();
